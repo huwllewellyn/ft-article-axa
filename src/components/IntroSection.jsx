@@ -4,78 +4,175 @@ import { motion } from 'framer-motion'
 const Container = styled.section`
   width: 100%;
   min-height: 100vh;
-  padding: 60px 40px;
+  padding: 0;
   background: #ffffff;
   font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 `
 
 const ContentWrapper = styled(motion.div)`
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1441px;
+  height: 802px;
   position: relative;
   z-index: 2;
+  padding: 0 40px;
 `
 
 const Subtitle = styled(motion.p)`
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
   font-size: 19px;
   font-weight: 500;
   line-height: 1.2;
   color: #0f0707;
-  margin: 0 0 60px 0;
-  max-width: 430px;
+  margin: 0;
+  max-width: 433px;
   letter-spacing: 0;
   font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  z-index: 4;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    left: 40px;
+    bottom: 100px;
+    max-width: 280px;
+  }
 `
 
 const TitleContainer = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  align-items: flex-start;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  top: 108px;
+  left: 58px;
+  width: 100%;
+  max-width: 1100px;
+  z-index: 3;
 `
 
 const TitleWord = styled(motion.h1)`
+  position: absolute;
   font-family: 'FreightBig Pro', Georgia, serif;
   color: #0f0707;
   margin: 0;
   letter-spacing: -1.54px;
   line-height: 0.9;
-  font-size: clamp(60px, 15vw, 154px);
-  text-align: left;
-  white-space: nowrap;
+  font-size: 154px;
+  padding: 0;
+  width: auto;
 
-  &.light {
+  &.the {
     font-weight: 300;
     font-style: italic;
+    left: 0;
+    top: 0;
+    width: 283px;
   }
 
-  &.light-normal {
-    font-weight: 300;
-    font-style: normal;
-  }
-
-  &.semibold {
+  &.new-nexus {
     font-weight: 600;
     font-style: normal;
+    left: 10px;
+    top: 121px;
+    width: 846px;
+  }
+
+  &.of {
+    font-weight: 300;
+    font-style: italic;
+    left: 678px;
+    top: 245px;
+    width: 186px;
+  }
+
+  &.global {
+    font-weight: 600;
+    font-style: normal;
+    left: 678px;
+    top: 367px;
+    width: 578px;
+  }
+
+  &.risk {
+    font-weight: 600;
+    font-style: normal;
+    text-align: right;
+    left: 924px;
+    top: 490px;
+    width: 335px;
   }
 
   @media (max-width: 1024px) {
-    font-size: clamp(40px, 12vw, 100px);
+    font-size: 100px;
     letter-spacing: -1px;
+
+    &.the {
+      width: 230px;
+    }
+
+    &.new-nexus {
+      width: 700px;
+      left: 10px;
+      top: 100px;
+    }
+
+    &.of {
+      left: 550px;
+      top: 200px;
+      width: 150px;
+    }
+
+    &.global {
+      left: 550px;
+      top: 300px;
+      width: 470px;
+    }
+
+    &.risk {
+      left: 750px;
+      top: 400px;
+      width: 280px;
+    }
   }
 
   @media (max-width: 768px) {
-    font-size: clamp(32px, 10vw, 60px);
+    font-size: 60px;
     letter-spacing: -0.6px;
+    position: static;
+    margin-bottom: 10px;
+
+    &.the {
+      width: 100%;
+    }
+
+    &.new-nexus {
+      width: 100%;
+      left: auto;
+      top: auto;
+    }
+
+    &.of {
+      width: 100%;
+      left: auto;
+      top: auto;
+    }
+
+    &.global {
+      width: 100%;
+      left: auto;
+      top: auto;
+    }
+
+    &.risk {
+      width: 100%;
+      text-align: left;
+      left: auto;
+      top: auto;
+    }
   }
 `
 
@@ -86,17 +183,17 @@ const DecorativeVector = styled(motion.svg)`
   overflow: visible;
 
   &.vector-1 {
-    top: -100px;
-    right: 0;
-    width: 400px;
-    height: 300px;
+    top: -59px;
+    left: 588px;
+    width: 852px;
+    height: 370px;
   }
 
   &.vector-2 {
-    bottom: -50px;
-    left: -80px;
-    width: 500px;
-    height: 400px;
+    top: -81px;
+    left: -132px;
+    width: 852px;
+    height: 915px;
   }
 `
 
@@ -181,39 +278,37 @@ export default function IntroSection() {
       viewport={{ once: true, margin: '-100px' }}
       variants={containerVariants}
     >
-      {/* Decorative vector elements - positioned absolutely */}
-      <DecorativeVector
-        className="vector-1"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.2 }}
-      >
-        <path
-          d="M 400 0 Q 300 50, 200 150 T 0 300"
-          stroke="#000000"
-          strokeWidth="1"
-          fill="none"
-        />
-      </DecorativeVector>
-
-      <DecorativeVector
-        className="vector-2"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.3 }}
-      >
-        <path
-          d="M 0 0 Q 100 100, 200 150 T 400 300"
-          stroke="#000000"
-          strokeWidth="1"
-          fill="none"
-        />
-      </DecorativeVector>
-
       <ContentWrapper>
-        <Subtitle variants={itemVariants}>
-          The biggest threats to global stability are no longer emerging, they're converging – here's what the future risk landscape reveals
-        </Subtitle>
+        {/* Decorative vector elements - positioned absolutely */}
+        <DecorativeVector
+          className="vector-1"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          viewBox="0 0 852 370"
+        >
+          <path
+            d="M 852 0 Q 600 100, 400 250 Q 200 350, 0 370"
+            stroke="#000000"
+            strokeWidth="1"
+            fill="none"
+          />
+        </DecorativeVector>
+
+        <DecorativeVector
+          className="vector-2"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          viewBox="0 0 852 915"
+        >
+          <path
+            d="M 0 0 Q 200 200, 400 400 Q 600 600, 852 915"
+            stroke="#000000"
+            strokeWidth="1"
+            fill="none"
+          />
+        </DecorativeVector>
 
         <TitleContainer
           initial="hidden"
@@ -223,63 +318,64 @@ export default function IntroSection() {
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.3,
+                staggerChildren: 0.08,
+                delayChildren: 0.2,
               },
             },
           }}
         >
-          <TitleWord className="light" variants={itemVariants}>
-            The
-          </TitleWord>
-          <TitleWord className="light" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
-            New
+          <TitleWord className="the" variants={itemVariants}>
+            THE
           </TitleWord>
 
-          <TitleWord className="light" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
-            Nexus
+          <TitleWord className="new-nexus" variants={itemVariants}>
+            NEW NEXUS
           </TitleWord>
 
-          <TitleWord className="light-normal" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
-            Of
+          <TitleWord className="of" variants={itemVariants}>
+            OF
           </TitleWord>
 
-          <TitleWord className="light-normal" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
-            Global
+          <TitleWord className="global" variants={itemVariants}>
+            GLOBAL
           </TitleWord>
 
-          <TitleWord className="semibold" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
-            Risk
+          <TitleWord className="risk" variants={itemVariants}>
+            RISK
           </TitleWord>
         </TitleContainer>
+
+        <Subtitle variants={itemVariants}>
+          The biggest threats to global stability are no longer emerging, they're converging – here's what the future risk landscape reveals
+        </Subtitle>
+
+        {/* Images - positioned absolutely over content */}
+        <ImageWrapper
+          className="image-1"
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <img
+            src="/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
+            alt="Climate activism"
+          />
+        </ImageWrapper>
+
+        <ImageWrapper
+          className="image-2"
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <img
+            src="/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
+            alt="Infrastructure landscape"
+          />
+        </ImageWrapper>
       </ContentWrapper>
-
-      {/* Images - positioned absolutely over content */}
-      <ImageWrapper
-        className="image-1"
-        variants={imageVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-      >
-        <img
-          src="/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
-          alt="Climate activism"
-        />
-      </ImageWrapper>
-
-      <ImageWrapper
-        className="image-2"
-        variants={imageVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
-      >
-        <img
-          src="/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
-          alt="Infrastructure landscape"
-        />
-      </ImageWrapper>
     </Container>
   )
 }
