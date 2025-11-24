@@ -56,7 +56,7 @@ const TitleContainer = styled(motion.div)`
 
 const TitleWord = styled(motion.h1)`
   position: absolute;
-  font-family: 'FreightBig Pro', Georgia, serif;
+  font-family: freight-big-pro, Georgia, serif;
   color: #0f0707;
   margin: 0;
   letter-spacing: -1.54px;
