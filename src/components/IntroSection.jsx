@@ -199,8 +199,6 @@ const DecorativeVector = styled(motion.svg)`
 
 const ImageWrapper = styled(motion.div)`
   position: absolute;
-  width: 260px;
-  height: 330px;
   border-radius: 0;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -213,25 +211,60 @@ const ImageWrapper = styled(motion.div)`
   }
 
   &.image-1 {
-    top: 40px;
-    right: 100px;
+    top: 219px;
+    right: 184px;
+    width: 121px;
+    height: 182px;
   }
 
   &.image-2 {
+    top: 35px;
+    right: 670px;
+    width: 121px;
+    height: 182px;
+  }
+
+  &.image-3 {
     bottom: 80px;
-    right: 20px;
+    left: 40px;
+    width: 121px;
+    height: 182px;
+  }
+
+  &.image-4 {
+    top: 50px;
+    left: 280px;
+    width: 121px;
+    height: 182px;
   }
 
   @media (max-width: 1024px) {
-    width: 200px;
-    height: 260px;
-
     &.image-1 {
-      right: 60px;
+      width: 100px;
+      height: 150px;
+      right: 150px;
+      top: 200px;
     }
 
     &.image-2 {
-      right: 0;
+      width: 100px;
+      height: 150px;
+      right: 550px;
+      top: 50px;
+    }
+
+    &.image-3 {
+      width: 100px;
+      height: 150px;
+      left: 30px;
+      bottom: 60px;
+    }
+
+    &.image-4 {
+      width: 100px;
+      height: 150px;
+      left: 200px;
+      top: 40px;
     }
   }
 
@@ -373,6 +406,32 @@ export default function IntroSection() {
           <img
             src="/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
             alt="Infrastructure landscape"
+          />
+        </ImageWrapper>
+
+        <ImageWrapper
+          className="image-3"
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <img
+            src="/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
+            alt="Supporting image"
+          />
+        </ImageWrapper>
+
+        <ImageWrapper
+          className="image-4"
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <img
+            src="/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
+            alt="Supporting image"
           />
         </ImageWrapper>
       </ContentWrapper>
