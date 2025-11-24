@@ -5,7 +5,7 @@ const Container = styled.section`
   width: 100%;
   min-height: 100vh;
   padding: 0;
-  background: #ffffff;
+  background: #f2f0ea;
   font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   position: relative;
   overflow: hidden;
