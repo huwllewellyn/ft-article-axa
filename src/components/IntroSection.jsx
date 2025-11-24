@@ -1,92 +1,285 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 const Container = styled.section`
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
+  min-height: 100vh;
   padding: 60px 40px;
   background: #ffffff;
   font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-`
-
-const ContentWrapper = styled.div`
   position: relative;
-  max-width: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const ContentWrapper = styled(motion.div)`
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 `
 
-const Divider = styled.div`
-  width: 1px;
-  height: 388px;
-  background: #000000;
-  margin-bottom: 40px;
-`
-
-const Paragraph = styled.p`
+const Subtitle = styled(motion.p)`
   font-size: 19px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
-  color: #000000;
-  margin-bottom: 32px;
+  color: #0f0707;
+  margin: 0 0 60px 0;
+  max-width: 430px;
   letter-spacing: 0;
   font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+`
 
-  &:last-child {
-    margin-bottom: 0;
+const TitleContainer = styled(motion.div)`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: flex-start;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+`
+
+const TitleWord = styled(motion.h1)`
+  font-family: 'FreightBig Pro', Georgia, serif;
+  color: #0f0707;
+  margin: 0;
+  letter-spacing: -1.54px;
+  line-height: 0.9;
+  font-size: clamp(60px, 15vw, 154px);
+  text-align: left;
+  white-space: nowrap;
+
+  &.light {
+    font-weight: 300;
+    font-style: italic;
   }
 
-  strong {
-    font-weight: 700;
+  &.light-normal {
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  &.semibold {
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: clamp(40px, 12vw, 100px);
+    letter-spacing: -1px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: clamp(32px, 10vw, 60px);
+    letter-spacing: -0.6px;
   }
 `
 
-const Quote = styled.div`
-  font-size: 19px;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #000000;
-  margin-bottom: 32px;
-  padding-left: 0;
-  border-left: none;
-  font-family: 'eb-garamond', 'EB Garamond', Georgia, serif;
+const DecorativeVector = styled(motion.svg)`
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
 
-  p {
-    margin: 0 0 16px 0;
-    font-style: italic;
+  &.vector-1 {
+    top: -100px;
+    right: 0;
+    width: 400px;
+    height: 300px;
+  }
 
-    &:last-child {
-      margin-bottom: 0;
+  &.vector-2 {
+    bottom: -50px;
+    left: -80px;
+    width: 500px;
+    height: 400px;
+  }
+`
+
+const ImageWrapper = styled(motion.div)`
+  position: absolute;
+  width: 260px;
+  height: 330px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  z-index: 3;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &.image-1 {
+    top: 40px;
+    right: 100px;
+  }
+
+  &.image-2 {
+    bottom: 80px;
+    right: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 200px;
+    height: 260px;
+
+    &.image-1 {
+      right: 60px;
+    }
+
+    &.image-2 {
+      right: 0;
     }
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: 'easeOut' },
+  },
+}
+
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: 'easeOut' },
+  },
+}
 
 export default function IntroSection() {
   return (
-    <Container>
+    <Container
+      as={motion.section}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
+      variants={containerVariants}
+    >
+      {/* Decorative vector elements - positioned absolutely */}
+      <DecorativeVector
+        className="vector-1"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+        <path
+          d="M 400 0 Q 300 50, 200 150 T 0 300"
+          stroke="#000000"
+          strokeWidth="1"
+          fill="none"
+        />
+      </DecorativeVector>
+
+      <DecorativeVector
+        className="vector-2"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        <path
+          d="M 0 0 Q 100 100, 200 150 T 400 300"
+          stroke="#000000"
+          strokeWidth="1"
+          fill="none"
+        />
+      </DecorativeVector>
+
       <ContentWrapper>
-        <Divider />
+        <Subtitle variants={itemVariants}>
+          The biggest threats to global stability are no longer emerging, they're converging – here's what the future risk landscape reveals
+        </Subtitle>
 
-        <Paragraph>
-          From climate change and geopolitical instability to cyber threat and the rise of artificial intelligence, the 21st century has brought new themes and threats that diverse stakeholders need to understand and plan for.
-        </Paragraph>
+        <TitleContainer
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.3,
+              },
+            },
+          }}
+        >
+          <TitleWord className="light" variants={itemVariants}>
+            The
+          </TitleWord>
+          <TitleWord className="light" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
+            New
+          </TitleWord>
 
-        <Paragraph>
-          But what about the interplay between these new risks, how do they relate to and influence one another, and what is the appropriate response in terms of mitigating for today's risk landscape while building long-term resilience?
-        </Paragraph>
+          <TitleWord className="light" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
+            Nexus
+          </TitleWord>
 
-        <Paragraph>
-          All of that has profound implications for the role of insurance in today's rapidly changing world. From helping organisations to transfer risk off their balance sheets to providing prevention services and sharing data-driven insights into anticipating and mitigating risk, <strong>insurers can move from payer to partner as they support clients along a more challenging journey.</strong>
-        </Paragraph>
+          <TitleWord className="light-normal" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
+            Of
+          </TitleWord>
 
-        <Quote>
-          <p>
-            Ben Cattaneo, founder of The Decision-Making Studio, a consultancy that helps organisations make choices in an increasingly uncertain world, argues that while the number of risks and their intensity have grown in recent years, organisations are struggling with their converging nature.
-          </p>
-          <p>
-            "We've entered an era of overlapping risks in which lots of things are interconnected, and what's challenging is that they're hard to isolate," he says.
-          </p>
-        </Quote>
+          <TitleWord className="light-normal" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
+            Global
+          </TitleWord>
+
+          <TitleWord className="semibold" variants={itemVariants} style={{ marginLeft: '0.1em' }}>
+            Risk
+          </TitleWord>
+        </TitleContainer>
       </ContentWrapper>
+
+      {/* Images - positioned absolutely over content */}
+      <ImageWrapper
+        className="image-1"
+        variants={imageVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+      >
+        <img
+          src="/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
+          alt="Climate activism"
+        />
+      </ImageWrapper>
+
+      <ImageWrapper
+        className="image-2"
+        variants={imageVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+      >
+        <img
+          src="/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
+          alt="Infrastructure landscape"
+        />
+      </ImageWrapper>
     </Container>
   )
 }
