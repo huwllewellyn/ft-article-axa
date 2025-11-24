@@ -7,7 +7,7 @@ const Container = styled.section`
   margin: 0 auto;
   padding: 60px 40px;
   background: #ffffff;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 `
 
 const ContentWrapper = styled.div`
@@ -22,6 +22,7 @@ const Title = styled(motion.h2)`
   color: #000000;
   margin-bottom: 40px;
   letter-spacing: 0;
+  font-family: 'adobe-caslon-pro', 'EB Garamond', Georgia, serif;
 `
 
 const Paragraph = styled(motion.p)`
@@ -31,6 +32,7 @@ const Paragraph = styled(motion.p)`
   color: #000000;
   margin-bottom: 32px;
   letter-spacing: 0;
+  font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   &:last-child {
     margin-bottom: 0;
@@ -49,7 +51,7 @@ const CTA = styled(motion.button)`
   color: #ffffff;
   font-size: 16px;
   font-weight: 600;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   border: none;
   border-radius: 0;
   cursor: pointer;

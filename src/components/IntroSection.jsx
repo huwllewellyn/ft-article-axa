@@ -6,7 +6,7 @@ const Container = styled.section`
   margin: 0 auto;
   padding: 60px 40px;
   background: #ffffff;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 `
 
 const ContentWrapper = styled.div`
@@ -29,6 +29,7 @@ const Paragraph = styled.p`
   color: #000000;
   margin-bottom: 32px;
   letter-spacing: 0;
+  font-family: 'dm-sans', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   &:last-child {
     margin-bottom: 0;
@@ -47,9 +48,11 @@ const Quote = styled.div`
   margin-bottom: 32px;
   padding-left: 0;
   border-left: none;
+  font-family: 'eb-garamond', 'EB Garamond', Georgia, serif;
 
   p {
     margin: 0 0 16px 0;
+    font-style: italic;
 
     &:last-child {
       margin-bottom: 0;
