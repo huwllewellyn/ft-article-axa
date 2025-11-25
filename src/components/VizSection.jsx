@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import lottie from "lottie-web";
+import LottieAnimation from "./LottieAnimation";
 
 const Container = styled.section`
     width: 100%;
@@ -40,20 +39,6 @@ const VizContainer = styled(motion.div)`
     position: relative;
 `;
 
-const LottieWrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .lottie-container {
-        width: 100%;
-        height: 100%;
-        max-width: 800px;
-    }
-`;
-
 const Description = styled.p`
     font-size: 19px;
     font-weight: 400;
@@ -90,65 +75,6 @@ const itemVariants = {
 };
 
 export default function VizSection() {
-    const containerRef = useRef(null);
-    const animationLoadedRef = useRef(false);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        // Load the first lottie animation using lottie-web
-        const loadAnimation = async () => {
-            try {
-                const response = await fetch(
-                    "/lottie/AXA_Scrolly_Desktop_DP01.json"
-                );
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                console.log("Animation loaded successfully:", data);
-
-                // Create Intersection Observer to trigger animation on view
-                const observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting && containerRef.current && !animationLoadedRef.current) {
-                                console.log("Container is in view, loading animation");
-                                animationLoadedRef.current = true;
-                                lottie.loadAnimation({
-                                    container: containerRef.current,
-                                    renderer: "svg",
-                                    loop: true,
-                                    autoplay: true,
-                                    animationData: data,
-                                });
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { threshold: 0.1 }
-                );
-
-                if (containerRef.current) {
-                    observer.observe(containerRef.current);
-                }
-
-                setError(null);
-                setLoading(false);
-
-                return () => {
-                    observer.disconnect();
-                };
-            } catch (err) {
-                console.error("Failed to load lottie animation:", err);
-                setError(err.message);
-                setLoading(false);
-            }
-        };
-
-        loadAnimation();
-    }, []);
-
     return (
         <Container>
             <ContentWrapper>
@@ -159,18 +85,14 @@ export default function VizSection() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                     variants={containerVariants}
-                    ref={containerRef}
                 >
-                    {loading && (
-                        <div style={{ color: "#666" }}>
-                            Loading animation...
-                        </div>
-                    )}
-                    {error && (
-                        <div style={{ color: "#d32f2f" }}>
-                            Error loading animation: {error}
-                        </div>
-                    )}
+                    <LottieAnimation
+                        path="/lottie/AXA_Scrolly_Desktop_DP01.json"
+                        height="600px"
+                        width="100%"
+                        loop={true}
+                        autoplay={true}
+                    />
                 </VizContainer>
 
                 <Description variants={itemVariants}>
