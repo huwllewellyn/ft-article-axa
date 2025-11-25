@@ -91,6 +91,7 @@ const itemVariants = {
 
 export default function VizSection() {
     const containerRef = useRef(null);
+    const animationLoadedRef = useRef(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -108,13 +109,12 @@ export default function VizSection() {
                 console.log("Animation loaded successfully:", data);
 
                 // Create Intersection Observer to trigger animation on view
-                let animationLoaded = false;
                 const observer = new IntersectionObserver(
                     (entries) => {
                         entries.forEach((entry) => {
-                            if (entry.isIntersecting && containerRef.current && !animationLoaded) {
+                            if (entry.isIntersecting && containerRef.current && !animationLoadedRef.current) {
                                 console.log("Container is in view, loading animation");
-                                animationLoaded = true;
+                                animationLoadedRef.current = true;
                                 lottie.loadAnimation({
                                     container: containerRef.current,
                                     renderer: "svg",
