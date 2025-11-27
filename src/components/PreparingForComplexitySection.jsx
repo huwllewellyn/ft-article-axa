@@ -1,4 +1,5 @@
 import styled from "styled-components";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
@@ -9,7 +10,7 @@ const Container = styled.section`
     max-width: 1440px;
     margin: 0 auto;
     padding: 80px 40px;
-    background: #D7D7D7;
+    background: #d7d7d7;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
@@ -82,60 +83,65 @@ export default function PreparingForComplexitySection() {
                         emerging. One is that a large majority of respondents –
                         86 per cent of experts and 84 per cent of the public –
                         agree that the risks that worry them most could be at
-                        least partially avoided by strong preventive action.
-                        Another is that 89 per cent of experts and 72 per cent
-                        of the general population agree that insurers have an
-                        important role in protecting against future risks. But
-                        how?
+                        least partially avoided by{" "}
+                        <b>strong preventive action</b>. Another is that 89 per
+                        cent of experts and 72 per cent of the general
+                        population agree that insurers have an important role in
+                        protecting against future risks. But how?
                     </TextBlock>
-
-                    <Quote
-                        text="Insurers are integrating emerging technologies such as AI-driven risk assessments, predictive analytics and automation to stay a step ahead of evolving threats. They are also designing insurance coverage to industry-specific risks or to address other fast-changing cyber risks."
-                        attribution="Andrew Farr, AXA XL's Global Chief Underwriting Officer for Financial Lines"
-                        variants={itemVariants}
-                    />
 
                     <TextBlock variants={itemVariants}>
-                        This year's AXA Future Risks Report found that the
+                        This year’s AXA Future Risks Report found that the
                         advent of AI is one of the biggest perceived risks
-                        today. Yet Gunter argues that it cuts both ways. "There's
-                        an acceleration in the use of AI in the cyberthreat
-                        world, but AI and big data is also a powerful tool for
-                        helping us to manage clients' risk," he says.
+                        today. Yet Gunter argues that it cuts both ways.
+                        “There’s an acceleration in the use of AI in the
+                        cyberthreat world, but AI and big data is also a
+                        powerful tool for helping us to manage clients’ risk,”
+                        he says.
                     </TextBlock>
 
-                    <ResponsiveLottieAnimation
-                        animations={{
-                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
-                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
-                            desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
-                        }}
-                        heights={{
-                            mobile: "300px",
-                            tablet: "400px",
-                            desktop: "600px",
-                        }}
-                        backgroundColor="#D7D7D7"
-                        loop={true}
-                        autoplay={true}
-                    />
+                    <TextBlock variants={itemVariants}>
+                        Andrew Farr, AXA XL’s Global Chief Underwriting Officer
+                        for Financial Lines, says that insurers are integrating
+                        emerging technologies such as AI-driven risk
+                        assessments, predictive analytics and automation to stay
+                        a step ahead of evolving threats. They are also
+                        designing insurance coverage to industry-specific risks
+                        or to address other fast-changing cyber risks.
+                    </TextBlock>
 
                     <Quote
-                        text="Fostering better industry-wide information sharing and best practices will improve our collective defences and make everyone more resilient against cyber threats."
-                        attribution="Andrew Farr"
+                        text="“We’re working closely with cyber security firms and offering proactive risk management services to help clients strengthen their defences before an attack happens”"
+                        attribution="Andrew Farr, AXA XL’s Global Chief Underwriting Officer"
                         variants={itemVariants}
                     />
 
                     <TextBlock variants={itemVariants}>
                         Insurers are also promoting cyber resilience through
                         consulting, employee training, and incident response
-                        planning. The combination of advanced risk analytics,
-                        technology integration, and collaborative approaches is
-                        reshaping how organizations prepare for and manage
-                        complex, interconnected risks in the polycrisis era.
+                        planning. "Fostering better industry-wide information
+                        sharing and best practices will improve our collective
+                        defences and make everyone more resilient against cyber
+                        threats," says Farr.
                     </TextBlock>
                 </motion.div>
             </ContentWrapper>
+            <ResponsiveLottieAnimation
+                animations={{
+                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
+                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
+                    desktop:
+                        "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
+                }}
+                heights={{
+                    mobile: "300px",
+                    tablet: "400px",
+                    desktop: "600px",
+                }}
+                backgroundColor="#D7D7D7"
+                loop={true}
+                autoplay={true}
+            />
         </Container>
     );
 }

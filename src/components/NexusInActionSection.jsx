@@ -1,4 +1,5 @@
 import styled from "styled-components";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
@@ -115,18 +116,17 @@ export default function NexusInActionSection() {
                     <TextBlock variants={itemVariants}>
                         The interconnectedness of risk is on full display when
                         it comes to climate change, and its effects on other
-                        aspects of social, political and economic life. For
-                        example, climate change is leading people to question
-                        whether authorities can provide adequate answers:
-                        according to this year's{" "}
-                        <a href="https://axaxl.com/fast-fast-forward/articles/axa-future-risks-report-2025">
-                            AXA Future Risks Report
-                        </a>
-                        , only 12 per cent of experts who chose climate change
-                        among their top risks believe that authorities are well
-                        prepared to handle it, down two percentage points from
-                        last year. That is the lowest figure since the question
-                        first appeared in the annual survey.
+                        aspects of social, political and economic life.
+                        <br />
+                        <br />
+                        For example, climate change is leading people to
+                        question whether authorities can provide adequate
+                        answers: according to this year's AXA Future Risks
+                        Report , only 12 per cent of experts who chose climate
+                        change among their top risks believe that authorities
+                        are well prepared to handle it, down two percentage
+                        points from last year. That is the lowest figure since
+                        the question first appeared in the annual survey.
                     </TextBlock>
 
                     <ResponsiveLottieAnimation
@@ -147,48 +147,44 @@ export default function NexusInActionSection() {
                     />
 
                     <Quote
-                        text="“It’s striking how this interconnectedness amplifies the impact of each crisis, making the overall risk environment much more unpredictable and intense”"
+                        text={`"It’s striking how this interconnectedness amplifies the impact of each crisis, making the overall risk environment much more unpredictable and intense"`}
                         attribution="Libby Benet, Global Chief Underwriting Officer, AXA XL"
                         variants={itemVariants}
                     />
 
                     <TextBlock variants={itemVariants}>
-                        It is not just climate change that is interconnected
-                        with other risks. The polycrisis is complex, with
-                        multiple risks interacting in unexpected ways. This
-                        creates a challenge for risk managers and insurers, who
-                        must understand not just individual risks, but how they
-                        interact with one another.
+                        “The report suggests that we're not just dealing with
+                        isolated issues anymore. Instead, we're facing a web of
+                        crises that feed into each other, which complicates how
+                        we manage and respond to risks,” says Benet.
                     </TextBlock>
 
                     <TextBlock variants={itemVariants}>
-                        Organizations are increasingly recognizing the need for
-                        integrated risk management approaches that account for
-                        these interconnections. Insurance and reinsurance
-                        partners play a critical role in helping businesses
-                        identify, assess, and mitigate these complex,
-                        interconnected risks through data-driven insights and
-                        prevention services.
+                        Ben Cattaneo of The Decision-Making Studio points out
+                        that an additional complexity of today’s risk
+                        environment is its increasing asymmetry. “It means
+                        little things can have a big impact, and that might be
+                        cyber-related or a localised incident that affects a
+                        global supply chain,” he says. “But it means that you no
+                        longer just throw money at something to solve it.”
                     </TextBlock>
-
-                    <ResponsiveLottieAnimation
-                        animations={{
-                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP04.json",
-                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP04.json",
-                            desktop:
-                                "/lottie/desktop/AXA_Scrolly_Desktop_DP04.json",
-                        }}
-                        heights={{
-                            mobile: "300px",
-                            tablet: "400px",
-                            desktop: "600px",
-                        }}
-                        backgroundColor="#FDE432"
-                        loop={true}
-                        autoplay={true}
-                    />
                 </motion.div>
             </ContentWrapper>
+            <ResponsiveLottieAnimation
+                animations={{
+                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP04.json",
+                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP04.json",
+                    desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP04.json",
+                }}
+                heights={{
+                    mobile: "300px",
+                    tablet: "400px",
+                    desktop: "600px",
+                }}
+                backgroundColor="#FDE432"
+                loop={true}
+                autoplay={true}
+            />
         </Container>
     );
 }

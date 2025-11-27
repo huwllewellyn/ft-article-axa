@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// @eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
@@ -81,14 +81,15 @@ export default function PolycrisisSection() {
                     <TextBlock variants={itemVariants}>
                         One dimension of this more complex threat landscape is
                         the emergence of new threats that were barely on the
-                        horizon just a few years ago. GenAI has already had a
-                        significant impact, with 78 per cent of companies
-                        worldwide now using AI in some part of their operations,
-                        according to{" "}
+                        horizon just a few years ago.
+                        <br />
+                        <br />
+                        GenAI has already had a significant impact, with{" "}
                         <a href="https://www.hostinger.com/in/tutorials/how-many-companies-use-ai">
-                            Hostinger
-                        </a>
-                        , the web-hosting service. That is a 55 per cent
+                            78 per cent of companies worldwide now using AI
+                        </a>{" "}
+                        in some part of their operations, according to Hostinger
+                        , the web-hosting service. That is a <b>55 per cent</b>
                         increase over the previous year.
                     </TextBlock>
 
@@ -116,15 +117,16 @@ export default function PolycrisisSection() {
                         </a>{" "}
                         highlights, AI and big data have now consolidated their
                         place in the top 10 risks perceived by both experts and
-                        the general public. That is a stark contrast with just
-                        five years ago, when neither experts nor the general
-                        public ranked them among their top 10 risks.
+                        the general public.
+                        <br />
+                        <br />
+                        That is a stark contrast with just five years ago, when
+                        neither experts nor the general public ranked them among
+                        their top 10 risks.
                     </TextBlock>
 
                     <Quote
-                        text={
-                            "\"The polycrisis adds uncertainty to the mix, and that is a challenge for insurance and reinsurance companies to deal with. When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on\""
-                        }
+                        text={`"The polycrisis adds uncertainty to the mix, and that is a challenge for insurance and reinsurance companies to deal with. When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}
                         attribution="Scott Gunter, Chief Executive Officer, AXA XL"
                         variants={itemVariants}
                     />

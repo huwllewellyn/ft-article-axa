@@ -8,7 +8,7 @@ const Container = styled.section`
     max-width: 1440px;
     margin: 0 auto;
     padding: 80px 40px;
-    background: #F0EEDF;
+    background: #f0eedf;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
@@ -77,20 +77,23 @@ export default function CollaborativeApproachSection() {
                     />
 
                     <TextBlock variants={itemVariants}>
-                        Insurers are also partnering with academia in their use
-                        of AI and big data to better understand and respond to
-                        other risks, such as climate change and the threats it
-                        brings. Ralph of the Cambridge Centre for Risk Studies
-                        says that collaboration between his centre and AXA XL
-                        has produced a new understanding of the risks posed by
-                        wildfires, for example.
+                        Insurers are also partnering with <b>academia</b> in
+                        their use of AI and big data to better understand and
+                        respond to other risks, such as climate change and the
+                        threats it brings. Ralph of the Cambridge Centre for
+                        Risk Studies says that collaboration between his centre
+                        and AXA XL has produced a new understanding of the risks
+                        posed by wildfires, for example.
                     </TextBlock>
 
-                    <Quote
-                        text="Thanks to collaborative research, we now have a greater understanding of how to build buildings more safely and where to locate them more safely. That learning is propagated, measured and shared by the insurance industry, and it's useful because it literally reduces risk."
-                        attribution="Ralph, Cambridge Centre for Risk Studies"
-                        variants={itemVariants}
-                    />
+                    <TextBlock variants={itemVariants}>
+                        “Thanks to collaborative research, we now have a greater
+                        understanding of how to build buildings more safely and
+                        where to locate them more safely,” he says. “That
+                        learning is propagated, measured and shared by the
+                        insurance industry, and it’s useful because it literally
+                        reduces risk.”
+                    </TextBlock>
 
                     <TextBlock variants={itemVariants}>
                         Sharing of data and insight through closer collaboration

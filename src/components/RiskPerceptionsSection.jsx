@@ -1,4 +1,5 @@
 import styled from "styled-components";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
@@ -72,10 +73,11 @@ export default function RiskPerceptionsSection() {
                         vary between regions. Against a backdrop of significant
                         shifts in global prosperity over the past three decades
                         driven by the increasing wealth of China and other parts
-                        of Asia, the majority of both experts (74 per cent) and
-                        the general population (59 per cent) believe that their
-                        countries face “a deep and worrying social divide” or
-                        that people have “fewer and fewer common values and
+                        of Asia, the majority of both{" "}
+                        <b>experts (74 per cent)</b> and the{" "}
+                        <b>general population (59 per cent)</b> believe that
+                        their countries face “a deep and worrying social divide”
+                        or that people have “fewer and fewer common values and
                         aspirations”.
                     </Description>
 
@@ -142,7 +144,8 @@ export default function RiskPerceptionsSection() {
                         animations={{
                             mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP06.json",
                             tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP06.json",
-                            desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP06.json",
+                            desktop:
+                                "/lottie/desktop/AXA_Scrolly_Desktop_DP06.json",
                         }}
                         heights={{
                             mobile: "300px",
