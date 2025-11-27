@@ -67,6 +67,18 @@ export default function RiskPerceptionsSection() {
                         title="Risk perceptions around the world"
                     />
 
+                    <Description variants={itemVariants}>
+                        Adding to this matrix of complexity, perceived risks
+                        vary between regions. Against a backdrop of significant
+                        shifts in global prosperity over the past three decades
+                        driven by the increasing wealth of China and other parts
+                        of Asia, the majority of both experts (74 per cent) and
+                        the general population (59 per cent) believe that their
+                        countries face “a deep and worrying social divide” or
+                        that people have “fewer and fewer common values and
+                        aspirations”.
+                    </Description>
+
                     <ResponsiveLottieAnimation
                         animations={{
                             mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP05.json",
@@ -85,22 +97,62 @@ export default function RiskPerceptionsSection() {
                     />
 
                     <Description variants={itemVariants}>
-                        The visualization above demonstrates the common ground
-                        that exists across different perspectives and
-                        populations. Despite the challenges posed by the nexus
-                        of risks, there are shared values and concerns that can
-                        serve as a foundation for collaborative action.
+                        Fuelling this perception of a deepening social division
+                        are concerns about rising economic and social inequality
+                        as well as political and ideological divisions. But
+                        concerns about fragmentation vary widely by region:
+                        these numbers are much higher among the general
+                        population in Europe and the US (65 per cent and 66 per
+                        cent, respectively) than in the Asia-Pacific region,
+                        where only 37 per cent of people worry about a deep
+                        social divide. 
                     </Description>
 
                     <Description variants={itemVariants}>
-                        Organizations looking to navigate the polycrisis era
-                        must recognize these uniting factors and build
-                        strategies that bring stakeholders together around
-                        common goals. Insurance and reinsurance partners are
-                        uniquely positioned to facilitate this dialogue and
-                        provide the risk intelligence needed to drive resilient,
-                        inclusive solutions.
+                        In addition, the report reveals that there is{" "}
+                        <b>less overlap</b> than in previous years{" "}
+                        <b>between experts and people</b>, with just six out of
+                        the 10 top risks common to both experts and the general
+                        population.
                     </Description>
+                    <Description variants={itemVariants}>
+                        This partly reflects the rise in other concerns among
+                        the general population that have more of an immediate
+                        impact on their daily lives. But it could also be a
+                        function of the difficulty most people have in
+                        perceiving risk associated with relatively slower-moving
+                        phenomena, such as climate change and biodiversity loss.
+                        <br />
+                        <br />
+                        Indeed, on environmental issues beyond climate change,
+                        experts are more focused on{" "}
+                        <b>
+                            natural resources and biodiversity risks (6th)
+                        </b>{" "}
+                        and <b>energy risks (8th)</b> while the general
+                        population is more concerned with <b>pollution (9th)</b>
+                        . Yet in regions such as Central America and South
+                        America, where biodiversity risks are more visible for
+                        the wider population than for people in other regions,
+                        the <b>public ranked biodiversity risks 4th</b> – in
+                        line with the experts' ranking.
+                    </Description>
+
+                    <ResponsiveLottieAnimation
+                        animations={{
+                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP06.json",
+                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP06.json",
+                            desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP06.json",
+                        }}
+                        heights={{
+                            mobile: "300px",
+                            tablet: "400px",
+                            desktop: "600px",
+                        }}
+                        backgroundColor="#ED5027"
+                        loop={true}
+                        autoplay={true}
+                    />
                 </motion.div>
             </ContentWrapper>
         </Container>

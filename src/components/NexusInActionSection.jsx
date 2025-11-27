@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
+import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
 
 const Container = styled.section`
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     padding: 80px 40px;
-    background: #FDE432;
+    background: #fde432;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
@@ -128,9 +129,26 @@ export default function NexusInActionSection() {
                         first appeared in the annual survey.
                     </TextBlock>
 
+                    <ResponsiveLottieAnimation
+                        animations={{
+                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP03.json",
+                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP03.json",
+                            desktop:
+                                "/lottie/desktop/AXA_Scrolly_Desktop_DP03.json",
+                        }}
+                        heights={{
+                            mobile: "300px",
+                            tablet: "400px",
+                            desktop: "600px",
+                        }}
+                        backgroundColor="#FDE432"
+                        loop={true}
+                        autoplay={true}
+                    />
+
                     <Quote
-                        text="Climate change is a nexus issue, and it cannot be solved in silos. It requires cooperation and collaboration across industries, nations and stakeholders"
-                        attribution=""
+                        text="“It’s striking how this interconnectedness amplifies the impact of each crisis, making the overall risk environment much more unpredictable and intense”"
+                        attribution="Libby Benet, Global Chief Underwriting Officer, AXA XL"
                         variants={itemVariants}
                     />
 
@@ -152,6 +170,23 @@ export default function NexusInActionSection() {
                         interconnected risks through data-driven insights and
                         prevention services.
                     </TextBlock>
+
+                    <ResponsiveLottieAnimation
+                        animations={{
+                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP04.json",
+                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP04.json",
+                            desktop:
+                                "/lottie/desktop/AXA_Scrolly_Desktop_DP04.json",
+                        }}
+                        heights={{
+                            mobile: "300px",
+                            tablet: "400px",
+                            desktop: "600px",
+                        }}
+                        backgroundColor="#FDE432"
+                        loop={true}
+                        autoplay={true}
+                    />
                 </motion.div>
             </ContentWrapper>
         </Container>

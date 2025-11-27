@@ -1,4 +1,5 @@
 import styled from "styled-components";
+// @eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
@@ -95,7 +96,8 @@ export default function PolycrisisSection() {
                         animations={{
                             mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP02.json",
                             tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP02.json",
-                            desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP02.json",
+                            desktop:
+                                "/lottie/desktop/AXA_Scrolly_Desktop_DP02.json",
                         }}
                         heights={{
                             mobile: "300px",
