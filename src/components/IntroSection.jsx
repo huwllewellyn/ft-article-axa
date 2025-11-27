@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { getAssetPath } from "../utils/assetPath";
 
 const Container = styled.section`
     width: 100%;
@@ -395,7 +396,7 @@ export default function IntroSection() {
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     <img
-                        src="/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
+                        src={getAssetPath("/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg")}
                         alt="Climate activism"
                     />
                 </ImageWrapper>
@@ -408,7 +409,7 @@ export default function IntroSection() {
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     <img
-                        src="/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
+                        src={getAssetPath("/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg")}
                         alt="Infrastructure landscape"
                     />
                 </ImageWrapper>
@@ -421,7 +422,7 @@ export default function IntroSection() {
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     <img
-                        src="/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
+                        src={getAssetPath("/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg")}
                         alt="Supporting image"
                     />
                 </ImageWrapper>
@@ -434,7 +435,7 @@ export default function IntroSection() {
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     <img
-                        src="/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
+                        src={getAssetPath("/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg")}
                         alt="Supporting image"
                     />
                 </ImageWrapper>

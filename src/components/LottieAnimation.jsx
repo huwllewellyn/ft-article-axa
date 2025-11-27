@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import styled from "styled-components";
+import { getAssetPath } from "../utils/assetPath";
 
 const Container = styled.div`
     width: 100%;
@@ -26,7 +27,8 @@ export default function LottieAnimation({
     useEffect(() => {
         const loadAnimation = async () => {
             try {
-                const response = await fetch(path);
+                const fullPath = getAssetPath(path);
+                const response = await fetch(fullPath);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
