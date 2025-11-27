@@ -27,6 +27,7 @@ const Container = styled.div`
  * @param {boolean} loop - Whether animation should loop (default: true)
  * @param {boolean} autoplay - Whether animation should autoplay (default: true)
  * @param {boolean} scrollSync - Whether animation should sync with scroll (default: false)
+ * @param {MotionValue} scrollProgress - Framer Motion scroll progress value (0-1) for animation control
  */
 export default function ResponsiveLottieAnimation({
     animations,
@@ -36,6 +37,7 @@ export default function ResponsiveLottieAnimation({
     loop = true,
     autoplay = true,
     scrollSync = false,
+    scrollProgress = null,
 }) {
     const [currentBreakpoint, setCurrentBreakpoint] = useState("desktop");
     const [isClient, setIsClient] = useState(false);
@@ -74,6 +76,7 @@ export default function ResponsiveLottieAnimation({
                 loop={loop}
                 autoplay={autoplay}
                 scrollSync={scrollSync}
+                scrollProgress={scrollProgress}
             />
         </Container>
     );

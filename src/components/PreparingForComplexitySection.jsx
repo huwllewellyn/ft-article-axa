@@ -1,6 +1,7 @@
 import styled from "styled-components";
 // eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
@@ -14,6 +15,40 @@ const Container = styled.section`
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
+`;
+
+const AnimationTrack = styled.div`
+    position: relative;
+    width: 100%;
+
+    /* Responsive track heights to accommodate 1500 frame animation smoothly */
+    @media (max-width: 768px) {
+        height: 1000px;
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        height: 1400px;
+    }
+
+    @media (min-width: 1025px) {
+        height: 1800px;
+    }
+`;
+
+const StickyContainer = styled.div`
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    /* Allow animations inside to be interactive */
+    & > * {
+        pointer-events: auto;
+    }
 `;
 
 const ContentWrapper = styled.div`
@@ -64,6 +99,14 @@ const itemVariants = {
 };
 
 export default function PreparingForComplexitySection() {
+    const animationTrackRef = useRef(null);
+
+    // Track scroll progress within the animation track
+    const { scrollYProgress } = useScroll({
+        target: animationTrackRef,
+        offset: ["start start", "end end"],
+    });
+
     return (
         <Container>
             <ContentWrapper>
@@ -126,22 +169,27 @@ export default function PreparingForComplexitySection() {
                     </TextBlock>
                 </motion.div>
             </ContentWrapper>
-            <ResponsiveLottieAnimation
-                animations={{
-                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
-                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
-                    desktop:
-                        "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
-                }}
-                heights={{
-                    mobile: "300px",
-                    tablet: "400px",
-                    desktop: "600px",
-                }}
-                backgroundColor="#D7D7D7"
-                loop={true}
-                autoplay={true}
-            />
+            <AnimationTrack ref={animationTrackRef}>
+                <StickyContainer>
+                    <ResponsiveLottieAnimation
+                        animations={{
+                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
+                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
+                            desktop:
+                                "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
+                        }}
+                        heights={{
+                            mobile: "300px",
+                            tablet: "400px",
+                            desktop: "600px",
+                        }}
+                        backgroundColor="#D7D7D7"
+                        loop={false}
+                        autoplay={false}
+                        scrollProgress={scrollYProgress}
+                    />
+                </StickyContainer>
+            </AnimationTrack>
         </Container>
     );
 }

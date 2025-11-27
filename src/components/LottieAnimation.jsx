@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import styled from "styled-components";
+import { useMotionValueEvent } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
 
 const Container = styled.div`
@@ -20,6 +21,7 @@ export default function LottieAnimation({
     autoplay = true,
     renderer = "svg",
     scrollSync = false,
+    scrollProgress = null,
 }) {
     const containerRef = useRef(null);
     const animationLoadedRef = useRef(false);
@@ -37,7 +39,6 @@ export default function LottieAnimation({
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 data = await response.json();
-                console.log(`Animation loaded: ${path}`);
             } catch (err) {
                 // If primary path fails and fallback exists, try fallback
                 if (fallbackPath) {
@@ -54,7 +55,6 @@ export default function LottieAnimation({
                         }
                         data = await fallbackResponse.json();
                         loadedPath = fallbackPath;
-                        console.log(`Animation loaded from fallback: ${fallbackPath}`);
                     } catch (fallbackErr) {
                         console.error(
                             `Failed to load both primary and fallback animation`,
@@ -78,7 +78,6 @@ export default function LottieAnimation({
                             containerRef.current &&
                             !animationLoadedRef.current
                         ) {
-                            console.log(`Loading animation: ${loadedPath}`);
                             animationLoadedRef.current = true;
                             const anim = lottie.loadAnimation({
                                 container: containerRef.current,
@@ -107,7 +106,7 @@ export default function LottieAnimation({
         loadAnimation();
     }, [path, fallbackPath, loop, autoplay, renderer, scrollSync]);
 
-    // Handle scroll-synced animation
+    // Handle scroll-synced animation (legacy window scroll)
     useEffect(() => {
         if (!scrollSync || !animationRef.current || !containerRef.current) {
             return;
@@ -135,12 +134,6 @@ export default function LottieAnimation({
 
             // Move animation to frame based on scroll
             animation.goToAndStop(targetFrame, true);
-
-            console.log(
-                `Scroll sync: ${(clampedProgress * 100).toFixed(1)}% | Frame: ${Math.round(
-                    targetFrame
-                )}/${Math.round(totalFrames)}`
-            );
         };
 
         window.addEventListener("scroll", handleScroll, false);
@@ -148,6 +141,28 @@ export default function LottieAnimation({
             window.removeEventListener("scroll", handleScroll, false);
         };
     }, [scrollSync]);
+
+    // Handle framer-motion scroll progress (only when scrollProgress MotionValue is provided)
+    useEffect(() => {
+        if (!scrollProgress) {
+            return;
+        }
+
+        const unsubscribe = scrollProgress.onChange((latest) => {
+            const animation = animationRef.current;
+            if (!animation) {
+                return;
+            }
+
+            const totalFrames = animation.getDuration(true);
+            const targetFrame = latest * totalFrames;
+
+            // Move animation to frame based on scroll progress
+            animation.goToAndStop(Math.round(targetFrame), true);
+        });
+
+        return () => unsubscribe();
+    }, [scrollProgress]);
 
     return (
         <Container
