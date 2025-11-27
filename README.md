@@ -11,8 +11,10 @@ This project uses the FT's partner content HTML template as the base shell, with
 - **Vite**: Fast build tool with HMR (Hot Module Replacement) for development
 - **React 19**: Modern UI component framework
 - **Styled Components**: CSS-in-JS styling solution
-- **Framer Motion**: Animation library
+- **Framer Motion**: Animation library with scroll tracking
 - **Lottie React**: Vector animation support
+- **LottieScrolljack**: Full-width, sticky scroll-driven Lottie animations
+- **Responsive Breakpoints**: Mobile, tablet, and desktop optimizations
 - **Relative Path Build**: Works on both GitHub Pages and S3 without path changes
 
 ## Project Structure
@@ -21,13 +23,29 @@ This project uses the FT's partner content HTML template as the base shell, with
 ft-article-axa/
 ├── src/
 │   ├── App.jsx              # Main app component containing all sections
-│   ├── App.css              # App-level styles
 │   ├── main.jsx             # React entry point (mounts App to DOM)
 │   ├── index.css            # Global styles
-│   └── components/          # (To be created) Individual section components
-│       ├── IntroSection.jsx
-│       ├── VizSection.jsx
-│       └── ConclusionSection.jsx
+│   ├── components/
+│   │   ├── LottieScrolljack.jsx           # Reusable full-width scroll-driven animation
+│   │   ├── LottieAnimation.jsx            # Base Lottie animation component
+│   │   ├── ResponsiveLottieAnimation.jsx  # Responsive breakpoint wrapper
+│   │   ├── RisksSection.jsx               # Chapter 0 - Risk overview
+│   │   ├── PolycrisisSection.jsx          # Chapter 1 - Polycrisis
+│   │   ├── NexusInActionSection.jsx       # Chapter 2 - Nexus in action
+│   │   ├── RiskPerceptionsSection.jsx     # Chapter 3 - Risk perceptions
+│   │   ├── PreparingForComplexitySection.jsx  # Chapter 4 - Preparing for complexity
+│   │   └── shared/                        # Reusable components
+│   │       ├── SectionTitleGroup.jsx
+│   │       ├── Quote.jsx
+│   │       └── ChapterNumber.jsx
+│   └── utils/
+│       ├── breakpoints.js    # Responsive breakpoint definitions
+│       └── assetPath.js      # Asset path utility for relative loading
+├── dist/
+│   └── lottie/              # Lottie animation JSON files
+│       ├── mobile/
+│       ├── tablet/
+│       └── desktop/
 ├── index.html               # FT template shell with React mount point
 ├── vite.config.js           # Vite configuration (includes base: './')
 ├── package.json             # Dependencies and scripts
@@ -103,33 +121,159 @@ The built `dist` folder is ready for S3 deployment:
 
 **No additional configuration needed** — the `base: './'` in vite.config.js handles relative path loading for both GitHub Pages and S3.
 
+## Lottie Scrolljack
+
+### Overview
+
+The `LottieScrolljack` component creates a full-width, sticky animation that scrubs through based on scroll position. As users scroll through a designated track area, the animation stays sticky in the viewport while its frames advance based on scroll progress.
+
+### Features
+
+- **Full viewport width** - Animations stretch to 100% width
+- **Responsive height** - Height automatically scales based on animation aspect ratio
+- **Viewport height constraint** - Never exceeds 100svh (small viewport height units)
+- **Smart width adjustment** - If aspect ratio would exceed viewport height, width is reduced proportionally
+- **Centered display** - Animation centered with background color filling empty space
+- **Automatic aspect ratio detection** - Fetches animation JSON to calculate optimal dimensions
+- **Customizable track height** - Control scroll distance (default: 4000px)
+
+### Usage
+
+```jsx
+import LottieScrolljack from './LottieScrolljack'
+
+export default function MySection() {
+  return (
+    <LottieScrolljack
+      animations={{
+        mobile: "/lottie/mobile/animation.json",
+        tablet: "/lottie/tablet/animation.json",
+        desktop: "/lottie/desktop/animation.json",
+      }}
+      backgroundColor="#FFFFFF"
+      loop={false}
+      trackHeight="2000px"  // Optional - default 4000px
+    />
+  )
+}
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `animations` | Object | Required | Breakpoint-mapped animation paths |
+| `backgroundColor` | String | `#FFFFFF` | Background color for viewport |
+| `trackHeight` | String | `4000px` | Scrollable track area height |
+| `loop` | Boolean | `false` | Whether animation loops |
+| `autoplay` | Boolean | `false` | Whether animation plays automatically |
+
+### How It Works
+
+1. **User scrolls** through the AnimationTrack container (1000px+ tall)
+2. **Scroll progress** (0-1) is tracked via framer-motion's `useScroll` hook
+3. **Animation frame** is calculated: `progress × totalFrames`
+4. **Lottie instance** receives frame updates via `goToAndStop()`
+5. **No re-renders** on frame changes (performance optimized)
+
 ## Component Structure
 
-### App.jsx
-The main component that composes all three sections:
-- IntroSection
-- VizSection
-- ConclusionSection
+### Core Animation Components
 
-**Note:** Section components are currently placeholders. Replace with actual components as design specs are provided.
+#### LottieScrolljack
+Reusable component for full-width, scroll-driven animations. Handles:
+- Aspect ratio detection
+- Viewport height constraints
+- Scroll progress tracking
+- Frame synchronization
+
+#### LottieAnimation
+Base animation component that wraps lottie-web. Features:
+- Lazy loading via Intersection Observer
+- Scroll progress support (via framer-motion MotionValue)
+- Fallback path support
+- SVG/canvas renderer options
+
+#### ResponsiveLottieAnimation
+Breakpoint-aware wrapper that:
+- Detects current screen size
+- Selects appropriate animation file
+- Passes through animation props
+- Handles window resize events
+
+### Section Components
+
+Each chapter uses the `LottieScrolljack` component for full-width animations:
+- **RisksSection** - DP01 animation
+- **PolycrisisSection** - DP02 animation
+- **NexusInActionSection** - DP03 & DP04 animations
+- **RiskPerceptionsSection** - DP05 & DP06 animations
+- **PreparingForComplexitySection** - DP07 animation
+- **VizSection** - DP01 animation
 
 ### Creating New Sections
 
-When adding new sections, follow this pattern:
+When adding new sections with scrolljack animations, follow this pattern:
 
 ```jsx
 // src/components/NewSection.jsx
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import LottieScrolljack from './LottieScrolljack'
 
-const SectionContainer = styled.div`
-  /* Your styles here */
+const Container = styled.section`
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  background: #FFFFFF;
 `
+
+const ContentWrapper = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+`
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+}
 
 export default function NewSection() {
   return (
-    <SectionContainer>
-      {/* Your content */}
-    </SectionContainer>
+    <>
+      <Container>
+        <ContentWrapper>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={containerVariants}
+          >
+            {/* Your text content */}
+          </motion.div>
+        </ContentWrapper>
+      </Container>
+
+      {/* Add scrolljack animation */}
+      <LottieScrolljack
+        animations={{
+          mobile: '/lottie/mobile/animation.json',
+          tablet: '/lottie/tablet/animation.json',
+          desktop: '/lottie/desktop/animation.json'
+        }}
+        backgroundColor="#FFFFFF"
+        loop={false}
+      />
+    </>
   )
 }
 ```
@@ -213,6 +357,27 @@ The FT template handles:
 **Problem:** React component not rendering
 - **Solution:** Verify the React mount point `<div id="react-root"></div>` exists in index.html
 
+**Problem:** LottieScrolljack animation not scrubbing
+- **Solution:**
+  - Verify animation track height is tall enough (minimum 1000px recommended)
+  - Check that Lottie JSON files are loading (check Network tab in DevTools)
+  - Ensure `loop={false}` and `autoplay={false}` for scrolljack behavior
+
+**Problem:** Animation exceeds viewport height on mobile
+- **Solution:** This is expected behavior - width automatically reduces to fit within 100svh. Verify aspect ratio calculation is correct.
+
+**Problem:** Scroll tracking not working
+- **Solution:**
+  - Check that framer-motion is properly installed
+  - Verify `target` ref is properly attached to AnimationTrack
+  - Ensure offset values in `useScroll` are correct: `["start start", "end end"]`
+
+**Problem:** Lottie animation frames jumping/stuttering
+- **Solution:**
+  - Frame count may be too high - reduce animation complexity or split into smaller animations
+  - Enable scroll debouncing for very large frame counts
+  - Use SVG renderer (default) rather than canvas for better performance
+
 ## Future Enhancements
 
 Consider adding:
@@ -224,11 +389,21 @@ Consider adding:
 
 ## Resources
 
+### Documentation
 - [Vite Documentation](https://vitejs.dev)
 - [React Documentation](https://react.dev)
 - [Styled Components Documentation](https://styled-components.com)
 - [Framer Motion Guide](https://www.framer.com/motion/)
+- [Lottie Web Documentation](https://airbnb.io/lottie/web.html)
+- [Lottie React Documentation](https://github.com/LottieFiles/lottie-react)
+
+### Animation & Scrolling
+- [Framer Motion Scroll Documentation](https://www.framer.com/motion/use-scroll/)
+- [Lottie Animation Library](https://lottiefiles.com)
+
+### Design & Standards
 - [FT Origami Components](https://origami.ft.com)
+- [Responsive Design Breakpoints](https://www.figma.com/design/) (for Figma integration via MCP)
 
 ## License
 
