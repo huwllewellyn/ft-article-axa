@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
+import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
 import LottieScrolljack from "./LottieScrolljack";
 
 const Container = styled.section`
@@ -78,6 +79,8 @@ export default function NexusInActionSection() {
                             chapter="Chapter two"
                             title="The nexus in action - how risks collide"
                         />
+
+                        <HeaderAnimationWrapper />
 
                         <TextBlock variants={itemVariants}>
                             The interconnectedness of risk is on full display when

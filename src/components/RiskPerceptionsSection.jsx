@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
+import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
 
 const Container = styled.section`
     width: 100%;
@@ -68,6 +69,8 @@ export default function RiskPerceptionsSection() {
                             chapter="Chapter three"
                             title="Risk perceptions around the world"
                         />
+
+                        <HeaderAnimationWrapper />
 
                         <Description variants={itemVariants}>
                             Adding to this matrix of complexity, perceived risks

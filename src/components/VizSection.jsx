@@ -2,6 +2,7 @@ import styled from "styled-components";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
+import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
 
 const Container = styled.section`
     width: 100%;
@@ -75,6 +76,8 @@ export default function VizSection() {
                         variants={containerVariants}
                     >
                         <Title>Converging Risks Landscape</Title>
+
+                        <HeaderAnimationWrapper />
                     </motion.div>
                 </ContentWrapper>
             </Container>

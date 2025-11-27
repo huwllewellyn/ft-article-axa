@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
+import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
 
 const Container = styled.section`
     width: 100%;
@@ -78,6 +79,8 @@ export default function PreparingForComplexitySection() {
                             chapter="Chapter four"
                             title="Preparing for complexity: rethinking resilience"
                         />
+
+                        <HeaderAnimationWrapper />
 
                         <TextBlock variants={itemVariants}>
                             Against the polycrisis backdrop, bright spots are
