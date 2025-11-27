@@ -1,8 +1,7 @@
 import styled from "styled-components";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
-import { media } from "../utils/breakpoints";
+import LottieScrolljack from "./LottieScrolljack";
 
 const Container = styled.section`
     width: 100%;
@@ -27,26 +26,6 @@ const Title = styled.h2`
     margin-bottom: 40px;
     letter-spacing: 0;
     font-family: "adobe-caslon-pro", "EB Garamond", Georgia, serif;
-`;
-
-const VizContainer = styled(motion.div)`
-    width: 100%;
-    height: 600px;
-    background: #ffffff;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 40px;
-    position: relative;
-
-    ${media.tablet`
-        height: 400px;
-    `}
-
-    ${media.mobile`
-        height: 300px;
-    `}
 `;
 
 const Description = styled.p`
@@ -86,47 +65,53 @@ const itemVariants = {
 
 export default function VizSection() {
     return (
-        <Container>
-            <ContentWrapper>
-                <Title>Converging Risks Landscape</Title>
+        <>
+            <Container>
+                <ContentWrapper>
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={containerVariants}
+                    >
+                        <Title>Converging Risks Landscape</Title>
+                    </motion.div>
+                </ContentWrapper>
+            </Container>
+            <LottieScrolljack
+                animations={{
+                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP01.json",
+                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
+                    desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
+                }}
+                backgroundColor="#FFFFFF"
+                loop={true}
+            />
+            <Container>
+                <ContentWrapper>
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={containerVariants}
+                    >
+                        <Description variants={itemVariants}>
+                            The complexity of modern risk management requires
+                            understanding how different risks interconnect and
+                            influence one another. Organizations must develop
+                            integrated approaches to identify, assess, and mitigate
+                            these converging threats.
+                        </Description>
 
-                <VizContainer
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={containerVariants}
-                >
-                    <ResponsiveLottieAnimation
-                        animations={{
-                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP01.json",
-                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
-                            desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
-                        }}
-                        heights={{
-                            mobile: "300px",
-                            tablet: "400px",
-                            desktop: "600px",
-                        }}
-                        loop={true}
-                        autoplay={true}
-                    />
-                </VizContainer>
-
-                <Description variants={itemVariants}>
-                    The complexity of modern risk management requires
-                    understanding how different risks interconnect and influence
-                    one another. Organizations must develop integrated
-                    approaches to identify, assess, and mitigate these
-                    converging threats.
-                </Description>
-
-                <Description variants={itemVariants}>
-                    Insurance partners play a critical role in this landscape,
-                    providing not just financial protection but also data-driven
-                    insights and prevention services that help organizations
-                    build resilience.
-                </Description>
-            </ContentWrapper>
-        </Container>
+                        <Description variants={itemVariants}>
+                            Insurance partners play a critical role in this
+                            landscape, providing not just financial protection but
+                            also data-driven insights and prevention services that
+                            help organizations build resilience.
+                        </Description>
+                    </motion.div>
+                </ContentWrapper>
+            </Container>
+        </>
     );
 }
