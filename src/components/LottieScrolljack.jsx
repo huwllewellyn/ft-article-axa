@@ -13,8 +13,9 @@ const AnimationTrack = styled.div`
 const StickyContainer = styled.div`
     position: sticky;
     top: 0;
-    width: 100%;
-    aspect-ratio: ${(props) => props.$aspectRatio || "16/9"};
+    width: 100vw;
+    height: 100svh;
+    background-color: ${(props) => props.$backgroundColor || "#FFFFFF"};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,6 +24,8 @@ const StickyContainer = styled.div`
     /* Allow animations inside to be interactive */
     & > * {
         pointer-events: auto;
+        width: ${(props) => props.$width || "100%"};
+        height: ${(props) => props.$height || "auto"};
     }
 `;
 
@@ -46,7 +49,8 @@ export default function LottieScrolljack({
     autoplay = false,
 }) {
     const animationTrackRef = useRef(null);
-    const [aspectRatio, setAspectRatio] = useState("16/9");
+    const [aspectRatioDecimal, setAspectRatioDecimal] = useState(16 / 9);
+    const [dimensions, setDimensions] = useState({ width: "100%", height: "auto" });
 
     // Fetch animation data to get aspect ratio
     useEffect(() => {
@@ -58,7 +62,7 @@ export default function LottieScrolljack({
                 const data = await response.json();
 
                 if (data.w && data.h) {
-                    setAspectRatio(`${data.w}/${data.h}`);
+                    setAspectRatioDecimal(data.w / data.h);
                 }
             } catch (err) {
                 // Keep default if fetch fails
@@ -71,6 +75,36 @@ export default function LottieScrolljack({
         }
     }, [animations]);
 
+    // Calculate dimensions based on viewport and aspect ratio
+    useEffect(() => {
+        const calculateDimensions = () => {
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // Calculate height if width is 100vw
+            const calculatedHeight = viewportWidth / aspectRatioDecimal;
+
+            // If calculated height exceeds viewport height, constrain to viewport height
+            // and calculate width based on that
+            if (calculatedHeight > viewportHeight) {
+                const constrainedWidth = (viewportHeight * aspectRatioDecimal) / viewportWidth * 100;
+                setDimensions({
+                    width: `${constrainedWidth}vw`,
+                    height: "100svh",
+                });
+            } else {
+                setDimensions({
+                    width: "100%",
+                    height: "auto",
+                });
+            }
+        };
+
+        calculateDimensions();
+        window.addEventListener("resize", calculateDimensions);
+        return () => window.removeEventListener("resize", calculateDimensions);
+    }, [aspectRatioDecimal]);
+
     // Track scroll progress within the animation track
     const { scrollYProgress } = useScroll({
         target: animationTrackRef,
@@ -79,7 +113,11 @@ export default function LottieScrolljack({
 
     return (
         <AnimationTrack ref={animationTrackRef} $trackHeight={trackHeight}>
-            <StickyContainer $aspectRatio={aspectRatio}>
+            <StickyContainer
+                $width={dimensions.width}
+                $height={dimensions.height}
+                $backgroundColor={backgroundColor}
+            >
                 <ResponsiveLottieAnimation
                     animations={animations}
                     backgroundColor={backgroundColor}
