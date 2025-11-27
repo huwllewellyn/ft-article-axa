@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import Quote from "./shared/Quote";
+import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
 
 const Container = styled.section`
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     padding: 80px 40px;
-    background: #ffffff;
+    background: #F2F0EA;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
 `;
@@ -101,16 +103,6 @@ export default function RisksSection() {
                 </Paragraph>
 
                 <Paragraph variants={itemVariants}>
-                    All of that has profound implications for the role insurance
-                    plays in today's rapidly changing world. From helping
-                    organisations to transfer risk off their balance sheets to
-                    providing prevention services and sharing data-driven
-                    insight into anticipating and mitigating risk, insurers can
-                    move from payer to partner as they support clients along a
-                    more challenging journey.
-                </Paragraph>
-
-                <Paragraph variants={itemVariants}>
                     Ben Cattaneo, founder of The Decision-Making Studio, a
                     consultancy that helps organisations make choices in an
                     increasingly uncertain world, argues that while the number
@@ -120,6 +112,43 @@ export default function RisksSection() {
                     things are interconnected, and what's challenging is that
                     they're hard to isolate," he says.
                 </Paragraph>
+
+                <Quote
+                    text="It's difficult to talk about geopolitics without also talking about AI, climate change or societal polarisation — and no organisation has a single unit that covers all of these together. That's why the emphasis needs to move away from analysing risks in isolation, and towards examining them in an integrated way at the moments when key decisions are made"
+                    attribution="Ralph, Cambridge Centre for Risk Studies"
+                    variants={itemVariants}
+                />
+
+                <Paragraph variants={itemVariants}>
+                    All of that has profound implications for the role of
+                    insurance in today’s rapidly changing world. From helping
+                    organisations to transfer risk off their balance sheets to
+                    providing prevention services and sharing data-driven
+                    insights into anticipating and mitigating risk, insurers can
+                    move from payer to partner as they support clients along a
+                    more challenging journey.
+                </Paragraph>
+                <Quote
+                    text="“Insurers and reinsurers are in some ways the voice and the guide. Their expertise, especially when it comes to very large events such as hurricanes and floods, is what industry outside insurance relies on”"
+                    attribution="Daniel Ralph, Professor of Operations Research, Cambridge Judge Business School, Academic Director, Cambridge Centre for Risk Studies"
+                    variants={itemVariants}
+                />
+                <ResponsiveLottieAnimation
+                    animations={{
+                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP01.json",
+                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
+                        desktop:
+                            "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
+                    }}
+                    heights={{
+                        mobile: "300px",
+                        tablet: "400px",
+                        desktop: "600px",
+                    }}
+                    backgroundColor="#F2F0EA"
+                    loop={true}
+                    autoplay={true}
+                />
             </ContentWrapper>
         </Container>
     );

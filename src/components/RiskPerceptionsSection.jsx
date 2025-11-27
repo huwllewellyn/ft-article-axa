@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import LottieAnimation from "./LottieAnimation";
+import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
+import SectionTitleGroup from "./shared/SectionTitleGroup";
 
 const Container = styled.section`
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     padding: 80px 40px;
-    background: #ED5027;
+    background: #ed5027;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
@@ -16,48 +17,6 @@ const Container = styled.section`
 const ContentWrapper = styled.div`
     max-width: 1000px;
     margin: 0 auto;
-`;
-
-const TitleGroup = styled(motion.div)`
-    text-align: center;
-    margin-bottom: 80px;
-`;
-
-const Title = styled.h2`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 50px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0 0 20px 0;
-    letter-spacing: 0;
-
-    .italic {
-        font-style: italic;
-    }
-`;
-
-const Subtitle = styled.p`
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.3;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
-    max-width: 600px;
-    margin: 0 auto;
-`;
-
-const VizContainer = styled(motion.div)`
-    width: 100%;
-    height: 600px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 80px 0;
-    position: relative;
 `;
 
 const Description = styled(motion.p)`
@@ -103,32 +62,27 @@ export default function RiskPerceptionsSection() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={containerVariants}
                 >
-                    <TitleGroup variants={itemVariants}>
-                        <Title>
-                            What <span className="italic">unites</span> us
-                        </Title>
-                        <Subtitle>
-                            While the majority both of experts and the general
-                            population agree that their country faces a social
-                            divide, uniting factors persist to provide hope
-                            amidst the "nexus of risk"
-                        </Subtitle>
-                    </TitleGroup>
+                    <SectionTitleGroup
+                        chapter="Chapter three"
+                        title="Risk perceptions around the world"
+                    />
 
-                    <VizContainer
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={containerVariants}
-                    >
-                        <LottieAnimation
-                            path="/lottie/AXA_Scrolly_Desktop_DP05.json"
-                            height="600px"
-                            width="100%"
-                            loop={true}
-                            autoplay={true}
-                        />
-                    </VizContainer>
+                    <ResponsiveLottieAnimation
+                        animations={{
+                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP05.json",
+                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP05.json",
+                            desktop:
+                                "/lottie/desktop/AXA_Scrolly_Desktop_DP05.json",
+                        }}
+                        heights={{
+                            mobile: "300px",
+                            tablet: "400px",
+                            desktop: "600px",
+                        }}
+                        backgroundColor="#ED5027"
+                        loop={true}
+                        autoplay={true}
+                    />
 
                     <Description variants={itemVariants}>
                         The visualization above demonstrates the common ground

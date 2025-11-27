@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import SectionTitleGroup from "./shared/SectionTitleGroup";
+import Quote from "./shared/Quote";
 
 const Container = styled.section`
     width: 100%;
@@ -15,32 +17,6 @@ const Container = styled.section`
 const ContentWrapper = styled.div`
     max-width: 900px;
     margin: 0 auto;
-`;
-
-const TitleGroup = styled.div`
-    text-align: center;
-    margin-bottom: 80px;
-`;
-
-const Chapter = styled.p`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 42px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0 0 20px 0;
-    letter-spacing: 0;
-`;
-
-const Title = styled.h2`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 100px;
-    font-weight: 400;
-    line-height: 1;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
 `;
 
 const TextBlock = styled.p`
@@ -100,26 +76,6 @@ const StatLabel = styled.p`
     letter-spacing: 0;
 `;
 
-const Quote = styled(motion.div)`
-    background: rgba(255, 255, 255, 0);
-    padding: 60px 0;
-    margin: 80px 0;
-    border-left: 4px solid #000000;
-    border-right: none;
-    padding-left: 40px;
-`;
-
-const QuoteText = styled.p`
-    font-family: "EB Garamond", Georgia, serif;
-    font-size: 40px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
-`;
-
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -150,10 +106,10 @@ export default function NexusInActionSection() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={containerVariants}
                 >
-                    <TitleGroup>
-                        <Chapter>Chapter two</Chapter>
-                        <Title>The Nexus in Action</Title>
-                    </TitleGroup>
+                    <SectionTitleGroup
+                        chapter="Chapter two"
+                        title="The nexus in action - how risks collide"
+                    />
 
                     <TextBlock variants={itemVariants}>
                         The interconnectedness of risk is on full display when
@@ -172,14 +128,11 @@ export default function NexusInActionSection() {
                         first appeared in the annual survey.
                     </TextBlock>
 
-                    <Quote variants={itemVariants}>
-                        <QuoteText>
-                            Climate change is a nexus issue, and it cannot be
-                            solved in silos. It requires cooperation and
-                            collaboration across industries, nations and
-                            stakeholders
-                        </QuoteText>
-                    </Quote>
+                    <Quote
+                        text="Climate change is a nexus issue, and it cannot be solved in silos. It requires cooperation and collaboration across industries, nations and stakeholders"
+                        attribution=""
+                        variants={itemVariants}
+                    />
 
                     <TextBlock variants={itemVariants}>
                         It is not just climate change that is interconnected

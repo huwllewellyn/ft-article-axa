@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import SectionTitleGroup from "./shared/SectionTitleGroup";
+import Quote from "./shared/Quote";
+import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
 
 const Container = styled.section`
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     padding: 80px 40px;
-    background: #B6C1D3;
+    background: #b6c1d3;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
@@ -15,32 +18,6 @@ const Container = styled.section`
 const ContentWrapper = styled.div`
     max-width: 900px;
     margin: 0 auto;
-`;
-
-const TitleGroup = styled.div`
-    text-align: center;
-    margin-bottom: 80px;
-`;
-
-const Chapter = styled.p`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 42px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0 0 20px 0;
-    letter-spacing: 0;
-`;
-
-const Title = styled.h2`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 100px;
-    font-weight: 400;
-    line-height: 1;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
 `;
 
 const TextBlock = styled.p`
@@ -63,34 +40,6 @@ const TextBlock = styled.p`
     &:last-of-type {
         margin-bottom: 80px;
     }
-`;
-
-const Quote = styled(motion.div)`
-    background: rgba(255, 255, 255, 0.6);
-    padding: 60px;
-    margin: 60px 0;
-    border-left: 4px solid #000000;
-`;
-
-const QuoteText = styled.p`
-    font-family: "EB Garamond", Georgia, serif;
-    font-size: 40px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0 0 32px 0;
-    letter-spacing: 0;
-`;
-
-const Attribution = styled.p`
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
-    text-align: center;
 `;
 
 const containerVariants = {
@@ -123,10 +72,10 @@ export default function PolycrisisSection() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={containerVariants}
                 >
-                    <TitleGroup>
-                        <Chapter>Chapter one</Chapter>
-                        <Title>The age of polycrisis</Title>
-                    </TitleGroup>
+                    <SectionTitleGroup
+                        chapter="Chapter one"
+                        title="The age of polycrisis"
+                    />
 
                     <TextBlock variants={itemVariants}>
                         One dimension of this more complex threat landscape is
@@ -142,6 +91,22 @@ export default function PolycrisisSection() {
                         increase over the previous year.
                     </TextBlock>
 
+                    <ResponsiveLottieAnimation
+                        animations={{
+                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP02.json",
+                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP02.json",
+                            desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP02.json",
+                        }}
+                        heights={{
+                            mobile: "300px",
+                            tablet: "400px",
+                            desktop: "600px",
+                        }}
+                        backgroundColor="#B6C1D3"
+                        loop={true}
+                        autoplay={true}
+                    />
+
                     <TextBlock variants={itemVariants}>
                         Yet, as the recently released{" "}
                         <a href="https://axaxl.com/fast-fast-forward/articles/axa-future-risks-report-2025">
@@ -154,20 +119,13 @@ export default function PolycrisisSection() {
                         public ranked them among their top 10 risks.
                     </TextBlock>
 
-                    <Quote variants={itemVariants}>
-                        <QuoteText>
-                            "The polycrisis adds uncertainty to the mix, and
-                            that is a challenge for insurance and reinsurance
-                            companies to deal with. When it comes to risk, we've
-                            got data, we've got information and we've got
-                            answers. Uncertainty relates to perception, and we
-                            have to go even deeper to understand what's going
-                            on"
-                        </QuoteText>
-                        <Attribution>
-                            Scott Gunter, Chief Executive Officer, AXA XL
-                        </Attribution>
-                    </Quote>
+                    <Quote
+                        text={
+                            "\"The polycrisis adds uncertainty to the mix, and that is a challenge for insurance and reinsurance companies to deal with. When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on\""
+                        }
+                        attribution="Scott Gunter, Chief Executive Officer, AXA XL"
+                        variants={itemVariants}
+                    />
                 </motion.div>
             </ContentWrapper>
         </Container>

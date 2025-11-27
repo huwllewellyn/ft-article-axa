@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import LottieAnimation from "./LottieAnimation";
+import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
+import SectionTitleGroup from "./shared/SectionTitleGroup";
+import Quote from "./shared/Quote";
 
 const Container = styled.section`
     width: 100%;
@@ -15,34 +17,6 @@ const Container = styled.section`
 
 const ContentWrapper = styled.div`
     max-width: 900px;
-    margin: 0 auto;
-`;
-
-const TitleGroup = styled.div`
-    text-align: center;
-    margin-bottom: 80px;
-`;
-
-const Chapter = styled.p`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 42px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0 0 20px 0;
-    letter-spacing: 0;
-`;
-
-const Title = styled.h2`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 100px;
-    font-weight: 400;
-    line-height: 1;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
-    max-width: 1000px;
     margin: 0 auto;
 `;
 
@@ -66,52 +40,6 @@ const TextBlock = styled.p`
     &:last-of-type {
         margin-bottom: 80px;
     }
-`;
-
-const VizContainer = styled(motion.div)`
-    width: 100%;
-    height: 600px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 80px 0;
-    position: relative;
-`;
-
-const Quote = styled(motion.div)`
-    background: rgba(255, 255, 255, 0.8);
-    padding: 40px;
-    margin: 40px 0;
-    border-radius: 4px;
-`;
-
-const QuoteText = styled.p`
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 1.3;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
-    font-style: italic;
-
-    &:before {
-        content: '"';
-    }
-
-    &:after {
-        content: '"';
-    }
-`;
-
-const QuoteAttribution = styled.p`
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.2;
-    color: #000000;
-    margin: 16px 0 0 0;
-    letter-spacing: 0;
 `;
 
 const containerVariants = {
@@ -144,10 +72,10 @@ export default function PreparingForComplexitySection() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={containerVariants}
                 >
-                    <TitleGroup>
-                        <Chapter>Chapter four</Chapter>
-                        <Title>Preparing for complexity: rethinking resilience</Title>
-                    </TitleGroup>
+                    <SectionTitleGroup
+                        chapter="Chapter four"
+                        title="Preparing for complexity: rethinking resilience"
+                    />
 
                     <TextBlock variants={itemVariants}>
                         Against the polycrisis backdrop, bright spots are
@@ -161,20 +89,11 @@ export default function PreparingForComplexitySection() {
                         how?
                     </TextBlock>
 
-                    <Quote variants={itemVariants}>
-                        <QuoteText>
-                            Insurers are integrating emerging technologies such
-                            as AI-driven risk assessments, predictive analytics
-                            and automation to stay a step ahead of evolving
-                            threats. They are also designing insurance coverage
-                            to industry-specific risks or to address other
-                            fast-changing cyber risks.
-                        </QuoteText>
-                        <QuoteAttribution>
-                            Andrew Farr, AXA XL's Global Chief Underwriting
-                            Officer for Financial Lines
-                        </QuoteAttribution>
-                    </Quote>
+                    <Quote
+                        text="Insurers are integrating emerging technologies such as AI-driven risk assessments, predictive analytics and automation to stay a step ahead of evolving threats. They are also designing insurance coverage to industry-specific risks or to address other fast-changing cyber risks."
+                        attribution="Andrew Farr, AXA XL's Global Chief Underwriting Officer for Financial Lines"
+                        variants={itemVariants}
+                    />
 
                     <TextBlock variants={itemVariants}>
                         This year's AXA Future Risks Report found that the
@@ -185,30 +104,27 @@ export default function PreparingForComplexitySection() {
                         helping us to manage clients' risk," he says.
                     </TextBlock>
 
-                    <VizContainer
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={containerVariants}
-                    >
-                        <LottieAnimation
-                            path="/lottie/AXA_Scrolly_Desktop_DP073.json"
-                            height="600px"
-                            width="100%"
-                            loop={true}
-                            autoplay={true}
-                        />
-                    </VizContainer>
+                    <ResponsiveLottieAnimation
+                        animations={{
+                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
+                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
+                            desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
+                        }}
+                        heights={{
+                            mobile: "300px",
+                            tablet: "400px",
+                            desktop: "600px",
+                        }}
+                        backgroundColor="#D7D7D7"
+                        loop={true}
+                        autoplay={true}
+                    />
 
-                    <Quote variants={itemVariants}>
-                        <QuoteText>
-                            Fostering better industry-wide information sharing
-                            and best practices will improve our collective
-                            defences and make everyone more resilient against
-                            cyber threats.
-                        </QuoteText>
-                        <QuoteAttribution>Andrew Farr</QuoteAttribution>
-                    </Quote>
+                    <Quote
+                        text="Fostering better industry-wide information sharing and best practices will improve our collective defences and make everyone more resilient against cyber threats."
+                        attribution="Andrew Farr"
+                        variants={itemVariants}
+                    />
 
                     <TextBlock variants={itemVariants}>
                         Insurers are also promoting cyber resilience through

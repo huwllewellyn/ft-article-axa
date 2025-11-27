@@ -13,6 +13,7 @@ const Container = styled.div`
 
 export default function LottieAnimation({
     path,
+    fallbackPath,
     height = "600px",
     width = "100%",
     loop = true,
@@ -26,55 +27,85 @@ export default function LottieAnimation({
 
     useEffect(() => {
         const loadAnimation = async () => {
+            let data;
+            let loadedPath = path;
+
             try {
                 const fullPath = getAssetPath(path);
                 const response = await fetch(fullPath);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const data = await response.json();
+                data = await response.json();
                 console.log(`Animation loaded: ${path}`);
-
-                // Create Intersection Observer to trigger animation on view
-                const observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach((entry) => {
-                            if (
-                                entry.isIntersecting &&
-                                containerRef.current &&
-                                !animationLoadedRef.current
-                            ) {
-                                console.log(`Loading animation: ${path}`);
-                                animationLoadedRef.current = true;
-                                const anim = lottie.loadAnimation({
-                                    container: containerRef.current,
-                                    renderer: renderer,
-                                    loop: loop,
-                                    autoplay: scrollSync ? false : autoplay,
-                                    animationData: data,
-                                });
-                                animationRef.current = anim;
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { threshold: 0.1 }
-                );
-
-                if (containerRef.current) {
-                    observer.observe(containerRef.current);
-                }
-
-                return () => {
-                    observer.disconnect();
-                };
             } catch (err) {
-                console.error(`Failed to load lottie animation: ${path}`, err);
+                // If primary path fails and fallback exists, try fallback
+                if (fallbackPath) {
+                    try {
+                        console.warn(
+                            `Primary animation path failed: ${path}, trying fallback: ${fallbackPath}`
+                        );
+                        const fullFallbackPath = getAssetPath(fallbackPath);
+                        const fallbackResponse = await fetch(fullFallbackPath);
+                        if (!fallbackResponse.ok) {
+                            throw new Error(
+                                `HTTP error! status: ${fallbackResponse.status}`
+                            );
+                        }
+                        data = await fallbackResponse.json();
+                        loadedPath = fallbackPath;
+                        console.log(`Animation loaded from fallback: ${fallbackPath}`);
+                    } catch (fallbackErr) {
+                        console.error(
+                            `Failed to load both primary and fallback animation`,
+                            err,
+                            fallbackErr
+                        );
+                        return;
+                    }
+                } else {
+                    console.error(`Failed to load lottie animation: ${path}`, err);
+                    return;
+                }
             }
+
+            // Create Intersection Observer to trigger animation on view
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (
+                            entry.isIntersecting &&
+                            containerRef.current &&
+                            !animationLoadedRef.current
+                        ) {
+                            console.log(`Loading animation: ${loadedPath}`);
+                            animationLoadedRef.current = true;
+                            const anim = lottie.loadAnimation({
+                                container: containerRef.current,
+                                renderer: renderer,
+                                loop: loop,
+                                autoplay: scrollSync ? false : autoplay,
+                                animationData: data,
+                            });
+                            animationRef.current = anim;
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
+
+            if (containerRef.current) {
+                observer.observe(containerRef.current);
+            }
+
+            return () => {
+                observer.disconnect();
+            };
         };
 
         loadAnimation();
-    }, [path, loop, autoplay, renderer, scrollSync]);
+    }, [path, fallbackPath, loop, autoplay, renderer, scrollSync]);
 
     // Handle scroll-synced animation
     useEffect(() => {

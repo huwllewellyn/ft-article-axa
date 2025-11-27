@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import LottieAnimation from "./LottieAnimation";
+import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
+import { media } from "../utils/breakpoints";
 
 const Container = styled.section`
     width: 100%;
@@ -37,6 +38,14 @@ const VizContainer = styled(motion.div)`
     justify-content: center;
     margin-bottom: 40px;
     position: relative;
+
+    ${media.tablet`
+        height: 400px;
+    `}
+
+    ${media.mobile`
+        height: 300px;
+    `}
 `;
 
 const Description = styled.p`
@@ -86,10 +95,17 @@ export default function VizSection() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={containerVariants}
                 >
-                    <LottieAnimation
-                        path="/lottie/AXA_Scrolly_Desktop_DP01.json"
-                        height="600px"
-                        width="100%"
+                    <ResponsiveLottieAnimation
+                        animations={{
+                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP01.json",
+                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
+                            desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
+                        }}
+                        heights={{
+                            mobile: "300px",
+                            tablet: "400px",
+                            desktop: "600px",
+                        }}
                         loop={true}
                         autoplay={true}
                     />

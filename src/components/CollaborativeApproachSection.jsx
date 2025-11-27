@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import SectionTitleGroup from "./shared/SectionTitleGroup";
+import Quote from "./shared/Quote";
 
 const Container = styled.section`
     width: 100%;
@@ -14,34 +16,6 @@ const Container = styled.section`
 
 const ContentWrapper = styled.div`
     max-width: 900px;
-    margin: 0 auto;
-`;
-
-const TitleGroup = styled.div`
-    text-align: center;
-    margin-bottom: 80px;
-`;
-
-const Chapter = styled.p`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 42px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0 0 20px 0;
-    letter-spacing: 0;
-`;
-
-const Title = styled.h2`
-    font-family: "freight-big-pro", Georgia, serif;
-    font-size: 100px;
-    font-weight: 400;
-    line-height: 1;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
-    max-width: 1000px;
     margin: 0 auto;
 `;
 
@@ -65,33 +39,6 @@ const TextBlock = styled.p`
     &:last-of-type {
         margin-bottom: 80px;
     }
-`;
-
-const Quote = styled(motion.div)`
-    background: rgba(255, 255, 255, 0.8);
-    padding: 60px;
-    margin: 80px 0;
-    border-left: 4px solid #000000;
-`;
-
-const QuoteText = styled.p`
-    font-family: "EB Garamond", Georgia, serif;
-    font-size: 40px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0 0 32px 0;
-    letter-spacing: 0;
-`;
-
-const Attribution = styled.p`
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
 `;
 
 const containerVariants = {
@@ -124,10 +71,10 @@ export default function CollaborativeApproachSection() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={containerVariants}
                 >
-                    <TitleGroup>
-                        <Chapter>Chapter five</Chapter>
-                        <Title>A collaborative approach</Title>
-                    </TitleGroup>
+                    <SectionTitleGroup
+                        chapter="Chapter five"
+                        title="A collaborative approach"
+                    />
 
                     <TextBlock variants={itemVariants}>
                         Insurers are also partnering with academia in their use
@@ -139,19 +86,11 @@ export default function CollaborativeApproachSection() {
                         wildfires, for example.
                     </TextBlock>
 
-                    <Quote variants={itemVariants}>
-                        <QuoteText>
-                            "Thanks to collaborative research, we now have a
-                            greater understanding of how to build buildings more
-                            safely and where to locate them more safely. That
-                            learning is propagated, measured and shared by the
-                            insurance industry, and it's useful because it
-                            literally reduces risk."
-                        </QuoteText>
-                        <Attribution>
-                            Ralph, Cambridge Centre for Risk Studies
-                        </Attribution>
-                    </Quote>
+                    <Quote
+                        text="Thanks to collaborative research, we now have a greater understanding of how to build buildings more safely and where to locate them more safely. That learning is propagated, measured and shared by the insurance industry, and it's useful because it literally reduces risk."
+                        attribution="Ralph, Cambridge Centre for Risk Studies"
+                        variants={itemVariants}
+                    />
 
                     <TextBlock variants={itemVariants}>
                         Sharing of data and insight through closer collaboration
@@ -162,17 +101,11 @@ export default function CollaborativeApproachSection() {
                         nexus of risk more accurately.
                     </TextBlock>
 
-                    <Quote variants={itemVariants}>
-                        <QuoteText>
-                            "It's about going beyond providing a safety net and
-                            giving clients the confidence and comfort they need
-                            to be able to invest in the next phase of their
-                            business growth."
-                        </QuoteText>
-                        <Attribution>
-                            Scott Gunter, Chief Executive Officer, AXA XL
-                        </Attribution>
-                    </Quote>
+                    <Quote
+                        text="It's about going beyond providing a safety net and giving clients the confidence and comfort they need to be able to invest in the next phase of their business growth."
+                        attribution="Scott Gunter, Chief Executive Officer, AXA XL"
+                        variants={itemVariants}
+                    />
                 </motion.div>
             </ContentWrapper>
         </Container>
