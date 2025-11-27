@@ -8,13 +8,15 @@ const AnimationTrack = styled.div`
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     height: ${(props) => props.$trackHeight || "4000px"};
+    padding-top: ${(props) => props.$headerHeight || "60px"};
+    background-color: ${(props) => props.$backgroundColor || "#FFFFFF"};
 `;
 
 const StickyContainer = styled.div`
     position: sticky;
-    top: 0;
+    top: ${(props) => props.$headerHeight || "60px"};
     width: 100vw;
-    height: 100svh;
+    height: calc(100svh - ${(props) => props.$headerHeight || "60px"});
     background-color: ${(props) => props.$backgroundColor || "#FFFFFF"};
     display: flex;
     align-items: center;
@@ -38,6 +40,7 @@ const StickyContainer = styled.div`
  *   Example: { mobile: "/lottie/mobile/anim.json", tablet: "/lottie/tablet/anim.json", desktop: "/lottie/desktop/anim.json" }
  * @param {string} backgroundColor - Background color for the animation container (optional, default: "#FFFFFF")
  * @param {string} trackHeight - Height of the scrollable track area (optional, default: "4000px")
+ * @param {string} headerHeight - Height of the page header to avoid overlap (optional, default: "60px")
  * @param {boolean} loop - Whether animation should loop (default: false for scrolljack)
  * @param {boolean} autoplay - Whether animation should autoplay (default: false for scrolljack)
  */
@@ -45,6 +48,7 @@ export default function LottieScrolljack({
     animations,
     backgroundColor = "#FFFFFF",
     trackHeight = "4000px",
+    headerHeight = "60px",
     loop = false,
     autoplay = false,
 }) {
@@ -81,16 +85,20 @@ export default function LottieScrolljack({
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
 
+            // Parse header height to get pixel value
+            const headerHeightPixels = parseInt(headerHeight) || 60;
+            const availableHeight = viewportHeight - headerHeightPixels;
+
             // Calculate height if width is 100vw
             const calculatedHeight = viewportWidth / aspectRatioDecimal;
 
-            // If calculated height exceeds viewport height, constrain to viewport height
+            // If calculated height exceeds available height, constrain to available height
             // and calculate width based on that
-            if (calculatedHeight > viewportHeight) {
-                const constrainedWidth = (viewportHeight * aspectRatioDecimal) / viewportWidth * 100;
+            if (calculatedHeight > availableHeight) {
+                const constrainedWidth = (availableHeight * aspectRatioDecimal) / viewportWidth * 100;
                 setDimensions({
                     width: `${constrainedWidth}vw`,
-                    height: "100svh",
+                    height: `calc(100svh - ${headerHeight})`,
                 });
             } else {
                 setDimensions({
@@ -103,7 +111,7 @@ export default function LottieScrolljack({
         calculateDimensions();
         window.addEventListener("resize", calculateDimensions);
         return () => window.removeEventListener("resize", calculateDimensions);
-    }, [aspectRatioDecimal]);
+    }, [aspectRatioDecimal, headerHeight]);
 
     // Track scroll progress within the animation track
     const { scrollYProgress } = useScroll({
@@ -112,11 +120,12 @@ export default function LottieScrolljack({
     });
 
     return (
-        <AnimationTrack ref={animationTrackRef} $trackHeight={trackHeight}>
+        <AnimationTrack ref={animationTrackRef} $trackHeight={trackHeight} $headerHeight={headerHeight} $backgroundColor={backgroundColor}>
             <StickyContainer
                 $width={dimensions.width}
                 $height={dimensions.height}
                 $backgroundColor={backgroundColor}
+                $headerHeight={headerHeight}
             >
                 <ResponsiveLottieAnimation
                     animations={animations}
