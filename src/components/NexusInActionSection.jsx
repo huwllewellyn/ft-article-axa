@@ -122,7 +122,7 @@ export default function NexusInActionSection() {
                         For example, climate change is leading people to
                         question whether authorities can provide adequate
                         answers: according to this year's AXA Future Risks
-                        Report , only 12 per cent of experts who chose climate
+                        Report, only 12 per cent of experts who chose climate
                         change among their top risks believe that authorities
                         are well prepared to handle it, down two percentage
                         points from last year. That is the lowest figure since
