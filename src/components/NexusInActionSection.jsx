@@ -142,7 +142,7 @@ export default function NexusInActionSection() {
                             desktop: "600px",
                         }}
                         backgroundColor="#FDE432"
-                        loop={true}
+                        loop={false}
                         autoplay={true}
                     />
 

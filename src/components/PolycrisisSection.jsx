@@ -106,7 +106,7 @@ export default function PolycrisisSection() {
                             desktop: "600px",
                         }}
                         backgroundColor="#B6C1D3"
-                        loop={true}
+                        loop={false}
                         autoplay={true}
                     />
 

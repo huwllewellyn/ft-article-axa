@@ -94,7 +94,7 @@ export default function RiskPerceptionsSection() {
                             desktop: "600px",
                         }}
                         backgroundColor="#ED5027"
-                        loop={true}
+                        loop={false}
                         autoplay={true}
                     />
 
