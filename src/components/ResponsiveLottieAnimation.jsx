@@ -5,13 +5,13 @@ import LottieAnimation from "./LottieAnimation";
 
 const Container = styled.div`
     width: ${(props) => props.$width || "100%"};
-    height: ${(props) => props.$height || "600px"};
-    background: ${(props) => props.$backgroundColor || "rgba(255, 255, 255, 0.5)"};
+    height: ${(props) => props.$height || "auto"};
+    background: ${(props) =>
+        props.$backgroundColor || "rgba(255, 255, 255, 0.5)"};
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 80px 0;
     position: relative;
 `;
 
@@ -21,7 +21,7 @@ const Container = styled.div`
  *
  * @param {Object} animations - Object mapping breakpoints to animation paths
  *   Example: { mobile: "/lottie/mobile/anim.json", tablet: "/lottie/tablet/anim.json", desktop: "/lottie/desktop/anim.json" }
- * @param {Object} heights - Object mapping breakpoints to heights
+ * @param {Object} heights - Object mapping breakpoints to heights (optional, defaults to auto)
  *   Example: { mobile: "300px", tablet: "400px", desktop: "600px" }
  * @param {Object} widths - Object mapping breakpoints to widths (optional, defaults to 100%)
  * @param {boolean} loop - Whether animation should loop (default: true)
@@ -31,7 +31,7 @@ const Container = styled.div`
  */
 export default function ResponsiveLottieAnimation({
     animations,
-    heights,
+    heights = null,
     widths = {},
     backgroundColor,
     loop = true,
@@ -63,14 +63,24 @@ export default function ResponsiveLottieAnimation({
     }
 
     const animationPath = animations[currentBreakpoint] || animations.desktop;
-    const height = heights[currentBreakpoint] || heights.desktop || "600px";
+    const height = heights
+        ? heights[currentBreakpoint] || heights.desktop
+        : undefined;
     const width = widths[currentBreakpoint] || widths.desktop || "100%";
 
     return (
-        <Container $height={height} $width={width} $backgroundColor={backgroundColor}>
+        <Container
+            $height={height}
+            $width={width}
+            $backgroundColor={backgroundColor}
+        >
             <LottieAnimation
                 path={animationPath}
-                fallbackPath={currentBreakpoint !== "desktop" ? animations.desktop : undefined}
+                fallbackPath={
+                    currentBreakpoint !== "desktop"
+                        ? animations.desktop
+                        : undefined
+                }
                 height="100%"
                 width="100%"
                 loop={loop}

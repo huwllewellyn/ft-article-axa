@@ -1,8 +1,7 @@
 import styled from "styled-components";
 // eslint-disable-next-line no-unused-vars
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
+import { motion } from "framer-motion";
+import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 
@@ -15,40 +14,6 @@ const Container = styled.section`
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
-`;
-
-const AnimationTrack = styled.div`
-    position: relative;
-    width: 100%;
-
-    /* Responsive track heights to accommodate 1500 frame animation smoothly */
-    @media (max-width: 768px) {
-        height: 1000px;
-    }
-
-    @media (min-width: 769px) and (max-width: 1024px) {
-        height: 1400px;
-    }
-
-    @media (min-width: 1025px) {
-        height: 1800px;
-    }
-`;
-
-const StickyContainer = styled.div`
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-
-    /* Allow animations inside to be interactive */
-    & > * {
-        pointer-events: auto;
-    }
 `;
 
 const ContentWrapper = styled.div`
@@ -99,97 +64,79 @@ const itemVariants = {
 };
 
 export default function PreparingForComplexitySection() {
-    const animationTrackRef = useRef(null);
-
-    // Track scroll progress within the animation track
-    const { scrollYProgress } = useScroll({
-        target: animationTrackRef,
-        offset: ["start start", "end end"],
-    });
-
     return (
-        <Container>
-            <ContentWrapper>
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={containerVariants}
-                >
-                    <SectionTitleGroup
-                        chapter="Chapter four"
-                        title="Preparing for complexity: rethinking resilience"
-                    />
+        <>
+            <Container>
+                <ContentWrapper>
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={containerVariants}
+                    >
+                        <SectionTitleGroup
+                            chapter="Chapter four"
+                            title="Preparing for complexity: rethinking resilience"
+                        />
 
-                    <TextBlock variants={itemVariants}>
-                        Against the polycrisis backdrop, bright spots are
-                        emerging. One is that a large majority of respondents –
-                        86 per cent of experts and 84 per cent of the public –
-                        agree that the risks that worry them most could be at
-                        least partially avoided by{" "}
-                        <b>strong preventive action</b>. Another is that 89 per
-                        cent of experts and 72 per cent of the general
-                        population agree that insurers have an important role in
-                        protecting against future risks. But how?
-                    </TextBlock>
+                        <TextBlock variants={itemVariants}>
+                            Against the polycrisis backdrop, bright spots are
+                            emerging. One is that a large majority of
+                            respondents – 86 per cent of experts and 84 per cent
+                            of the public – agree that the risks that worry them
+                            most could be at least partially avoided by{" "}
+                            <b>strong preventive action</b>. Another is that 89
+                            per cent of experts and 72 per cent of the general
+                            population agree that insurers have an important
+                            role in protecting against future risks. But how?
+                        </TextBlock>
 
-                    <TextBlock variants={itemVariants}>
-                        This year’s AXA Future Risks Report found that the
-                        advent of AI is one of the biggest perceived risks
-                        today. Yet Gunter argues that it cuts both ways.
-                        “There’s an acceleration in the use of AI in the
-                        cyberthreat world, but AI and big data is also a
-                        powerful tool for helping us to manage clients’ risk,”
-                        he says.
-                    </TextBlock>
+                        <TextBlock variants={itemVariants}>
+                            This year's AXA Future Risks Report found that the
+                            advent of AI is one of the biggest perceived risks
+                            today. Yet Gunter argues that it cuts both ways.
+                            "There's an acceleration in the use of AI in the
+                            cyberthreat world, but AI and big data is also a
+                            powerful tool for helping us to manage clients'
+                            risk," he says.
+                        </TextBlock>
 
-                    <TextBlock variants={itemVariants}>
-                        Andrew Farr, AXA XL’s Global Chief Underwriting Officer
-                        for Financial Lines, says that insurers are integrating
-                        emerging technologies such as AI-driven risk
-                        assessments, predictive analytics and automation to stay
-                        a step ahead of evolving threats. They are also
-                        designing insurance coverage to industry-specific risks
-                        or to address other fast-changing cyber risks.
-                    </TextBlock>
+                        <TextBlock variants={itemVariants}>
+                            Andrew Farr, AXA XL's Global Chief Underwriting
+                            Officer for Financial Lines, says that insurers are
+                            integrating emerging technologies such as AI-driven
+                            risk assessments, predictive analytics and
+                            automation to stay a step ahead of evolving threats.
+                            They are also designing insurance coverage to
+                            industry-specific risks or to address other
+                            fast-changing cyber risks.
+                        </TextBlock>
 
-                    <Quote
-                        text="“We’re working closely with cyber security firms and offering proactive risk management services to help clients strengthen their defences before an attack happens”"
-                        attribution="Andrew Farr, AXA XL’s Global Chief Underwriting Officer"
-                        variants={itemVariants}
-                    />
+                        <Quote
+                            text={`"We're working closely with cyber security firms and offering proactive risk management services to help clients strengthen their defences before an attack happens"`}
+                            attribution="Andrew Farr, AXA XL's Global Chief Underwriting Officer"
+                            variants={itemVariants}
+                        />
 
-                    <TextBlock variants={itemVariants}>
-                        Insurers are also promoting cyber resilience through
-                        consulting, employee training, and incident response
-                        planning. "Fostering better industry-wide information
-                        sharing and best practices will improve our collective
-                        defences and make everyone more resilient against cyber
-                        threats," says Farr.
-                    </TextBlock>
-                </motion.div>
-            </ContentWrapper>
-            <AnimationTrack ref={animationTrackRef}>
-                <StickyContainer>
-                    <ResponsiveLottieAnimation
-                        animations={{
-                            mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
-                            tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
-                            desktop:
-                                "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
-                        }}
-                        heights={{
-                            mobile: "300px",
-                            tablet: "400px",
-                            desktop: "600px",
-                        }}
-                        backgroundColor="#D7D7D7"
-                        loop={false}
-                        autoplay={false}
-                        scrollProgress={scrollYProgress}
-                    />
-                </StickyContainer>
-            </AnimationTrack>
-        </Container>
+                        <TextBlock variants={itemVariants}>
+                            Insurers are also promoting cyber resilience through
+                            consulting, employee training, and incident response
+                            planning. "Fostering better industry-wide
+                            information sharing and best practices will improve
+                            our collective defences and make everyone more
+                            resilient against cyber threats," says Farr.
+                        </TextBlock>
+                    </motion.div>
+                </ContentWrapper>
+            </Container>
+            <LottieScrolljack
+                animations={{
+                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
+                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
+                    desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
+                }}
+                backgroundColor="#D7D7D7"
+            />
+        </>
     );
 }
