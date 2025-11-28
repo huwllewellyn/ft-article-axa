@@ -83,19 +83,21 @@ export default function NexusInActionSection() {
                         <HeaderAnimationWrapper />
 
                         <TextBlock variants={itemVariants}>
-                            The interconnectedness of risk is on full display when
-                            it comes to climate change, and its effects on other
-                            aspects of social, political and economic life.
+                            The interconnectedness of risk is on full display
+                            when it comes to climate change, and its effects on
+                            other aspects of social, political and economic
+                            life.
                             <br />
                             <br />
                             For example, climate change is leading people to
                             question whether authorities can provide adequate
-                            answers: according to this year's AXA Future Risks
-                            Report, only 12 per cent of experts who chose climate
-                            change among their top risks believe that authorities
-                            are well prepared to handle it, down two percentage
-                            points from last year. That is the lowest figure since
-                            the question first appeared in the annual survey.
+                            answers: according to this year’s AXA Future Risks
+                            Report, only 12 per cent of experts who chose
+                            climate change among their top risks believe that
+                            authorities are well prepared to handle it, down two
+                            percentage points from last year. That is the lowest
+                            figure since the question first appeared in the
+                            annual survey.
                         </TextBlock>
                     </motion.div>
                 </ContentWrapper>
@@ -124,20 +126,24 @@ export default function NexusInActionSection() {
                         />
 
                         <TextBlock variants={itemVariants}>
-                            "The report suggests that we're not just dealing with
-                            isolated issues anymore. Instead, we're facing a web of
-                            crises that feed into each other, which complicates how
-                            we manage and respond to risks," says Benet.
+                            “The report suggests that we're not just dealing
+                            with isolated issues any more. Instead, we're facing
+                            a web of crises that feed into each other, which
+                            complicates how we manage and respond to risks,”
+                            says Benet.
                         </TextBlock>
 
                         <TextBlock variants={itemVariants}>
-                            Ben Cattaneo of The Decision-Making Studio points out
-                            that an additional complexity of today's risk
-                            environment is its increasing asymmetry. "It means
-                            little things can have a big impact, and that might be
-                            cyber-related or a localised incident that affects a
-                            global supply chain," he says. "But it means that you no
-                            longer just throw money at something to solve it."
+                            Ben Cattaneo of The Decision-Making Studio points
+                            out that an additional complexity of today’s risk
+                            environment is its increasing asymmetry.
+                            <br />
+                            <br />
+                            “It means little things can have a big impact, and
+                            that might be cyber-related or a localised incident
+                            that affects a global supply chain,” he says. “But
+                            it means that you no longer just throw money at
+                            something to solve it.”
                         </TextBlock>
                     </motion.div>
                 </ContentWrapper>

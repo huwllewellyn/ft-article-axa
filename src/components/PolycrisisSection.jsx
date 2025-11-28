@@ -83,18 +83,18 @@ export default function PolycrisisSection() {
                         <HeaderAnimationWrapper />
 
                         <TextBlock variants={itemVariants}>
-                            One dimension of this more complex threat landscape is
-                            the emergence of new threats that were barely on the
-                            horizon just a few years ago.
+                            One dimension of this more complex threat landscape
+                            is the emergence of new threats that were barely on
+                            the horizon just a few years ago.
                             <br />
                             <br />
                             GenAI has already had a significant impact, with{" "}
                             <a href="https://www.hostinger.com/in/tutorials/how-many-companies-use-ai">
                                 78 per cent of companies worldwide now using AI
                             </a>{" "}
-                            in some part of their operations, according to Hostinger
-                            , the web-hosting service. That is a <b>55 per cent</b>
-                            increase over the previous year.
+                            in some part of their operations, according to
+                            Hostinger, the web-hosting service. That is a{" "}
+                            <b>55 per cent</b> increase over the previous year.
                         </TextBlock>
                     </motion.div>
                 </ContentWrapper>
@@ -121,18 +121,29 @@ export default function PolycrisisSection() {
                             <a href="https://axaxl.com/fast-fast-forward/articles/axa-future-risks-report-2025">
                                 <strong>AXA Future Risks Report, 2025</strong>
                             </a>{" "}
-                            highlights, AI and big data have now consolidated their
-                            place in the top 10 risks perceived by both experts and
-                            the general public.
+                            highlights, AI and big data have now consolidated
+                            their place in the top 10 risks perceived by both
+                            experts and the general public.
                             <br />
                             <br />
-                            That is a stark contrast with just five years ago, when
-                            neither experts nor the general public ranked them among
-                            their top 10 risks.
+                            That is a stark contrast with just five years ago,
+                            when neither experts nor the general public ranked
+                            them among their top 10 risks.
+                        </TextBlock>
+
+                        <TextBlock variants={itemVariants}>
+                            Beyond specific risks, both experts and members of
+                            the public – 95 per cent and 93 per cent,
+                            respectively – believe that{" "}
+                            <b>risks in general are increasing</b>. More
+                            importantly, the principal risks today are
+                            intertwined as never before, says Scott Gunter,
+                            Chief Executive Officer at AXA XL, the property and
+                            casualty (P&C) and specialty risk division of AXA.
                         </TextBlock>
 
                         <Quote
-                            text={`"The polycrisis adds uncertainty to the mix, and that is a challenge for insurance and reinsurance companies to deal with. When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}
+                            text={`“The polycrisis adds uncertainty into the mix, and that is a challenge for insurance and reinsurance companies to deal with,” he says. “When it comes to risk, we've got data, we've got information and we’ve got answers. Uncertainty relates to perception, and we have to go even deeper to understand what’s going on”`}
                             attribution="Scott Gunter, Chief Executive Officer, AXA XL"
                             variants={itemVariants}
                         />

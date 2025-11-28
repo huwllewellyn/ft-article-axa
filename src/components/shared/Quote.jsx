@@ -35,7 +35,7 @@ export const QuoteAttribution = styled.p`
  * Quote Component
  * A reusable quote block with text and attribution
  *
- * @param {string} text - The main quote text
+ * @param {string|ReactNode} text - The main quote text (supports strings or JSX elements like <br/>)
  * @param {string} attribution - The attribution (author/source)
  * @param {object} variants - Optional Framer Motion variants for animations
  */

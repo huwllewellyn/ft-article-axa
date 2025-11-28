@@ -74,15 +74,15 @@ export default function RiskPerceptionsSection() {
 
                         <Description variants={itemVariants}>
                             Adding to this matrix of complexity, perceived risks
-                            vary between regions. Against a backdrop of significant
-                            shifts in global prosperity over the past three decades
-                            driven by the increasing wealth of China and other parts
-                            of Asia, the majority of both{" "}
-                            <b>experts (74 per cent)</b> and the{" "}
+                            vary between regions. Against a backdrop of
+                            significant shifts in global prosperity over the
+                            past three decades driven by the increasing wealth
+                            of China and other parts of Asia, the majority of
+                            both <b>experts (74 per cent)</b> and the{" "}
                             <b>general population (59 per cent)</b> believe that
-                            their countries face "a deep and worrying social divide"
-                            or that people have "fewer and fewer common values and
-                            aspirations".
+                            their countries face “a deep and worrying social
+                            divide” or that people have “fewer and fewer common
+                            values and aspirations”.
                         </Description>
                     </motion.div>
                 </ContentWrapper>
@@ -105,45 +105,47 @@ export default function RiskPerceptionsSection() {
                         variants={containerVariants}
                     >
                         <Description variants={itemVariants}>
-                            Fuelling this perception of a deepening social division
-                            are concerns about rising economic and social inequality
-                            as well as political and ideological divisions. But
-                            concerns about fragmentation vary widely by region:
-                            these numbers are much higher among the general
-                            population in Europe and the US (65 per cent and 66 per
-                            cent, respectively) than in the Asia-Pacific region,
-                            where only 37 per cent of people worry about a deep
-                            social divide.
+                            Fuelling this perception of a deepening social
+                            division are concerns about rising economic and
+                            social inequality as well as political and
+                            ideological divisions. But concerns about
+                            <b>fragmentation</b> vary widely by region: these
+                            numbers are much higher among the general population
+                            in Europe and the US (65 per cent and 66 per cent,
+                            respectively) than in the Asia-Pacific region, where
+                            only 37 per cent of people worry about a deep social
+                            divide.
                         </Description>
 
                         <Description variants={itemVariants}>
                             In addition, the report reveals that there is{" "}
-                            <b>less overlap</b> than in previous years{" "}
-                            <b>between experts and people</b>, with just six out of
-                            the 10 top risks common to both experts and the general
-                            population.
+                            <b>less overlap</b> with previous years{" "}
+                            <b>between experts and general population</b>, with
+                            just six out of the 10 top risks common to both.
                         </Description>
                         <Description variants={itemVariants}>
-                            This partly reflects the rise in other concerns among
-                            the general population that have more of an immediate
-                            impact on their daily lives. But it could also be a
-                            function of the difficulty most people have in
-                            perceiving risk associated with relatively slower-moving
-                            phenomena, such as climate change and biodiversity loss.
+                            This partly reflects the rise in other concerns
+                            among the general population that have more of an
+                            immediate impact on their daily lives. But it could
+                            also be a function of the difficulty most people
+                            have in perceiving risk associated with relatively
+                            slower-moving phenomena, such as climate change and
+                            biodiversity loss.
                             <br />
                             <br />
-                            Indeed, on environmental issues beyond climate change,
-                            experts are more focused on{" "}
+                            Indeed, on environmental issues beyond climate
+                            change, experts are more focused on{" "}
                             <b>
                                 natural resources and biodiversity risks (6th)
                             </b>{" "}
                             and <b>energy risks (8th)</b> while the general
-                            population is more concerned with <b>pollution (9th)</b>
-                            . Yet in regions such as Central America and South
-                            America, where biodiversity risks are more visible for
-                            the wider population than for people in other regions,
-                            the <b>public ranked biodiversity risks 4th</b> – in
-                            line with the experts' ranking.
+                            population is more concerned with{" "}
+                            <b>pollution (9th)</b>. Yet in regions such as
+                            Central America and South America, where
+                            biodiversity risks are more visible for the wider
+                            population than for people in other regions, the
+                            public ranked biodiversity risks 4th – in line with
+                            the experts’ ranking.
                         </Description>
                     </motion.div>
                 </ContentWrapper>

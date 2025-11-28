@@ -77,7 +77,7 @@ export default function PreparingForComplexitySection() {
                     >
                         <SectionTitleGroup
                             chapter="Chapter four"
-                            title="Preparing for complexity: rethinking resilience"
+                            title="Preparing for complexity – rethinking resilience"
                         />
 
                         <HeaderAnimationWrapper />
@@ -95,17 +95,17 @@ export default function PreparingForComplexitySection() {
                         </TextBlock>
 
                         <TextBlock variants={itemVariants}>
-                            This year's AXA Future Risks Report found that the
+                            This year’s AXA Future Risks Report found that the
                             advent of AI is one of the biggest perceived risks
                             today. Yet Gunter argues that it cuts both ways.
-                            "There's an acceleration in the use of AI in the
-                            cyberthreat world, but AI and big data is also a
-                            powerful tool for helping us to manage clients'
-                            risk," he says.
+                            “There’s an acceleration in the use of AI in the
+                            cyber-threat world, but AI and big data is also a
+                            powerful tool for helping us to manage clients’
+                            risk,” he says.
                         </TextBlock>
 
                         <TextBlock variants={itemVariants}>
-                            Andrew Farr, AXA XL's Global Chief Underwriting
+                            Andrew Farr, AXA XL’s Global Chief Underwriting
                             Officer for Financial Lines, says that insurers are
                             integrating emerging technologies such as AI-driven
                             risk assessments, predictive analytics and
@@ -124,10 +124,10 @@ export default function PreparingForComplexitySection() {
                         <TextBlock variants={itemVariants}>
                             Insurers are also promoting cyber resilience through
                             consulting, employee training, and incident response
-                            planning. "Fostering better industry-wide
+                            planning. “Fostering better industry-wide
                             information sharing and best practices will improve
                             our collective defences and make everyone more
-                            resilient against cyber threats," says Farr.
+                            resilient against cyber threats,” says Farr.
                         </TextBlock>
                     </motion.div>
                 </ContentWrapper>

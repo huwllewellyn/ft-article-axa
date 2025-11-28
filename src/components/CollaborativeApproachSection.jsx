@@ -97,7 +97,7 @@ export default function CollaborativeApproachSection() {
 
                     <TextBlock variants={itemVariants}>
                         Sharing of data and insight through closer collaboration
-                        with clients, argues AXA XL's Gunter, is helping
+                        with clients, argues AXA XL’s Gunter, is helping
                         insurers to move from payer to partner, redefining
                         traditional relationships and allowing governments,
                         organisations and companies to assess this evolving
@@ -105,7 +105,7 @@ export default function CollaborativeApproachSection() {
                     </TextBlock>
 
                     <Quote
-                        text="It's about going beyond providing a safety net and giving clients the confidence and comfort they need to be able to invest in the next phase of their business growth."
+                        text={`“It’s about going beyond providing a safety net and giving clients the confidence and comfort they need to be able to invest in the next phase of their business growth.”`}
                         attribution="Scott Gunter, Chief Executive Officer, AXA XL"
                         variants={itemVariants}
                     />
