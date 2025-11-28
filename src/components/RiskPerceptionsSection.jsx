@@ -108,7 +108,7 @@ export default function RiskPerceptionsSection() {
                             Fuelling this perception of a deepening social
                             division are concerns about rising economic and
                             social inequality as well as political and
-                            ideological divisions. But concerns about
+                            ideological divisions. But concerns about{" "}
                             <b>fragmentation</b> vary widely by region: these
                             numbers are much higher among the general population
                             in Europe and the US (65 per cent and 66 per cent,
