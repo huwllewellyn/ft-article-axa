@@ -15,6 +15,7 @@ const Container = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 0;
 `;
 
 const ContentWrapper = styled(motion.div)`
@@ -24,12 +25,13 @@ const ContentWrapper = styled(motion.div)`
     position: relative;
     z-index: 2;
     padding: 0 40px;
+    padding: 0;
 `;
 
 const Subtitle = styled(motion.p)`
     position: absolute;
-    bottom: 80px;
-    left: 80px;
+    bottom: 0;
+    left: 50%;
     font-size: 19px;
     font-weight: 500;
     line-height: 1.2;
@@ -40,10 +42,11 @@ const Subtitle = styled(motion.p)`
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     z-index: 4;
+    text-align: center;
 
     @media (max-width: 768px) {
         font-size: 16px;
-        left: 40px;
+        left: 50%;
         bottom: 100px;
         max-width: 280px;
     }
@@ -297,6 +300,16 @@ const itemVariants = {
     },
 };
 
+const subtitleVariants = {
+    hidden: { opacity: 0, y: 30, x: "-50%" },
+    visible: {
+        opacity: 1,
+        y: 0,
+        x: "-50%",
+        transition: { duration: 0.8, ease: "easeOut" },
+    },
+};
+
 const imageVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
@@ -382,7 +395,7 @@ export default function IntroSection() {
                     </TitleWord>
                 </TitleContainer>
 
-                <Subtitle variants={itemVariants}>
+                <Subtitle variants={subtitleVariants}>
                     The biggest threats to global stability are no longer
                     emerging, they're converging – here's what the future risk
                     landscape reveals
@@ -397,7 +410,9 @@ export default function IntroSection() {
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     <img
-                        src={getAssetPath("/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg")}
+                        src={getAssetPath(
+                            "/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
+                        )}
                         alt="Climate activism"
                     />
                 </ImageWrapper>
@@ -410,7 +425,9 @@ export default function IntroSection() {
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     <img
-                        src={getAssetPath("/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg")}
+                        src={getAssetPath(
+                            "/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
+                        )}
                         alt="Infrastructure landscape"
                     />
                 </ImageWrapper>
@@ -423,7 +440,9 @@ export default function IntroSection() {
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     <img
-                        src={getAssetPath("/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg")}
+                        src={getAssetPath(
+                            "/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
+                        )}
                         alt="Supporting image"
                     />
                 </ImageWrapper>
@@ -436,7 +455,9 @@ export default function IntroSection() {
                     viewport={{ once: true, margin: "-100px" }}
                 >
                     <img
-                        src={getAssetPath("/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg")}
+                        src={getAssetPath(
+                            "/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
+                        )}
                         alt="Supporting image"
                     />
                 </ImageWrapper>

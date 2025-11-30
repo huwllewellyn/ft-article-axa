@@ -17,6 +17,8 @@ const Container = styled.section`
 const ContentWrapper = styled(motion.div)`
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
+    padding-top: 80px;
 `;
 
 const Title = styled(motion.h2)`
@@ -29,6 +31,33 @@ const Title = styled(motion.h2)`
     text-align: center;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
+    position: relative;
+    z-index: 1;
+`;
+
+const SVGWrapper = styled(motion.svg)`
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 150px;
+    pointer-events: none;
+    transform: translateY(10px);
+`;
+
+const Circle = styled.div`
+    width: 22.8px;
+    height: 22.8px;
+    border-radius: 50%;
+    background-color: #000000;
+    flex-shrink: 0;
+    margin-right: 16px;
+    transform: translateX(-50%);
+`;
+
+const ParagraphWithCircle = styled(motion.div)`
+    display: flex;
+    align-items: center;
+    margin: 0 0 32px 0;
 `;
 
 const Paragraph = styled(motion.p)`
@@ -36,7 +65,7 @@ const Paragraph = styled(motion.p)`
     font-weight: 400;
     line-height: 1.2;
     color: #000000;
-    margin: 0 0 32px 0;
+    margin: 0;
     letter-spacing: 0;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
@@ -88,9 +117,24 @@ export default function RisksSection() {
                 variants={containerVariants}
             >
                 <ContentWrapper>
-                    <Title variants={itemVariants}>
-                        Risk is all around us.
-                    </Title>
+                    <SVGWrapper
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 523 290"
+                        fill="none"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M0.5 289.5V104.5V1H69.3292C84.3077 1 98.9236 5.60756 111.194 14.1976L205.19 80.0001C205.19 80.0001 521.764 295.5 521.764 54.5V0"
+                            stroke="black"
+                            strokeWidth="1"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                    </SVGWrapper>
+
+                    <ParagraphWithCircle variants={itemVariants}>
+                        <Circle />
+                        <Paragraph>Risk is all around us.</Paragraph>
+                    </ParagraphWithCircle>
 
                     <Paragraph variants={itemVariants}>
                         From climate change and geopolitical instability to
