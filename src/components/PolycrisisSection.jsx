@@ -23,6 +23,7 @@ import {
     LeftToBottomQuoteWrapper,
     HalfWidthRightParagraph,
     HalfWidthLeftParagraph,
+    FullWidthSVGWrapper,
 } from "./shared/SectionLayout";
 
 const ParagraphWrapper = styled.div`
@@ -69,7 +70,9 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             </SVGWrapper>
                         </HalfWidthLeftSVGContainer>
 
-                        <ParagraphWrapper>
+                        <HalfWidthLeftParagraph
+                            backgroundColor={backgroundColor}
+                        >
                             <Paragraph variants={polycrisisItemVariants}>
                                 <AboveTopLeftCircle />
                                 One dimension of this more complex threat
@@ -87,24 +90,22 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                                 <b>55 per cent</b> increase over the previous
                                 year.
                             </Paragraph>
-                        </ParagraphWrapper>
-
-                        <HalfWidthRightSVGContainer>
-                            <SVGWrapper
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 520 165"
-                                fill="none"
-                                preserveAspectRatio="none"
-                            >
-                                <path
-                                    d="M470.3 0.5C497.473 0.5 519.5 22.5275 519.5 49.6998V82.5C519.5 127.787 482.787 164.5 437.5 164.5H0"
-                                    stroke="black"
-                                    strokeWidth="1"
-                                    vectorEffect="non-scaling-stroke"
-                                />
-                            </SVGWrapper>
-                            <BottomLeftCircle />
-                        </HalfWidthRightSVGContainer>
+                        </HalfWidthLeftParagraph>
+                        <FullWidthSVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 846 360"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="400px"
+                        >
+                            <path
+                                d="M355.538 0.5H745.5C800.728 0.5 845.5 45.2715 845.5 100.5V171.011C845.5 226.24 800.728 271.011 745.5 271.011H0.5V359.5"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </FullWidthSVGWrapper>
+                        <BottomLeftCircle />
                     </motion.div>
                 </ContentWrapper>
             </Container>
