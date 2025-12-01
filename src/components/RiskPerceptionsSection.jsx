@@ -4,7 +4,14 @@ import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
-import { BackgroundContainer, Container } from "./shared/SectionLayout";
+import {
+    AboveTopLeftCircle,
+    BackgroundContainer,
+    Container,
+    SVGWrapper,
+    HalfWidthLeftSVGContainer,
+    BottomCenterCircle,
+} from "./shared/SectionLayout";
 
 const ContentWrapper = styled.div`
     max-width: 1000px;
@@ -44,7 +51,9 @@ const itemVariants = {
     },
 };
 
-export default function RiskPerceptionsSection({ backgroundColor = "#ed5027" }) {
+export default function RiskPerceptionsSection({
+    backgroundColor = "#ed5027",
+}) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
             <Container maxWidth="1440px" padding="80px 40px">
@@ -62,7 +71,25 @@ export default function RiskPerceptionsSection({ backgroundColor = "#ed5027" }) 
 
                         <HeaderAnimationWrapper filename="AXA_HEAD_03_Optimised" />
 
+                        <HalfWidthLeftSVGContainer>
+                            <SVGWrapper
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 521 469"
+                                fill="none"
+                                preserveAspectRatio="none"
+                                height="400px"
+                            >
+                                <path
+                                    d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
+                                    stroke="black"
+                                    strokeWidth="1"
+                                    vectorEffect="non-scaling-stroke"
+                                />
+                            </SVGWrapper>
+                        </HalfWidthLeftSVGContainer>
+
                         <Description variants={itemVariants}>
+                            <AboveTopLeftCircle />
                             Adding to this matrix of complexity, perceived risks
                             vary between regions. Against a backdrop of
                             significant shifts in global prosperity over the
@@ -75,6 +102,23 @@ export default function RiskPerceptionsSection({ backgroundColor = "#ed5027" }) 
                             values and aspirations”.
                         </Description>
                     </motion.div>
+                    <SVGWrapper
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 839 499"
+                        fill="none"
+                        preserveAspectRatio="none"
+                        height="400px"
+                    >
+                        <path
+                            d="M528.13 0.5H738.5C793.728 0.5 838.5 45.2715 838.5 100.5V156.125C838.5 211.354 793.728 256.125 738.5 256.125H100.5C45.2715 256.125 0.5 300.897 0.5 356.125V398.5C0.5 453.728 45.2715 498.5 100.5 498.5H419.5"
+                            stroke="black"
+                            strokeWidth="1"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                    </SVGWrapper>
+                    <div style={{ width: "100%", position: "relative" }}>
+                        <BottomCenterCircle />
+                    </div>
                 </ContentWrapper>
             </Container>
             <LottieScrolljack

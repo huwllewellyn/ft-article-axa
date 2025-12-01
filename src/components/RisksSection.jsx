@@ -7,14 +7,12 @@ import {
     Container,
     ContentWrapper,
     SVGWrapper,
-    FirstSVGWrapper,
     FullWidthSVGWrapper,
     BottomLeftCircle,
     HalfWidthRightSVGContainer,
     Circle,
     AboveTopLeftCircle,
     ParagraphFourCircle,
-    CirclesWrapper,
     Paragraph,
     ParagraphFourText,
     ParagraphFive,
@@ -31,6 +29,8 @@ import {
     itemVariants,
     paragraphFourVariants,
     paragraphFiveVariants,
+    HalfWidthLeftSVGContainer,
+    CIRCLE_SIZE,
 } from "./shared/SectionLayout";
 
 const ParagraphWithCircle = styled(motion.div)`
@@ -49,6 +49,10 @@ const ParagraphFour = styled(Paragraph)`
     gap: 32px;
 `;
 
+const ParagraphOne = styled(motion.div)`
+    // Removed this styling to center the line
+`;
+
 export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
@@ -59,20 +63,22 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                 viewport={{ once: true, margin: "-100px" }}
             >
                 <ContentWrapper>
-                    <CirclesWrapper>
-                        <FirstSVGWrapper
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 523 290"
-                            fill="none"
-                            preserveAspectRatio="none"
-                        >
-                            <path
-                                d="M0.5 289.5V104.5V1H69.3292C84.3077 1 98.9236 5.60756 111.194 14.1976L205.19 80.0001C205.19 80.0001 521.764 295.5 521.764 54.5V0"
-                                stroke="black"
-                                strokeWidth="1"
-                                vectorEffect="non-scaling-stroke"
-                            />
-                        </FirstSVGWrapper>
+                    <ParagraphOne>
+                        <HalfWidthLeftSVGContainer>
+                            <SVGWrapper
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 523 290"
+                                fill="none"
+                                preserveAspectRatio="none"
+                            >
+                                <path
+                                    d="M0.5 289.5V104.5V1H69.3292C84.3077 1 98.9236 5.60756 111.194 14.1976L205.19 80.0001C205.19 80.0001 521.764 295.5 521.764 54.5V0"
+                                    stroke="black"
+                                    strokeWidth="1"
+                                    vectorEffect="non-scaling-stroke"
+                                />
+                            </SVGWrapper>
+                        </HalfWidthLeftSVGContainer>
 
                         <ParagraphWithCircle variants={itemVariants}>
                             <Circle />
@@ -95,7 +101,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         <ParagraphWithCircle variants={itemVariants}>
                             <AboveTopLeftCircle />
                         </ParagraphWithCircle>
-                    </CirclesWrapper>
+                    </ParagraphOne>
 
                     <ParagraphThree variants={itemVariants}>
                         From climate change and geopolitical instability to
@@ -229,6 +235,8 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             along a more challenging journey.
                         </ParagraphSix>
                     </ParagraphSixWrapper>
+                    <br />
+                    <br />
                 </ContentWrapper>
             </Container>
             <Container>
@@ -255,8 +263,8 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             />
                         </FinalQuoteContent>
                     </FinalQuoteWrapper>
+                    <BottomLeftCircle />
                 </ContentWrapper>
-                <BottomCenterCircle />
             </Container>
             <LottieScrolljack
                 animations={{

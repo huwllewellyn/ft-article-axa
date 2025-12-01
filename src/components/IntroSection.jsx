@@ -301,11 +301,11 @@ const itemVariants = {
 };
 
 const subtitleVariants = {
-    hidden: { opacity: 0, y: 30, x: "-50%" },
+    hidden: { opacity: 0, y: 30, x: "20vh" },
     visible: {
         opacity: 1,
         y: 0,
-        x: "-50%",
+        x: "20vh",
         transition: { duration: 0.8, ease: "easeOut" },
     },
 };

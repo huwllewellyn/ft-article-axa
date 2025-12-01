@@ -103,9 +103,10 @@ export const AboveTopLeftCircle = styled(Circle)`
 `;
 
 export const ParagraphFourCircle = styled(Circle)`
-    margin-right: 0;
+    position: relative;
+    left: -${CIRCLE_SIZE}px;
     margin-bottom: auto;
-    margin-top: 0;
+    margin-top: ${CIRCLE_SIZE / 3}px;
     transform: none;
 `;
 
@@ -124,7 +125,7 @@ export const ParagraphSixCircle = styled(Circle)`
 export const BottomCenterCircle = styled(Circle)`
     position: absolute;
     bottom: ${-CIRCLE_SIZE / 2}px;
-    left: 40px;
+    left: 50%;
     margin-right: 0;
     flex-shrink: 0;
     transform: none;
@@ -137,10 +138,6 @@ export const BottomLeftCircle = styled(Circle)`
     margin-right: 0;
     flex-shrink: 0;
     transform: none;
-`;
-
-export const CirclesWrapper = styled(motion.div)`
-    padding-left: ${CIRCLE_SIZE / 2}px;
 `;
 
 // ============================================================================
@@ -204,7 +201,7 @@ export const ParagraphFive = styled(Paragraph)`
     width: 50%;
     display: flex;
     align-items: flex-start;
-    gap: 16px;
+    padding-right: 32px;
 `;
 
 export const ParagraphSixWrapper = styled(motion.div)`

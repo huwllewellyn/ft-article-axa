@@ -5,7 +5,13 @@ import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
 import LottieScrolljack from "./LottieScrolljack";
-import { BackgroundContainer, Container } from "./shared/SectionLayout";
+import {
+    AboveTopLeftCircle,
+    BackgroundContainer,
+    Container,
+    HalfWidthLeftSVGContainer,
+    SVGWrapper,
+} from "./shared/SectionLayout";
 
 const ContentWrapper = styled.div`
     max-width: 900px;
@@ -72,7 +78,25 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
 
                         <HeaderAnimationWrapper filename="AXA_HEAD_02_Optimised" />
 
+                        <HalfWidthLeftSVGContainer>
+                            <SVGWrapper
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 521 469"
+                                fill="none"
+                                preserveAspectRatio="none"
+                                height="400px"
+                            >
+                                <path
+                                    d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
+                                    stroke="black"
+                                    strokeWidth="1"
+                                    vectorEffect="non-scaling-stroke"
+                                />
+                            </SVGWrapper>
+                        </HalfWidthLeftSVGContainer>
+
                         <TextBlock variants={itemVariants}>
+                            <AboveTopLeftCircle />
                             The interconnectedness of risk is on full display
                             when it comes to climate change, and its effects on
                             other aspects of social, political and economic

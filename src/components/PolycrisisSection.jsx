@@ -52,6 +52,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                                 viewBox="0 0 521 469"
                                 fill="none"
                                 preserveAspectRatio="none"
+                                height="400px"
                             >
                                 <path
                                     d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"

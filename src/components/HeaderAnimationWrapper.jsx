@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import LottieAnimation from './LottieAnimation';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import LottieAnimation from "./LottieAnimation";
 
 const HeaderAnimationContainer = styled.div`
     width: 100%;
-    height: ${props => props.$height || '150px'};
-    margin-bottom: 40px;
+    height: ${(props) => props.$height || "150px"};
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
-export default function HeaderAnimationWrapper({ filename = 'AXA_HEAD_01_Optimised', animationPath }) {
+export default function HeaderAnimationWrapper({
+    filename = "AXA_HEAD_01_Optimised",
+    animationPath,
+}) {
     const path = animationPath || `/lottie/headers/${filename}.json`;
-    const [height, setHeight] = useState('150px');
+    const [height, setHeight] = useState("150px");
 
     useEffect(() => {
         const fetchAspectRatio = async () => {
@@ -30,13 +33,16 @@ export default function HeaderAnimationWrapper({ filename = 'AXA_HEAD_01_Optimis
                     setHeight(`${calculatedHeight}px`);
                 }
             } catch (err) {
-                console.warn('Could not fetch header animation aspect ratio', err);
+                console.warn(
+                    "Could not fetch header animation aspect ratio",
+                    err
+                );
             }
         };
 
         fetchAspectRatio();
-        window.addEventListener('resize', fetchAspectRatio);
-        return () => window.removeEventListener('resize', fetchAspectRatio);
+        window.addEventListener("resize", fetchAspectRatio);
+        return () => window.removeEventListener("resize", fetchAspectRatio);
     }, [path]);
 
     return (
