@@ -19,6 +19,10 @@ import {
     QuoteSVGWrapper,
     QuoteContent,
     BottomCenterCircle,
+    HalfWidthRightSVGContainer,
+    HalfWidthRightParagraph,
+    TopLeftCircle,
+    TopRightCircle,
 } from "./shared/SectionLayout";
 
 const itemVariants = {
@@ -150,25 +154,46 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                     <br />
                     <br />
 
-                    <Paragraph variants={itemVariants}>
-                        "The report suggests that we're not just dealing with
-                        isolated issues any more. Instead, we're facing a web of
-                        crises that feed into each other, which complicates how
-                        we manage and respond to risks," says Benet.
-                    </Paragraph>
-
-                    <Paragraph variants={itemVariants}>
-                        Ben Cattaneo of The Decision-Making Studio points out
-                        that an additional complexity of today's risk
-                        environment is its increasing asymmetry.
-                        <br />
-                        <br />
-                        "It means little things can have a big impact, and that
-                        might be cyber-related or a localised incident that
-                        affects a global supply chain," he says. "But it means
-                        that you no longer just throw money at something to
-                        solve it."
-                    </Paragraph>
+                    <HalfWidthRightParagraph backgroundColor={backgroundColor}>
+                        <Paragraph variants={itemVariants}>
+                            "The report suggests that we're not just dealing
+                            with isolated issues any more. Instead, we're facing
+                            a web of crises that feed into each other, which
+                            complicates how we manage and respond to risks,"
+                            says Benet.
+                        </Paragraph>
+                    </HalfWidthRightParagraph>
+                    <HalfWidthRightSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 484 181"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="200px"
+                        >
+                            <path
+                                d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                    </HalfWidthRightSVGContainer>
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
+                        <Paragraph variants={itemVariants}>
+                            Ben Cattaneo of The Decision-Making Studio points
+                            out that an additional complexity of today's risk
+                            environment is its increasing asymmetry.
+                            <br />
+                            <br />
+                            "It means little things can have a big impact, and
+                            that might be cyber-related or a localised incident
+                            that affects a global supply chain," he says. "But
+                            it means that you no longer just throw money at
+                            something to solve it."
+                        </Paragraph>
+                        <TopRightCircle />
+                    </HalfWidthLeftParagraph>
                 </ContentWrapper>
             </Container>
             <LottieScrolljack
