@@ -14,7 +14,7 @@ function App() {
     return (
         <AppContainer>
             {/* <IntroSection /> */}
-            {/* <RisksSection backgroundColor="#f2f0ea" /> */}
+            <RisksSection backgroundColor="#f2f0ea" />
             <PolycrisisSection backgroundColor="#b6c1d3" />
             {/* <NexusInActionSection backgroundColor="#fde432" /> */}
             {/* <RiskPerceptionsSection backgroundColor="#ed5027" /> */}

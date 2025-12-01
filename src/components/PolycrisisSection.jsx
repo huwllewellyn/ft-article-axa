@@ -21,31 +21,15 @@ import {
     HalfWidthRightSVGWrapper,
     TopLeftCircle,
     TopRightCircle,
+    QuoteContent,
+    QuoteSVGWrapper,
+    LeftToBottomQuoteWrapper,
+    HalfWidthRightWrapperWithRightGap,
+    HalfWidthLeftWrapper,
 } from "./shared/SectionLayout";
 
 const ParagraphWrapper = styled.div`
     width: 493px;
-`;
-
-const HalfWidthRightWrapperWithRightGap = styled.div`
-    z-index: 1;
-    position: relative;
-    width: 50%;
-    margin-left: auto;
-    margin-right: 10%;
-    padding-left: 40px;
-    background: ${(props) => props.backgroundColor || "transparent"};
-    outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
-`;
-
-const HalfWidthLeftWrapper = styled.div`
-    position: relative;
-    width: 50%;
-    margin-right: auto;
-    padding-right: 40px;
-    background: ${(props) => props.backgroundColor || "transparent"};
-    outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
-    z-index: 1;
 `;
 
 export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
@@ -201,12 +185,44 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             casualty (P&C) and specialty risk division of AXA.
                         </Paragraph>
                         <TopRightCircle />
+                        <br />
+                        <br />
                     </HalfWidthLeftWrapper>
-                    <Quote
-                        text={`"The polycrisis adds uncertainty into the mix, and that is a challenge for insurance and reinsurance companies to deal with," he says. "When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}
-                        attribution="Scott Gunter, Chief Executive Officer, AXA XL"
-                        variants={polycrisisItemVariants}
-                    />
+                    <SVGWrapper
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1 121"
+                        fill="none"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M0 0L0 121"
+                            stroke="black"
+                            strokeWidth="2"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                    </SVGWrapper>
+                    <LeftToBottomQuoteWrapper>
+                        <QuoteSVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1037 667"
+                            fill="none"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M1036.5 256.988L1036.5 100.5C1036.5 45.2711 991.73 0.499633 936.502 0.499631L-6.38027e-05 0.499604M1.00065 199.002L1.00063 413.502C1.00063 468.731 45.7722 513.502 101.001 513.502L300.5 513.502L346.002 513.502L446.894 513.502C487.35 513.502 520.091 546.403 519.894 586.859L519.502 667.003"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </QuoteSVGWrapper>
+                        <QuoteContent>
+                            <Quote
+                                text={`"The polycrisis adds uncertainty into the mix, and that is a challenge for insurance and reinsurance companies to deal with," he says. "When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}
+                                attribution="Scott Gunter, Chief Executive Officer, AXA XL"
+                                variants={polycrisisItemVariants}
+                            />
+                        </QuoteContent>
+                    </LeftToBottomQuoteWrapper>
                 </ContentWrapper>
             </Container>
         </BackgroundContainer>

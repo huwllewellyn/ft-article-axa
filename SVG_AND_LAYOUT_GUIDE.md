@@ -76,7 +76,7 @@ const QuoteSVGWrapper = styled.svg`
 Used within an absolutely positioned container:
 
 ```jsx
-const QuoteWrapper = styled(motion.div)`
+const LeftToBottomQuoteWrapper = styled(motion.div)`
     position: relative;
     background: transparent;
 `;
@@ -188,7 +188,7 @@ const BottomLeftCircle = styled(Circle)`
 Quote wrappers use an SVG background layer with an absolutely positioned content layer:
 
 ```jsx
-<QuoteWrapper>
+<LeftToBottomQuoteWrapper>
     {/* SVG Background Layer */}
     <QuoteSVGWrapper
         xmlns="http://www.w3.org/2000/svg"
@@ -203,13 +203,13 @@ Quote wrappers use an SVG background layer with an absolutely positioned content
     <QuoteContent>
         <Quote ... />
     </QuoteContent>
-</QuoteWrapper>
+</LeftToBottomQuoteWrapper>
 ```
 
 ### Styling Structure
 
 ```jsx
-const QuoteWrapper = styled(motion.div)`
+const LeftToBottomQuoteWrapper = styled(motion.div)`
     position: relative;
     background: transparent;
     height: 720px; // Fixed height needed for layout

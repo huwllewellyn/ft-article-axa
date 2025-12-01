@@ -72,6 +72,27 @@ export const HalfWidthRightSVGContainer = styled.div`
     margin-left: auto;
 `;
 
+export const HalfWidthRightWrapperWithRightGap = styled.div`
+    z-index: 1;
+    position: relative;
+    width: 50%;
+    margin-left: auto;
+    margin-right: 10%;
+    padding-left: 40px;
+    background: ${(props) => props.backgroundColor || "transparent"};
+    outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
+`;
+
+export const HalfWidthLeftWrapper = styled.div`
+    position: relative;
+    width: 50%;
+    margin-right: auto;
+    padding-right: 40px;
+    background: ${(props) => props.backgroundColor || "transparent"};
+    outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
+    z-index: 1;
+`;
+
 export const QuoteSVGWrapper = styled.svg`
     width: 100%;
     height: 100%;
@@ -255,7 +276,7 @@ export const ParagraphSix = styled(Paragraph)`
 // QUOTE WRAPPERS
 // ============================================================================
 
-export const QuoteWrapper = styled(motion.div)`
+export const LeftToBottomQuoteWrapper = styled(motion.div)`
     position: relative;
     background: transparent;
     height: 720px;
@@ -263,16 +284,17 @@ export const QuoteWrapper = styled(motion.div)`
 
 export const QuoteContent = styled(motion.div)`
     position: absolute;
-    top: 0;
+    bottom: 15px;
     left: 0;
     height: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     margin: 40px;
+    padding-bottom: 80px;
 `;
 
-export const FinalQuoteWrapper = styled(motion.div)`
+export const FinalLeftToBottomQuoteWrapper = styled(motion.div)`
     position: relative;
     background: transparent;
 `;

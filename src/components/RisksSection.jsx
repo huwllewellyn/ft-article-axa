@@ -16,13 +16,13 @@ import {
     Paragraph,
     ParagraphFourText,
     ParagraphFive,
-    QuoteWrapper,
+    LeftToBottomQuoteWrapper,
     QuoteSVGWrapper,
     QuoteContent,
     ParagraphSixWrapper,
     ParagraphSixCircle,
     ParagraphSix,
-    FinalQuoteWrapper,
+    FinalLeftToBottomQuoteWrapper,
     FinalQuoteSVGWrapper,
     FinalQuoteContent,
     BottomCenterCircle,
@@ -133,22 +133,21 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             building long-term resilience?
                         </ParagraphFourText>
                     </ParagraphFour>
-
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 520 165"
+                            viewBox="0 0 484 181"
                             fill="none"
                             preserveAspectRatio="none"
+                            height="200px"
                         >
                             <path
-                                d="M470.3 0.5C497.473 0.5 519.5 22.5275 519.5 49.6998V82.5C519.5 127.787 482.787 164.5 437.5 164.5H0"
+                                d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"
                                 stroke="black"
                                 strokeWidth="1"
                                 vectorEffect="non-scaling-stroke"
                             />
                         </SVGWrapper>
-                        <BottomLeftCircle />
                     </HalfWidthRightSVGContainer>
 
                     <ParagraphFive variants={paragraphFiveVariants}>
@@ -183,7 +182,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             vectorEffect="non-scaling-stroke"
                         />
                     </SVGWrapper>
-                    <QuoteWrapper>
+                    <LeftToBottomQuoteWrapper>
                         <QuoteSVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 1037 667"
@@ -220,7 +219,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                                 variants={itemVariants}
                             />
                         </QuoteContent>
-                    </QuoteWrapper>
+                    </LeftToBottomQuoteWrapper>
 
                     <ParagraphSixWrapper variants={itemVariants}>
                         <ParagraphSixCircle />
@@ -241,7 +240,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
             </Container>
             <Container>
                 <ContentWrapper>
-                    <FinalQuoteWrapper>
+                    <FinalLeftToBottomQuoteWrapper>
                         <FinalQuoteSVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 1038 558"
@@ -262,7 +261,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                                 variants={itemVariants}
                             />
                         </FinalQuoteContent>
-                    </FinalQuoteWrapper>
+                    </FinalLeftToBottomQuoteWrapper>
                     <BottomLeftCircle />
                 </ContentWrapper>
             </Container>
