@@ -6,28 +6,20 @@ import LottieScrolljack from "./LottieScrolljack";
 
 const CIRCLE_SIZE = 22.8;
 
+const BackgroundContainer = styled.div`
+    width: 100%;
+    background: #f2f0ea;
+    z-index: -1;
+`;
+
 const Container = styled.section`
     width: 100%;
     max-width: 1036px;
     margin: 0 auto;
     padding: 0px 40px;
-    background: #f2f0ea;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
-
-    &::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #f2f0ea;
-        z-index: -1;
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-    }
 `;
 
 const ContentWrapper = styled(motion.div)`
@@ -261,7 +253,7 @@ const paragraphFiveVariants = {
 
 export default function RisksSection() {
     return (
-        <>
+        <BackgroundContainer>
             <Container
                 as={motion.section}
                 initial="hidden"
@@ -475,6 +467,6 @@ export default function RisksSection() {
                 }}
                 loop={true}
             />
-        </>
+        </BackgroundContainer>
     );
 }
