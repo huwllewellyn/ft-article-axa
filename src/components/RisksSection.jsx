@@ -169,6 +169,26 @@ const QuoteContent = styled(motion.div)`
     margin: 40px;
 `;
 
+const ParagraphSixWrapper = styled(motion.div)`
+    max-width: 518px;
+    margin: -20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+`;
+
+const ParagraphSixCircle = styled(Circle)`
+    margin-right: 0;
+    flex-shrink: 0;
+    transform: none;
+`;
+
+const ParagraphSix = styled(Paragraph)`
+    text-align: left;
+    max-width: 100%;
+`;
+
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -374,15 +394,19 @@ export default function RisksSection() {
                         </QuoteContent>
                     </QuoteWrapper>
 
-                    <Paragraph variants={itemVariants}>
-                        All of that has profound implications for the role of
-                        insurance in today’s rapidly changing world. From
-                        helping organisations to transfer risk off their balance
-                        sheets to providing prevention services and sharing
-                        data-driven insights into anticipating and mitigating
-                        risk, insurers can move <b>from payer to partner</b> as
-                        they support clients along a more challenging journey.
-                    </Paragraph>
+                    <ParagraphSixWrapper variants={itemVariants}>
+                        <ParagraphSixCircle />
+                        <ParagraphSix>
+                            All of that has profound implications for the role
+                            of insurance in today's rapidly changing world. From
+                            helping organisations to transfer risk off their
+                            balance sheets to providing prevention services and
+                            sharing data-driven insights into anticipating and
+                            mitigating risk, insurers can move{" "}
+                            <b>from payer to partner</b> as they support clients
+                            along a more challenging journey.
+                        </ParagraphSix>
+                    </ParagraphSixWrapper>
                 </ContentWrapper>
             </Container>
             <LottieScrolljack
