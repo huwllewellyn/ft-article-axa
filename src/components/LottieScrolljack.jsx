@@ -5,8 +5,7 @@ import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
 
 const AnimationTrack = styled.div`
     position: relative;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
     height: ${(props) => props.$trackHeight || "4000px"};
     padding-top: ${(props) => props.$headerHeight || "60px"};
 `;
@@ -14,7 +13,7 @@ const AnimationTrack = styled.div`
 const StickyContainer = styled.div`
     position: sticky;
     top: ${(props) => props.$headerHeight || "60px"};
-    width: 100vw;
+    width: 100%;
     height: calc(100svh - ${(props) => props.$headerHeight || "60px"});
     display: flex;
     align-items: center;

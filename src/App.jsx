@@ -8,9 +8,8 @@ import RiskPerceptionsSection from "./components/RiskPerceptionsSection";
 import PreparingForComplexitySection from "./components/PreparingForComplexitySection";
 import CollaborativeApproachSection from "./components/CollaborativeApproachSection";
 
-const AppContainer = styled.div`
-    overflow: hidden;
-`;
+const AppContainer = styled.div``;
+
 
 function App() {
     return (
