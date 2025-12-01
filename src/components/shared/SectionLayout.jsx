@@ -110,6 +110,14 @@ export const TopLeftCircle = styled(Circle)`
     transform: none;
 `;
 
+export const TopRightCircle = styled(Circle)`
+    position: absolute;
+    right: -${1.5 * CIRCLE_SIZE}px;
+    margin-bottom: auto;
+    top: -${CIRCLE_SIZE / 2}px;
+    transform: none;
+`;
+
 export const ParagraphFourCircle = styled(Circle)`
     position: relative;
     left: -${CIRCLE_SIZE}px;

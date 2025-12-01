@@ -20,6 +20,7 @@ import {
     HalfWidthLeftSVGContainer,
     HalfWidthRightSVGWrapper,
     TopLeftCircle,
+    TopRightCircle,
 } from "./shared/SectionLayout";
 
 const ParagraphWrapper = styled.div`
@@ -27,6 +28,7 @@ const ParagraphWrapper = styled.div`
 `;
 
 const HalfWidthRightWrapperWithRightGap = styled.div`
+    z-index: 1;
     position: relative;
     width: 50%;
     margin-left: auto;
@@ -34,6 +36,16 @@ const HalfWidthRightWrapperWithRightGap = styled.div`
     padding-left: 40px;
     background: ${(props) => props.backgroundColor || "transparent"};
     outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
+`;
+
+const HalfWidthLeftWrapper = styled.div`
+    position: relative;
+    width: 50%;
+    margin-right: auto;
+    padding-right: 40px;
+    background: ${(props) => props.backgroundColor || "transparent"};
+    outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
+    z-index: 1;
 `;
 
 export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
@@ -132,7 +144,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             viewBox="0 0 521 339"
                             fill="none"
                             preserveAspectRatio="none"
-                            height="300px"
+                            height="400px"
                         >
                             <path
                                 d="M480.647 338L100.5 338C45.2716 338 0.500016 293.228 0.500021 238L0.500027 167.088C0.500032 111.86 45.2716 67.0882 100.5 67.0882L520.5 67.0882L520.5 2.07424e-05"
@@ -142,7 +154,9 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             />
                         </SVGWrapper>
                     </HalfWidthLeftSVGContainer>
-                    <HalfWidthRightWrapperWithRightGap backgroundColor={backgroundColor}>
+                    <HalfWidthRightWrapperWithRightGap
+                        backgroundColor={backgroundColor}
+                    >
                         <TopLeftCircle />
                         <Paragraph variants={polycrisisItemVariants}>
                             Yet, as the recently released{" "}
@@ -159,17 +173,35 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             them among their top 10 risks.
                         </Paragraph>
                     </HalfWidthRightWrapperWithRightGap>
-
-                    <Paragraph variants={polycrisisItemVariants}>
-                        Beyond specific risks, both experts and members of the
-                        public – 95 per cent and 93 per cent, respectively –
-                        believe that <b>risks in general are increasing</b>.
-                        More importantly, the principal risks today are
-                        intertwined as never before, says Scott Gunter, Chief
-                        Executive Officer at AXA XL, the property and casualty
-                        (P&C) and specialty risk division of AXA.
-                    </Paragraph>
-
+                    <HalfWidthRightSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 484 181"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="200px"
+                        >
+                            <path
+                                d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                    </HalfWidthRightSVGContainer>
+                    <HalfWidthLeftWrapper backgroundColor={backgroundColor}>
+                        <Paragraph variants={polycrisisItemVariants}>
+                            Beyond specific risks, both experts and members of
+                            the public – 95 per cent and 93 per cent,
+                            respectively – believe that{" "}
+                            <b>risks in general are increasing</b>. More
+                            importantly, the principal risks today are
+                            intertwined as never before, says Scott Gunter,
+                            Chief Executive Officer at AXA XL, the property and
+                            casualty (P&C) and specialty risk division of AXA.
+                        </Paragraph>
+                        <TopRightCircle />
+                    </HalfWidthLeftWrapper>
                     <Quote
                         text={`"The polycrisis adds uncertainty into the mix, and that is a challenge for insurance and reinsurance companies to deal with," he says. "When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}
                         attribution="Scott Gunter, Chief Executive Officer, AXA XL"
