@@ -12,31 +12,14 @@ import {
     SVGWrapper,
     HalfWidthLeftSVGContainer,
     BottomCenterCircle,
+    HalfWidthLeftParagraph,
+    TopLeftCircle,
+    Paragraph,
+    FullWidthSVGWrapper,
+    HalfWidthRightParagraph,
+    HalfWidthRightSVGContainer,
+    TopRightCircle,
 } from "./shared/SectionLayout";
-
-const Description = styled(motion.p)`
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #000000;
-    margin-bottom: 20px;
-    letter-spacing: 0;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-`;
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.2,
-            delayChildren: 0.1,
-        },
-    },
-};
 
 const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -59,38 +42,33 @@ export default function RiskPerceptionsSection({
                 viewport={{ once: true, margin: "-100px" }}
             >
                 <ContentWrapper>
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={containerVariants}
-                    >
-                        <SectionTitleGroup
-                            chapter="Chapter three"
-                            title="Risk perceptions around the world"
-                        />
+                    <SectionTitleGroup
+                        chapter="Chapter three"
+                        title="Risk perceptions around the world"
+                    />
 
-                        <HeaderAnimationWrapper filename="AXA_HEAD_03_Optimised" />
+                    <HeaderAnimationWrapper filename="AXA_HEAD_03_Optimised" />
 
-                        <HalfWidthLeftSVGContainer>
-                            <SVGWrapper
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 521 469"
-                                fill="none"
-                                preserveAspectRatio="none"
-                                height="400px"
-                            >
-                                <path
-                                    d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
-                                    stroke="black"
-                                    strokeWidth="1"
-                                    vectorEffect="non-scaling-stroke"
-                                />
-                            </SVGWrapper>
-                        </HalfWidthLeftSVGContainer>
+                    <HalfWidthLeftSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 521 469"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="400px"
+                        >
+                            <path
+                                d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                    </HalfWidthLeftSVGContainer>
 
-                        <Description variants={itemVariants}>
-                            <AboveTopLeftCircle />
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
+                        <AboveTopLeftCircle />
+                        <Paragraph>
                             Adding to this matrix of complexity, perceived risks
                             vary between regions. Against a backdrop of
                             significant shifts in global prosperity over the
@@ -101,8 +79,8 @@ export default function RiskPerceptionsSection({
                             their countries face “a deep and worrying social
                             divide” or that people have “fewer and fewer common
                             values and aspirations”.
-                        </Description>
-                    </motion.div>
+                        </Paragraph>
+                    </HalfWidthLeftParagraph>
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 839 499"
@@ -133,13 +111,26 @@ export default function RiskPerceptionsSection({
             />
             <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={containerVariants}
-                    >
-                        <Description variants={itemVariants}>
+                    <HalfWidthLeftSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 521 469"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="400px"
+                        >
+                            <path
+                                d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                    </HalfWidthLeftSVGContainer>
+
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
+                        <AboveTopLeftCircle />
+                        <Paragraph>
                             Fuelling this perception of a deepening social
                             division are concerns about rising economic and
                             social inequality as well as political and
@@ -150,15 +141,48 @@ export default function RiskPerceptionsSection({
                             respectively) than in the Asia-Pacific region, where
                             only 37 per cent of people worry about a deep social
                             divide.
-                        </Description>
-
-                        <Description variants={itemVariants}>
+                        </Paragraph>
+                    </HalfWidthLeftParagraph>
+                    <FullWidthSVGWrapper
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="1038"
+                        height="466"
+                        viewBox="0 0 1038 466"
+                        fill="none"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M447.071 0.5H937.5C992.729 0.5 1037.5 45.2715 1037.5 100.5V139.186C1037.5 194.415 992.728 239.186 937.5 239.186H100.5C45.2715 239.186 0.5 283.958 0.5 339.186V365.5C0.5 420.729 45.2715 465.5 100.5 465.5H398"
+                            stroke="black"
+                        />
+                    </FullWidthSVGWrapper>
+                    <HalfWidthRightParagraph backgroundColor={backgroundColor}>
+                        <TopLeftCircle left="-20px" />
+                        <Paragraph>
                             In addition, the report reveals that there is{" "}
                             <b>less overlap</b> with previous years{" "}
                             <b>between experts and general population</b>, with
                             just six out of the 10 top risks common to both.
-                        </Description>
-                        <Description variants={itemVariants}>
+                        </Paragraph>
+                    </HalfWidthRightParagraph>
+                    <HalfWidthRightSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 484 181"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="200px"
+                        >
+                            <path
+                                d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                    </HalfWidthRightSVGContainer>
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
+                        <Paragraph variants={itemVariants}>
                             This partly reflects the rise in other concerns
                             among the general population that have more of an
                             immediate impact on their daily lives. But it could
@@ -181,8 +205,11 @@ export default function RiskPerceptionsSection({
                             population than for people in other regions, the
                             public ranked biodiversity risks 4th – in line with
                             the experts' ranking.
-                        </Description>
-                    </motion.div>
+                        </Paragraph>
+                        <TopRightCircle />
+                        <br />
+                        <br />
+                    </HalfWidthLeftParagraph>
                 </ContentWrapper>
             </Container>
             <LottieScrolljack

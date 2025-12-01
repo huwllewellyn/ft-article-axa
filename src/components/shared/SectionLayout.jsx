@@ -132,7 +132,7 @@ export const AboveTopLeftCircle = styled(Circle)`
 
 export const TopLeftCircle = styled(Circle)`
     position: absolute;
-    left: -${CIRCLE_SIZE / 2}px;
+    left: ${(props) => props.left || `-${CIRCLE_SIZE / 2}px`};
     margin-bottom: auto;
     top: -${CIRCLE_SIZE / 2}px;
     transform: none;
