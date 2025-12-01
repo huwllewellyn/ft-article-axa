@@ -27,10 +27,10 @@ import {
     FinalQuoteContent,
     BottomCenterCircle,
     itemVariants,
-    HalfWidthLeftWrapper,
+    HalfWidthLeftParagraph,
     HalfWidthLeftSVGContainer,
     CIRCLE_SIZE,
-    HalfWidthRightWrapperWithRightGap,
+    HalfWidthRightParagraph,
     TopLeftCircle,
     TopRightCircle,
 } from "./shared/SectionLayout";
@@ -105,7 +105,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         </ParagraphWithCircle>
                     </ParagraphOne>
 
-                    <HalfWidthLeftWrapper backgroundColor={backgroundColor}>
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
                         <Paragraph variants={itemVariants}>
                             From climate change and geopolitical instability to
                             cyber threat and the rise of artificial
@@ -113,12 +113,13 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             themes and threats that diverse stakeholders need to
                             understand and plan for.
                         </Paragraph>
-                    </HalfWidthLeftWrapper>
+                    </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 1038 467"
                         fill="none"
                         preserveAspectRatio="none"
+                        height="400px"
                     >
                         <path
                             d="M457.142 0.599609H936.6C991.828 0.599609 1036.6 45.3711 1036.6 100.6V139.286C1036.6 194.514 991.828 239.286 936.6 239.286H100.6C45.3711 239.286 0.599609 284.057 0.599609 339.286V365.6C0.599609 420.828 45.3711 465.6 100.6 465.6H392.442"
@@ -128,9 +129,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         />
                     </FullWidthSVGWrapper>
 
-                    <HalfWidthRightWrapperWithRightGap
-                        backgroundColor={backgroundColor}
-                    >
+                    <HalfWidthRightParagraph backgroundColor={backgroundColor}>
                         <TopLeftCircle style={{ left: "-20px" }} />
                         <Paragraph>
                             But what about the interplay between these new
@@ -139,7 +138,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             terms of mitigating today's risk landscape while
                             building long-term resilience?
                         </Paragraph>
-                    </HalfWidthRightWrapperWithRightGap>
+                    </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +155,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             />
                         </SVGWrapper>
                     </HalfWidthRightSVGContainer>
-                    <HalfWidthLeftWrapper backgroundColor={backgroundColor}>
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
                         <Paragraph variants={itemVariants}>
                             Ben Cattaneo, founder of The Decision-Making Studio,
                             a consultancy that helps organisations make choices
@@ -174,7 +173,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             he says.
                         </Paragraph>
                         <TopRightCircle />
-                    </HalfWidthLeftWrapper>
+                    </HalfWidthLeftParagraph>
 
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"

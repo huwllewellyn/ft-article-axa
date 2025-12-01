@@ -51,7 +51,6 @@ export const FirstSVGWrapper = styled(SVGWrapper)`
 
 export const FullWidthSVGWrapper = styled(SVGWrapper)`
     width: 100%;
-    height: 300px;
 `;
 
 export const HalfWidthRightSVGWrapper = styled(SVGWrapper)`
@@ -72,7 +71,7 @@ export const HalfWidthRightSVGContainer = styled.div`
     margin-left: auto;
 `;
 
-export const HalfWidthRightWrapperWithRightGap = styled.div`
+export const HalfWidthRightParagraph = styled.div`
     z-index: 1;
     position: relative;
     width: 50%;
@@ -81,9 +80,13 @@ export const HalfWidthRightWrapperWithRightGap = styled.div`
     padding-left: 40px;
     background: ${(props) => props.backgroundColor || "transparent"};
     outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
+
+    @media (max-width: 1024px) {
+        width: 60%;
+    }
 `;
 
-export const HalfWidthLeftWrapper = styled.div`
+export const HalfWidthLeftParagraph = styled.div`
     position: relative;
     width: 50%;
     margin-right: auto;
@@ -91,6 +94,10 @@ export const HalfWidthLeftWrapper = styled.div`
     background: ${(props) => props.backgroundColor || "transparent"};
     outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
     z-index: 1;
+
+    @media (max-width: 1024px) {
+        width: 60%;
+    }
 `;
 
 export const QuoteSVGWrapper = styled.svg`

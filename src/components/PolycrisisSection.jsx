@@ -7,25 +7,22 @@ import LottieScrolljack from "./LottieScrolljack";
 import {
     BackgroundContainer,
     Container,
-    TextBlock,
     ContentWrapper,
     Paragraph,
     polycrisisContainerVariants,
     polycrisisItemVariants,
     AboveTopLeftCircle,
     BottomLeftCircle,
-    NotQuiteBottomRightCircle,
     HalfWidthRightSVGContainer,
     SVGWrapper,
     HalfWidthLeftSVGContainer,
-    HalfWidthRightSVGWrapper,
     TopLeftCircle,
     TopRightCircle,
     QuoteContent,
     QuoteSVGWrapper,
     LeftToBottomQuoteWrapper,
-    HalfWidthRightWrapperWithRightGap,
-    HalfWidthLeftWrapper,
+    HalfWidthRightParagraph,
+    HalfWidthLeftParagraph,
 } from "./shared/SectionLayout";
 
 const ParagraphWrapper = styled.div`
@@ -138,9 +135,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             />
                         </SVGWrapper>
                     </HalfWidthLeftSVGContainer>
-                    <HalfWidthRightWrapperWithRightGap
-                        backgroundColor={backgroundColor}
-                    >
+                    <HalfWidthRightParagraph backgroundColor={backgroundColor}>
                         <TopLeftCircle />
                         <Paragraph variants={polycrisisItemVariants}>
                             Yet, as the recently released{" "}
@@ -156,7 +151,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             when neither experts nor the general public ranked
                             them among their top 10 risks.
                         </Paragraph>
-                    </HalfWidthRightWrapperWithRightGap>
+                    </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
@@ -173,7 +168,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             />
                         </SVGWrapper>
                     </HalfWidthRightSVGContainer>
-                    <HalfWidthLeftWrapper backgroundColor={backgroundColor}>
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
                         <Paragraph variants={polycrisisItemVariants}>
                             Beyond specific risks, both experts and members of
                             the public – 95 per cent and 93 per cent,
@@ -187,7 +182,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                         <TopRightCircle />
                         <br />
                         <br />
-                    </HalfWidthLeftWrapper>
+                    </HalfWidthLeftParagraph>
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 1 121"
