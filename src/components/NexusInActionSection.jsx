@@ -202,6 +202,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                     tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP04.json",
                     desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP04.json",
                 }}
+                trackHeight="3500px"
                 backgroundColor={backgroundColor}
                 loop={true}
             />
