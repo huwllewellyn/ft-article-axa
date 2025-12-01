@@ -9,7 +9,6 @@ const AnimationTrack = styled.div`
     margin-left: calc(-50vw + 50%);
     height: ${(props) => props.$trackHeight || "4000px"};
     padding-top: ${(props) => props.$headerHeight || "60px"};
-    background-color: ${(props) => props.$backgroundColor || "#FFFFFF"};
 `;
 
 const StickyContainer = styled.div`
@@ -17,7 +16,6 @@ const StickyContainer = styled.div`
     top: ${(props) => props.$headerHeight || "60px"};
     width: 100vw;
     height: calc(100svh - ${(props) => props.$headerHeight || "60px"});
-    background-color: ${(props) => props.$backgroundColor || "#FFFFFF"};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +36,6 @@ const StickyContainer = styled.div`
  *
  * @param {Object} animations - Object mapping breakpoints to animation paths (required)
  *   Example: { mobile: "/lottie/mobile/anim.json", tablet: "/lottie/tablet/anim.json", desktop: "/lottie/desktop/anim.json" }
- * @param {string} backgroundColor - Background color for the animation container (optional, default: "#FFFFFF")
  * @param {string} trackHeight - Height of the scrollable track area (optional, default: "4000px")
  * @param {string} headerHeight - Height of the page header to avoid overlap (optional, default: "60px")
  * @param {boolean} loop - Whether animation should loop (default: false for scrolljack)
@@ -46,7 +43,6 @@ const StickyContainer = styled.div`
  */
 export default function LottieScrolljack({
     animations,
-    backgroundColor = "#FFFFFF",
     trackHeight = "4000px",
     headerHeight = "60px",
     loop = false,
@@ -54,14 +50,20 @@ export default function LottieScrolljack({
 }) {
     const animationTrackRef = useRef(null);
     const [aspectRatioDecimal, setAspectRatioDecimal] = useState(16 / 9);
-    const [dimensions, setDimensions] = useState({ width: "100%", height: "auto" });
+    const [dimensions, setDimensions] = useState({
+        width: "100%",
+        height: "auto",
+    });
 
     // Fetch animation data to get aspect ratio
     useEffect(() => {
         const getAspectRatio = async () => {
             try {
                 // Try to get the desktop animation first
-                const path = animations.desktop || animations.mobile || Object.values(animations)[0];
+                const path =
+                    animations.desktop ||
+                    animations.mobile ||
+                    Object.values(animations)[0];
                 const response = await fetch(path);
                 const data = await response.json();
 
@@ -95,7 +97,9 @@ export default function LottieScrolljack({
             // If calculated height exceeds available height, constrain to available height
             // and calculate width based on that
             if (calculatedHeight > availableHeight) {
-                const constrainedWidth = (availableHeight * aspectRatioDecimal) / viewportWidth * 100;
+                const constrainedWidth =
+                    ((availableHeight * aspectRatioDecimal) / viewportWidth) *
+                    100;
                 setDimensions({
                     width: `${constrainedWidth}vw`,
                     height: `calc(100svh - ${headerHeight})`,
@@ -120,16 +124,18 @@ export default function LottieScrolljack({
     });
 
     return (
-        <AnimationTrack ref={animationTrackRef} $trackHeight={trackHeight} $headerHeight={headerHeight} $backgroundColor={backgroundColor}>
+        <AnimationTrack
+            ref={animationTrackRef}
+            $trackHeight={trackHeight}
+            $headerHeight={headerHeight}
+        >
             <StickyContainer
                 $width={dimensions.width}
                 $height={dimensions.height}
-                $backgroundColor={backgroundColor}
                 $headerHeight={headerHeight}
             >
                 <ResponsiveLottieAnimation
                     animations={animations}
-                    backgroundColor={backgroundColor}
                     loop={loop}
                     autoplay={autoplay}
                     scrollProgress={scrollYProgress}

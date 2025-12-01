@@ -6,8 +6,6 @@ import LottieAnimation from "./LottieAnimation";
 const Container = styled.div`
     width: ${(props) => props.$width || "100%"};
     height: ${(props) => props.$height || "auto"};
-    background: ${(props) =>
-        props.$backgroundColor || "rgba(255, 255, 255, 0.5)"};
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -33,7 +31,6 @@ export default function ResponsiveLottieAnimation({
     animations,
     heights = null,
     widths = {},
-    backgroundColor,
     loop = true,
     autoplay = true,
     scrollSync = false,
@@ -69,11 +66,7 @@ export default function ResponsiveLottieAnimation({
     const width = widths[currentBreakpoint] || widths.desktop || "100%";
 
     return (
-        <Container
-            $height={height}
-            $width={width}
-            $backgroundColor={backgroundColor}
-        >
+        <Container $height={height} $width={width}>
             <LottieAnimation
                 path={animationPath}
                 fallbackPath={

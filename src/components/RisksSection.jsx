@@ -189,6 +189,37 @@ const ParagraphSix = styled(Paragraph)`
     max-width: 100%;
 `;
 
+const FinalQuoteWrapper = styled(motion.div)`
+    position: relative;
+    background: transparent;
+`;
+
+const FinalQuoteSVGWrapper = styled.svg`
+    width: 100%;
+    height: 100%;
+    display: block;
+`;
+
+const FinalQuoteContent = styled(motion.div)`
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+`;
+
+const FinalQuoteCircle = styled(Circle)`
+    position: absolute;
+    bottom: ${-CIRCLE_SIZE / 2}px;
+    left: 40px;
+    margin-right: 0;
+    flex-shrink: 0;
+    transform: none;
+`;
+
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -409,24 +440,41 @@ export default function RisksSection() {
                     </ParagraphSixWrapper>
                 </ContentWrapper>
             </Container>
+            <Container>
+                <ContentWrapper>
+                    <FinalQuoteWrapper>
+                        <FinalQuoteSVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1038 558"
+                            fill="none"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M1037.5 243.364V457C1037.5 512.228 992.729 557 937.5 557H15.4639M0.5 384.856L0.5 226.513C0.5 171.285 45.2715 126.513 100.5 126.513L521 126.945V0"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </FinalQuoteSVGWrapper>
+                        <FinalQuoteContent>
+                            <Quote
+                                text={`"Insurers and reinsurers are in some ways the voice and the guide. Their expertise, especially when it comes to very large events such as hurricanes and floods, is what industry outside insurance relies on"`}
+                                attribution="Daniel Ralph, Professor of Operations Research, Cambridge Judge Business School, Academic Director, Cambridge Centre for Risk Studies"
+                                variants={itemVariants}
+                            />
+                        </FinalQuoteContent>
+                    </FinalQuoteWrapper>
+                </ContentWrapper>
+                <FinalQuoteCircle />
+            </Container>
             <LottieScrolljack
                 animations={{
                     mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP01.json",
                     tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
                     desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
                 }}
-                backgroundColor="#F2F0EA"
                 loop={true}
             />
-            <Container>
-                <ContentWrapper>
-                    <Quote
-                        text={`"Insurers and reinsurers are in some ways the voice and the guide. Their expertise, especially when it comes to very large events such as hurricanes and floods, is what industry outside insurance relies on"`}
-                        attribution="Daniel Ralph, Professor of Operations Research, Cambridge Judge Business School, Academic Director, Cambridge Centre for Risk Studies"
-                        variants={itemVariants}
-                    />
-                </ContentWrapper>
-            </Container>
         </>
     );
 }

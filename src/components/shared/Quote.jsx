@@ -13,7 +13,7 @@ export const QuoteText = styled.p`
     font-style: italic;
     font-weight: 400;
     line-height: 120%; /* 48px */
-    margin: 0 0 16px 0;
+    margin: 0 0 32px 0;
     letter-spacing: 0;
 `;
 
