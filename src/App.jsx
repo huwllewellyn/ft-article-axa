@@ -15,8 +15,8 @@ function App() {
     return (
         <AppContainer>
             <IntroSection />
-            <RisksSection />
-            <PolycrisisSection />
+            <RisksSection backgroundColor="#f2f0ea" />
+            <PolycrisisSection backgroundColor="#b6c1d3" />
             <NexusInActionSection />
             <RiskPerceptionsSection />
             <PreparingForComplexitySection />

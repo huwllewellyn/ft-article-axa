@@ -1,259 +1,44 @@
-import styled from "styled-components";
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import Quote from "./shared/Quote";
 import LottieScrolljack from "./LottieScrolljack";
+import {
+    BackgroundContainer,
+    Container,
+    ContentWrapper,
+    SVGWrapper,
+    FirstSVGWrapper,
+    FullWidthSVGWrapper,
+    HalfWidthRightSVGWrapper,
+    Circle,
+    SecondCircle,
+    ParagraphFourCircle,
+    ParagraphWithCircle,
+    CirclesWrapper,
+    Paragraph,
+    ParagraphThree,
+    ParagraphFour,
+    ParagraphFourText,
+    ParagraphFive,
+    ParagraphFiveCircle,
+    QuoteWrapper,
+    QuoteSVGWrapper,
+    QuoteContent,
+    ParagraphSixWrapper,
+    ParagraphSixCircle,
+    ParagraphSix,
+    FinalQuoteWrapper,
+    FinalQuoteSVGWrapper,
+    FinalQuoteContent,
+    FinalQuoteCircle,
+    containerVariants,
+    itemVariants,
+    paragraphFourVariants,
+    paragraphFiveVariants,
+} from "./shared/SectionLayout";
 
-const CIRCLE_SIZE = 22.8;
-
-const BackgroundContainer = styled.div`
-    width: 100%;
-    background: #f2f0ea;
-    z-index: -1;
-`;
-
-const Container = styled.section`
-    width: 100%;
-    max-width: 1036px;
-    margin: 0 auto;
-    padding: 0px 40px;
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    position: relative;
-`;
-
-const ContentWrapper = styled(motion.div)`
-    margin: 0 auto;
-    position: relative;
-`;
-
-const SVGWrapper = styled(motion.svg)`
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 150px;
-    pointer-events: none;
-`;
-
-const FirstSVGWrapper = styled(SVGWrapper)`
-    transform: translateY(10px);
-`;
-
-const FullWidthSVGWrapper = styled(SVGWrapper)`
-    width: 100%;
-    height: 300px;
-`;
-
-const HalfWidthRightSVGWrapper = styled(SVGWrapper)`
-    width: 50%;
-    height: 200px;
-    margin-left: 50%;
-`;
-
-const Circle = styled.div`
-    width: ${CIRCLE_SIZE}px;
-    height: ${CIRCLE_SIZE}px;
-    border-radius: 50%;
-    background-color: #000000;
-    flex-shrink: 0;
-    margin-right: 16px;
-    transform: translateX(-50%);
-`;
-
-const SecondCircle = styled(Circle)`
-    transform: translateX(-50%) translateY(-10px);
-`;
-
-const ParagraphFourCircle = styled(Circle)`
-    margin-right: 0;
-    margin-bottom: auto;
-    margin-top: 0;
-    transform: none;
-`;
-
-const ParagraphWithCircle = styled(motion.div)`
-    display: flex;
-    align-items: center;
-    margin: 0;
-`;
-
-const CirclesWrapper = styled(motion.div)`
-    padding-left: ${CIRCLE_SIZE / 2}px;
-`;
-
-const Paragraph = styled(motion.p)`
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #000000;
-    margin: 0;
-    letter-spacing: 0;
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    text-align: left;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-
-    a {
-        color: #000000;
-        text-decoration: underline;
-        transition: opacity 0.2s ease;
-
-        &:hover {
-            opacity: 0.7;
-        }
-    }
-`;
-
-const ParagraphThree = styled(Paragraph)`
-    width: 40%;
-`;
-
-const ParagraphFour = styled(Paragraph)`
-    display: flex !important;
-    align-items: center;
-    width: 100%;
-    padding-right: 40%;
-    gap: 32px;
-`;
-
-const ParagraphFourText = styled.span`
-    flex: 1;
-    display: block;
-`;
-
-const ParagraphFive = styled(Paragraph)`
-    width: 50%;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-`;
-
-const ParagraphFiveCircle = styled(Circle)`
-    margin-right: 0;
-    flex-shrink: 0;
-    transform: none;
-`;
-
-const QuoteWrapper = styled(motion.div)`
-    transform: translateY(-8px);
-    position: relative;
-    background: transparent;
-    height: 720px; //hardcode height as designs have changed... this design is fucked
-`;
-
-const QuoteSVGWrapper = styled.svg`
-    width: 100%;
-    height: 100%;
-    display: block;
-`;
-
-const QuoteContent = styled(motion.div)`
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 40px;
-`;
-
-const ParagraphSixWrapper = styled(motion.div)`
-    max-width: 518px;
-    margin: -20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-`;
-
-const ParagraphSixCircle = styled(Circle)`
-    margin-right: 0;
-    flex-shrink: 0;
-    transform: none;
-`;
-
-const ParagraphSix = styled(Paragraph)`
-    text-align: left;
-    max-width: 100%;
-`;
-
-const FinalQuoteWrapper = styled(motion.div)`
-    position: relative;
-    background: transparent;
-`;
-
-const FinalQuoteSVGWrapper = styled.svg`
-    width: 100%;
-    height: 100%;
-    display: block;
-`;
-
-const FinalQuoteContent = styled(motion.div)`
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 50px;
-`;
-
-const FinalQuoteCircle = styled(Circle)`
-    position: absolute;
-    bottom: ${-CIRCLE_SIZE / 2}px;
-    left: 40px;
-    margin-right: 0;
-    flex-shrink: 0;
-    transform: none;
-`;
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-            delayChildren: 0.2,
-        },
-    },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: "easeOut" },
-    },
-};
-
-const paragraphFourVariants = {
-    hidden: { opacity: 0, y: 20, x: "40%", scaleX: 1 },
-    visible: {
-        opacity: 1,
-        y: -20,
-        x: "40%",
-        transition: { duration: 0.6, ease: "easeOut" },
-    },
-};
-
-const paragraphFiveVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: -CIRCLE_SIZE,
-        transition: { duration: 0.6, ease: "easeOut" },
-    },
-};
-
-export default function RisksSection() {
+export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
     return (
-        <BackgroundContainer>
+        <BackgroundContainer backgroundColor={backgroundColor}>
             <Container
                 as={motion.section}
                 initial="hidden"
