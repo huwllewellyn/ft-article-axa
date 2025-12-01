@@ -169,7 +169,7 @@ export const ParagraphSixCircle = styled(Circle)`
 export const BottomCenterCircle = styled(Circle)`
     position: absolute;
     bottom: ${-CIRCLE_SIZE / 2}px;
-    left: 50%;
+    left: ${(props) => props.left || "50%"};
     margin-right: 0;
     flex-shrink: 0;
     transform: none;
@@ -286,7 +286,7 @@ export const ParagraphSix = styled(Paragraph)`
 export const LeftToBottomQuoteWrapper = styled(motion.div)`
     position: relative;
     background: transparent;
-    height: 720px;
+    height: ${(props) => props.height || "720px"};
 `;
 
 export const QuoteContent = styled(motion.div)`

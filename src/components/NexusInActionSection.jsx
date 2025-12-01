@@ -15,6 +15,10 @@ import {
     FullWidthSVGWrapper,
     BottomLeftCircle,
     ContentWrapper,
+    LeftToBottomQuoteWrapper,
+    QuoteSVGWrapper,
+    QuoteContent,
+    BottomCenterCircle,
 } from "./shared/SectionLayout";
 
 const itemVariants = {
@@ -105,13 +109,46 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                 backgroundColor={backgroundColor}
                 loop={false}
             />
-            <Container maxWidth="1440px" padding="80px 40px">
+            <Container>
                 <ContentWrapper>
-                    <Quote
-                        text={`"It's striking how this interconnectedness amplifies the impact of each crisis, making the overall risk environment much more unpredictable and intense"`}
-                        attribution="Libby Benet, Global Chief Underwriting Officer, AXA XL"
-                        variants={itemVariants}
-                    />
+                    <SVGWrapper
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1 121"
+                        fill="none"
+                        preserveAspectRatio="none"
+                    >
+                        <path
+                            d="M0 0L0 121"
+                            stroke="black"
+                            strokeWidth="2"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                    </SVGWrapper>
+                    <LeftToBottomQuoteWrapper height="500px">
+                        <QuoteSVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1037 667"
+                            fill="none"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M1036.5 256.988L1036.5 100.5C1036.5 45.2711 991.73 0.499633 936.502 0.499631L-6.38027e-05 0.499604M1.00065 199.002L1.00063 413.502C1.00063 468.731 45.7722 513.502 101.001 513.502L300.5 513.502L346.002 513.502L446.894 513.502C487.35 513.502 520.091 546.403 519.894 586.859L519.502 667.003"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </QuoteSVGWrapper>
+                        <QuoteContent>
+                            <Quote
+                                text={`"It's striking how this interconnectedness amplifies the impact of each crisis, making the overall risk environment much more unpredictable and intense"`}
+                                attribution="Libby Benet, Global Chief Underwriting Officer, AXA XL"
+                                variants={itemVariants}
+                            />
+                        </QuoteContent>
+                        <BottomCenterCircle left="calc(50% - 10px)" />
+                    </LeftToBottomQuoteWrapper>
+                    <br />
+                    <br />
 
                     <Paragraph variants={itemVariants}>
                         "The report suggests that we're not just dealing with
