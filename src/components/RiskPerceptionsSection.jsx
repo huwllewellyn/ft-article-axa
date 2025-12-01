@@ -4,17 +4,7 @@ import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
-
-const Container = styled.section`
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    background: #ed5027;
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    position: relative;
-`;
+import { BackgroundContainer, Container } from "./shared/SectionLayout";
 
 const ContentWrapper = styled.div`
     max-width: 1000px;
@@ -54,10 +44,10 @@ const itemVariants = {
     },
 };
 
-export default function RiskPerceptionsSection() {
+export default function RiskPerceptionsSection({ backgroundColor = "#ed5027" }) {
     return (
-        <>
-            <Container>
+        <BackgroundContainer backgroundColor={backgroundColor}>
+            <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
                     <motion.div
                         initial="hidden"
@@ -93,10 +83,10 @@ export default function RiskPerceptionsSection() {
                     tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP05.json",
                     desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP05.json",
                 }}
-                backgroundColor="#ED5027"
+                backgroundColor={backgroundColor}
                 loop={false}
             />
-            <Container>
+            <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
                     <motion.div
                         initial="hidden"
@@ -145,7 +135,7 @@ export default function RiskPerceptionsSection() {
                             biodiversity risks are more visible for the wider
                             population than for people in other regions, the
                             public ranked biodiversity risks 4th – in line with
-                            the experts’ ranking.
+                            the experts' ranking.
                         </Description>
                     </motion.div>
                 </ContentWrapper>
@@ -156,9 +146,9 @@ export default function RiskPerceptionsSection() {
                     tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP06.json",
                     desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP06.json",
                 }}
-                backgroundColor="#ED5027"
+                backgroundColor={backgroundColor}
                 loop={true}
             />
-        </>
+        </BackgroundContainer>
     );
 }

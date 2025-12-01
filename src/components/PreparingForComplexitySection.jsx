@@ -5,17 +5,7 @@ import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
-
-const Container = styled.section`
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    background: #d7d7d7;
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    position: relative;
-`;
+import { BackgroundContainer, Container } from "./shared/SectionLayout";
 
 const ContentWrapper = styled.div`
     max-width: 900px;
@@ -64,10 +54,10 @@ const itemVariants = {
     },
 };
 
-export default function PreparingForComplexitySection() {
+export default function PreparingForComplexitySection({ backgroundColor = "#d7d7d7" }) {
     return (
-        <>
-            <Container>
+        <BackgroundContainer backgroundColor={backgroundColor}>
+            <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
                     <motion.div
                         initial="hidden"
@@ -138,8 +128,8 @@ export default function PreparingForComplexitySection() {
                     tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
                     desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
                 }}
-                backgroundColor="#D7D7D7"
+                backgroundColor={backgroundColor}
             />
-        </>
+        </BackgroundContainer>
     );
 }

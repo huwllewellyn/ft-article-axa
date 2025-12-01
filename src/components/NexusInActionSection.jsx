@@ -5,17 +5,7 @@ import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
 import LottieScrolljack from "./LottieScrolljack";
-
-const Container = styled.section`
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    background: #fde432;
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    position: relative;
-`;
+import { BackgroundContainer, Container } from "./shared/SectionLayout";
 
 const ContentWrapper = styled.div`
     max-width: 900px;
@@ -64,10 +54,10 @@ const itemVariants = {
     },
 };
 
-export default function NexusInActionSection() {
+export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
     return (
-        <>
-            <Container>
+        <BackgroundContainer backgroundColor={backgroundColor}>
+            <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
                     <motion.div
                         initial="hidden"
@@ -108,10 +98,10 @@ export default function NexusInActionSection() {
                     tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP03.json",
                     desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP03.json",
                 }}
-                backgroundColor="#FDE432"
+                backgroundColor={backgroundColor}
                 loop={false}
             />
-            <Container>
+            <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
                     <motion.div
                         initial="hidden"
@@ -126,24 +116,24 @@ export default function NexusInActionSection() {
                         />
 
                         <TextBlock variants={itemVariants}>
-                            “The report suggests that we're not just dealing
+                            "The report suggests that we're not just dealing
                             with isolated issues any more. Instead, we're facing
                             a web of crises that feed into each other, which
-                            complicates how we manage and respond to risks,”
+                            complicates how we manage and respond to risks,"
                             says Benet.
                         </TextBlock>
 
                         <TextBlock variants={itemVariants}>
                             Ben Cattaneo of The Decision-Making Studio points
-                            out that an additional complexity of today’s risk
+                            out that an additional complexity of today's risk
                             environment is its increasing asymmetry.
                             <br />
                             <br />
-                            “It means little things can have a big impact, and
+                            "It means little things can have a big impact, and
                             that might be cyber-related or a localised incident
-                            that affects a global supply chain,” he says. “But
+                            that affects a global supply chain," he says. "But
                             it means that you no longer just throw money at
-                            something to solve it.”
+                            something to solve it."
                         </TextBlock>
                     </motion.div>
                 </ContentWrapper>
@@ -154,9 +144,9 @@ export default function NexusInActionSection() {
                     tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP04.json",
                     desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP04.json",
                 }}
-                backgroundColor="#FDE432"
+                backgroundColor={backgroundColor}
                 loop={true}
             />
-        </>
+        </BackgroundContainer>
     );
 }

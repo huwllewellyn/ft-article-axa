@@ -2,17 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
-
-const Container = styled.section`
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    background: #f0eedf;
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    position: relative;
-`;
+import { BackgroundContainer, Container } from "./shared/SectionLayout";
 
 const ContentWrapper = styled.div`
     max-width: 900px;
@@ -61,9 +51,10 @@ const itemVariants = {
     },
 };
 
-export default function CollaborativeApproachSection() {
+export default function CollaborativeApproachSection({ backgroundColor = "#f0eedf" }) {
     return (
-        <Container>
+        <BackgroundContainer backgroundColor={backgroundColor}>
+            <Container maxWidth="1440px" padding="80px 40px">
             <ContentWrapper>
                 <motion.div
                     initial="hidden"
@@ -111,6 +102,7 @@ export default function CollaborativeApproachSection() {
                     />
                 </motion.div>
             </ContentWrapper>
-        </Container>
+            </Container>
+        </BackgroundContainer>
     );
 }
