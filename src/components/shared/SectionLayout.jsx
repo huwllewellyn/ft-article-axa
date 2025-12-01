@@ -39,7 +39,7 @@ export const ContentWrapper = styled(motion.div)`
 export const SVGWrapper = styled(motion.svg)`
     top: 0;
     left: 0;
-    width: 50%;
+    width: 100%;
     height: 150px;
     pointer-events: none;
     display: block;
@@ -58,6 +58,18 @@ export const HalfWidthRightSVGWrapper = styled(SVGWrapper)`
     width: 50%;
     height: 200px;
     margin-left: 50%;
+`;
+
+export const HalfWidthLeftSVGContainer = styled.div`
+    position: relative;
+    width: 50%;
+    margin-right: auto;
+`;
+
+export const HalfWidthRightSVGContainer = styled.div`
+    position: relative;
+    width: 50%;
+    margin-left: auto;
 `;
 
 export const QuoteSVGWrapper = styled.svg`
@@ -181,24 +193,6 @@ export const TextBlock = styled.p`
     &:last-of-type {
         margin-bottom: 80px;
     }
-`;
-
-export const ParagraphWithCircle = styled(motion.div)`
-    display: flex;
-    align-items: center;
-    margin: 0;
-`;
-
-export const ParagraphThree = styled(Paragraph)`
-    width: 40%;
-`;
-
-export const ParagraphFour = styled(Paragraph)`
-    display: flex !important;
-    align-items: center;
-    width: 100%;
-    padding-right: 40%;
-    gap: 32px;
 `;
 
 export const ParagraphFourText = styled.span`

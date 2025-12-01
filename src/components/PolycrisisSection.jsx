@@ -13,14 +13,11 @@ import {
     polycrisisContainerVariants,
     polycrisisItemVariants,
     AboveTopLeftCircle,
+    BottomLeftCircle,
+    HalfWidthRightSVGContainer,
+    SVGWrapper,
+    HalfWidthLeftSVGContainer,
 } from "./shared/SectionLayout";
-
-const SVGWrapper = styled(motion.svg)`
-    width: 50%;
-    height: auto;
-    pointer-events: none;
-    display: block;
-`;
 
 const ParagraphWrapper = styled.div`
     width: 493px;
@@ -49,20 +46,21 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
 
                         <HeaderAnimationWrapper />
 
-                        <SVGWrapper
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 521 469"
-                            fill="none"
-                            preserveAspectRatio="none"
-                        >
-                            <AboveTopLeftCircle />
-                            <path
-                                d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
-                                stroke="black"
-                                strokeWidth="1"
-                                vectorEffect="non-scaling-stroke"
-                            />
-                        </SVGWrapper>
+                        <HalfWidthLeftSVGContainer>
+                            <SVGWrapper
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 521 469"
+                                fill="none"
+                                preserveAspectRatio="none"
+                            >
+                                <path
+                                    d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
+                                    stroke="black"
+                                    strokeWidth="1"
+                                    vectorEffect="non-scaling-stroke"
+                                />
+                            </SVGWrapper>
+                        </HalfWidthLeftSVGContainer>
 
                         <ParagraphWrapper>
                             <Paragraph variants={polycrisisItemVariants}>
@@ -83,6 +81,23 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                                 year.
                             </Paragraph>
                         </ParagraphWrapper>
+
+                        <HalfWidthRightSVGContainer>
+                            <SVGWrapper
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 520 165"
+                                fill="none"
+                                preserveAspectRatio="none"
+                            >
+                                <path
+                                    d="M470.3 0.5C497.473 0.5 519.5 22.5275 519.5 49.6998V82.5C519.5 127.787 482.787 164.5 437.5 164.5H0"
+                                    stroke="black"
+                                    strokeWidth="1"
+                                    vectorEffect="non-scaling-stroke"
+                                />
+                            </SVGWrapper>
+                            <BottomLeftCircle />
+                        </HalfWidthRightSVGContainer>
                     </motion.div>
                 </ContentWrapper>
             </Container>

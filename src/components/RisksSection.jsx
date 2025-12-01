@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Quote from "./shared/Quote";
 import LottieScrolljack from "./LottieScrolljack";
+import styled from "styled-components";
 import {
     BackgroundContainer,
     Container,
@@ -8,18 +9,15 @@ import {
     SVGWrapper,
     FirstSVGWrapper,
     FullWidthSVGWrapper,
-    HalfWidthRightSVGWrapper,
+    BottomLeftCircle,
+    HalfWidthRightSVGContainer,
     Circle,
     AboveTopLeftCircle,
     ParagraphFourCircle,
-    ParagraphWithCircle,
     CirclesWrapper,
     Paragraph,
-    ParagraphThree,
-    ParagraphFour,
     ParagraphFourText,
     ParagraphFive,
-    ParagraphFiveCircle,
     QuoteWrapper,
     QuoteSVGWrapper,
     QuoteContent,
@@ -34,6 +32,22 @@ import {
     paragraphFourVariants,
     paragraphFiveVariants,
 } from "./shared/SectionLayout";
+
+const ParagraphWithCircle = styled(motion.div)`
+    display: flex;
+    align-items: center;
+    margin: 0;
+`;
+const ParagraphThree = styled(Paragraph)`
+    width: 40%;
+`;
+const ParagraphFour = styled(Paragraph)`
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    padding-right: 40%;
+    gap: 32px;
+`;
 
 export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
     return (
@@ -114,19 +128,22 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         </ParagraphFourText>
                     </ParagraphFour>
 
-                    <HalfWidthRightSVGWrapper
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 520 165"
-                        fill="none"
-                        preserveAspectRatio="none"
-                    >
-                        <path
-                            d="M470.3 0.5C497.473 0.5 519.5 22.5275 519.5 49.6998V82.5C519.5 127.787 482.787 164.5 437.5 164.5H0"
-                            stroke="black"
-                            strokeWidth="1"
-                            vectorEffect="non-scaling-stroke"
-                        />
-                    </HalfWidthRightSVGWrapper>
+                    <HalfWidthRightSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 520 165"
+                            fill="none"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M470.3 0.5C497.473 0.5 519.5 22.5275 519.5 49.6998V82.5C519.5 127.787 482.787 164.5 437.5 164.5H0"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                        <BottomLeftCircle />
+                    </HalfWidthRightSVGContainer>
 
                     <ParagraphFive variants={paragraphFiveVariants}>
                         <span>
