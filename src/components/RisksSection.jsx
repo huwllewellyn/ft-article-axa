@@ -10,7 +10,7 @@ import {
     FullWidthSVGWrapper,
     HalfWidthRightSVGWrapper,
     Circle,
-    SecondCircle,
+    AboveTopLeftCircle,
     ParagraphFourCircle,
     ParagraphWithCircle,
     CirclesWrapper,
@@ -29,8 +29,7 @@ import {
     FinalQuoteWrapper,
     FinalQuoteSVGWrapper,
     FinalQuoteContent,
-    FinalQuoteCircle,
-    containerVariants,
+    BottomCenterCircle,
     itemVariants,
     paragraphFourVariants,
     paragraphFiveVariants,
@@ -44,7 +43,6 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={containerVariants}
             >
                 <ContentWrapper>
                     <CirclesWrapper>
@@ -81,7 +79,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             />
                         </SVGWrapper>
                         <ParagraphWithCircle variants={itemVariants}>
-                            <SecondCircle />
+                            <AboveTopLeftCircle />
                         </ParagraphWithCircle>
                     </CirclesWrapper>
 
@@ -147,7 +145,6 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             everything is interconnected and hard to isolate,"
                             he says.
                         </span>
-                        <ParagraphFiveCircle />
                     </ParagraphFive>
 
                     <SVGWrapper
@@ -242,7 +239,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         </FinalQuoteContent>
                     </FinalQuoteWrapper>
                 </ContentWrapper>
-                <FinalQuoteCircle />
+                <BottomCenterCircle />
             </Container>
             <LottieScrolljack
                 animations={{
@@ -250,6 +247,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                     tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
                     desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
                 }}
+                trackHeight={"2000px"}
                 loop={true}
             />
         </BackgroundContainer>

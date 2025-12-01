@@ -8,19 +8,33 @@ import {
     BackgroundContainer,
     Container,
     TextBlock,
+    ContentWrapper,
+    Paragraph,
     polycrisisContainerVariants,
     polycrisisItemVariants,
+    AboveTopLeftCircle,
 } from "./shared/SectionLayout";
 
-const ContentWrapper = styled.div`
-    max-width: 900px;
-    margin: 0 auto;
+const SVGWrapper = styled(motion.svg)`
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+    display: block;
+`;
+
+const ParagraphWrapper = styled.div`
+    width: 493px;
 `;
 
 export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container maxWidth="1440px" padding="80px 40px">
+            <Container
+                as={motion.section}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+            >
                 <ContentWrapper>
                     <motion.div
                         initial="hidden"
@@ -35,20 +49,40 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
 
                         <HeaderAnimationWrapper />
 
-                        <TextBlock variants={polycrisisItemVariants}>
-                            One dimension of this more complex threat landscape
-                            is the emergence of new threats that were barely on
-                            the horizon just a few years ago.
-                            <br />
-                            <br />
-                            GenAI has already had a significant impact, with{" "}
-                            <a href="https://www.hostinger.com/in/tutorials/how-many-companies-use-ai">
-                                78 per cent of companies worldwide now using AI
-                            </a>{" "}
-                            in some part of their operations, according to
-                            Hostinger, the web-hosting service. That is a{" "}
-                            <b>55 per cent</b> increase over the previous year.
-                        </TextBlock>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 521 469"
+                            fill="none"
+                            preserveAspectRatio="none"
+                        >
+                            <AboveTopLeftCircle />
+                            <path
+                                d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+
+                        <ParagraphWrapper>
+                            <Paragraph variants={polycrisisItemVariants}>
+                                <AboveTopLeftCircle />
+                                One dimension of this more complex threat
+                                landscape is the emergence of new threats that
+                                were barely on the horizon just a few years ago.
+                                <br />
+                                <br />
+                                GenAI has already had a significant impact, with{" "}
+                                <a href="https://www.hostinger.com/in/tutorials/how-many-companies-use-ai">
+                                    78 per cent of companies worldwide now using
+                                    AI
+                                </a>{" "}
+                                in some part of their operations, according to
+                                Hostinger, the web-hosting service. That is a{" "}
+                                <b>55 per cent</b> increase over the previous
+                                year.
+                            </Paragraph>
+                        </ParagraphWrapper>
                     </motion.div>
                 </ContentWrapper>
             </Container>
@@ -69,7 +103,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                         viewport={{ once: true, margin: "-100px" }}
                         variants={polycrisisContainerVariants}
                     >
-                        <TextBlock variants={polycrisisItemVariants}>
+                        <Paragraph variants={polycrisisItemVariants}>
                             Yet, as the recently released{" "}
                             <a href="https://axaxl.com/fast-fast-forward/articles/axa-future-risks-report-2025">
                                 <strong>AXA Future Risks Report, 2025</strong>
@@ -82,9 +116,9 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             That is a stark contrast with just five years ago,
                             when neither experts nor the general public ranked
                             them among their top 10 risks.
-                        </TextBlock>
+                        </Paragraph>
 
-                        <TextBlock variants={polycrisisItemVariants}>
+                        <Paragraph variants={polycrisisItemVariants}>
                             Beyond specific risks, both experts and members of
                             the public – 95 per cent and 93 per cent,
                             respectively – believe that{" "}
@@ -93,7 +127,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             intertwined as never before, says Scott Gunter,
                             Chief Executive Officer at AXA XL, the property and
                             casualty (P&C) and specialty risk division of AXA.
-                        </TextBlock>
+                        </Paragraph>
 
                         <Quote
                             text={`"The polycrisis adds uncertainty into the mix, and that is a challenge for insurance and reinsurance companies to deal with," he says. "When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}

@@ -86,7 +86,7 @@ export const Circle = styled.div`
     transform: translateX(-50%);
 `;
 
-export const SecondCircle = styled(Circle)`
+export const AboveTopLeftCircle = styled(Circle)`
     transform: translateX(-50%) translateY(-10px);
 `;
 
@@ -109,10 +109,19 @@ export const ParagraphSixCircle = styled(Circle)`
     transform: none;
 `;
 
-export const FinalQuoteCircle = styled(Circle)`
+export const BottomCenterCircle = styled(Circle)`
     position: absolute;
     bottom: ${-CIRCLE_SIZE / 2}px;
     left: 40px;
+    margin-right: 0;
+    flex-shrink: 0;
+    transform: none;
+`;
+
+export const BottomLeftCircle = styled(Circle)`
+    position: absolute;
+    bottom: ${-CIRCLE_SIZE / 2}px;
+    left: 0;
     margin-right: 0;
     flex-shrink: 0;
     transform: none;
@@ -223,7 +232,6 @@ export const ParagraphSix = styled(Paragraph)`
 // ============================================================================
 
 export const QuoteWrapper = styled(motion.div)`
-    transform: translateY(-8px);
     position: relative;
     background: transparent;
     height: 720px;
@@ -233,7 +241,6 @@ export const QuoteContent = styled(motion.div)`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100%;
     display: flex;
     align-items: flex-start;
