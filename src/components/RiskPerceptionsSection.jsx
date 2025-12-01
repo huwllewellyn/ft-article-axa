@@ -70,7 +70,7 @@ export default function RiskPerceptionsSection() {
                             title="Risk perceptions around the world"
                         />
 
-                        <HeaderAnimationWrapper />
+                        <HeaderAnimationWrapper filename="AXA_HEAD_03_Optimised" />
 
                         <Description variants={itemVariants}>
                             Adding to this matrix of complexity, perceived risks

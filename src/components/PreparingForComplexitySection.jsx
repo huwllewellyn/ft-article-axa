@@ -80,7 +80,7 @@ export default function PreparingForComplexitySection() {
                             title="Preparing for complexity – rethinking resilience"
                         />
 
-                        <HeaderAnimationWrapper />
+                        <HeaderAnimationWrapper filename="AXA_HEAD_04_Optimised" />
 
                         <TextBlock variants={itemVariants}>
                             Against the polycrisis backdrop, bright spots are

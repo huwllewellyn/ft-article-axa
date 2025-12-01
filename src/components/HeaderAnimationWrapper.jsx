@@ -11,13 +11,14 @@ const HeaderAnimationContainer = styled.div`
     justify-content: center;
 `;
 
-export default function HeaderAnimationWrapper({ animationPath = '/lottie/headers/AXA_HEAD_01_Optimised.json' }) {
+export default function HeaderAnimationWrapper({ filename = 'AXA_HEAD_01_Optimised', animationPath }) {
+    const path = animationPath || `/lottie/headers/${filename}.json`;
     const [height, setHeight] = useState('150px');
 
     useEffect(() => {
         const fetchAspectRatio = async () => {
             try {
-                const response = await fetch(animationPath);
+                const response = await fetch(path);
                 const data = await response.json();
 
                 if (data.w && data.h) {
@@ -36,12 +37,12 @@ export default function HeaderAnimationWrapper({ animationPath = '/lottie/header
         fetchAspectRatio();
         window.addEventListener('resize', fetchAspectRatio);
         return () => window.removeEventListener('resize', fetchAspectRatio);
-    }, [animationPath]);
+    }, [path]);
 
     return (
         <HeaderAnimationContainer $height={height}>
             <LottieAnimation
-                path={animationPath}
+                path={path}
                 height={height}
                 width="100%"
                 loop={true}

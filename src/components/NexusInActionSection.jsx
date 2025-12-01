@@ -80,7 +80,7 @@ export default function NexusInActionSection() {
                             title="The nexus in action - how risks collide"
                         />
 
-                        <HeaderAnimationWrapper />
+                        <HeaderAnimationWrapper filename="AXA_HEAD_02_Optimised" />
 
                         <TextBlock variants={itemVariants}>
                             The interconnectedness of risk is on full display
