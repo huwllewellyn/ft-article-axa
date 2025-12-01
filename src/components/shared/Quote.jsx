@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const QuoteContainer = styled(motion.div)`
-    margin: 60px 0;
     padding: 0;
 `;
 

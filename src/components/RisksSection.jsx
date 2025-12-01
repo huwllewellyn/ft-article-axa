@@ -8,16 +8,29 @@ const CIRCLE_SIZE = 22.8;
 
 const Container = styled.section`
     width: 100%;
-    max-width: 1440px;
+    max-width: 1036px;
     margin: 0 auto;
     padding: 0px 40px;
     background: #f2f0ea;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #f2f0ea;
+        z-index: -1;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
 `;
 
 const ContentWrapper = styled(motion.div)`
-    max-width: 800px;
     margin: 0 auto;
     position: relative;
 `;
@@ -133,18 +146,27 @@ const ParagraphFiveCircle = styled(Circle)`
 `;
 
 const QuoteWrapper = styled(motion.div)`
+    transform: translateY(-8px);
     position: relative;
     background: transparent;
+    height: 720px; //hardcode height as designs have changed... this design is fucked
 `;
 
 const QuoteSVGWrapper = styled.svg`
+    width: 100%;
+    height: 100%;
+    display: block;
+`;
+
+const QuoteContent = styled(motion.div)`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: -1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 40px;
 `;
 
 const containerVariants = {
@@ -313,7 +335,6 @@ export default function RisksSection() {
                             vectorEffect="non-scaling-stroke"
                         />
                     </SVGWrapper>
-
                     <QuoteWrapper>
                         <QuoteSVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
@@ -328,25 +349,29 @@ export default function RisksSection() {
                                 vectorEffect="non-scaling-stroke"
                             />
                         </QuoteSVGWrapper>
-                        <Quote
-                            text={
-                                <>
-                                    "It's difficult to talk about geopolitics
-                                    without also talking about AI, climate
-                                    change or societal polarisation — and no
-                                    organisation has a single unit that covers
-                                    all of these together.
-                                    <br />
-                                    <br />
-                                    That's why the emphasis needs to move away
-                                    from analysing risks in isolation, and
-                                    towards examining them in an integrated way
-                                    at the moments when key decisions are made"
-                                </>
-                            }
-                            attribution="Ben Cattaneo, Founder, The Decision-Making Studio"
-                            variants={itemVariants}
-                        />
+                        <QuoteContent>
+                            <Quote
+                                text={
+                                    <>
+                                        "It's difficult to talk about
+                                        geopolitics without also talking about
+                                        AI, climate change or societal
+                                        polarisation — and no organisation has a
+                                        single unit that covers all of these
+                                        together.
+                                        <br />
+                                        <br />
+                                        That's why the emphasis needs to move
+                                        away from analysing risks in isolation,
+                                        and towards examining them in an
+                                        integrated way at the moments when key
+                                        decisions are made"
+                                    </>
+                                }
+                                attribution="Ben Cattaneo, Founder, The Decision-Making Studio"
+                                variants={itemVariants}
+                            />
+                        </QuoteContent>
                     </QuoteWrapper>
 
                     <Paragraph variants={itemVariants}>
