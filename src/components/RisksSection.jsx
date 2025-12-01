@@ -27,10 +27,12 @@ import {
     FinalQuoteContent,
     BottomCenterCircle,
     itemVariants,
-    paragraphFourVariants,
-    paragraphFiveVariants,
+    HalfWidthLeftWrapper,
     HalfWidthLeftSVGContainer,
     CIRCLE_SIZE,
+    HalfWidthRightWrapperWithRightGap,
+    TopLeftCircle,
+    TopRightCircle,
 } from "./shared/SectionLayout";
 
 const ParagraphWithCircle = styled(motion.div)`
@@ -103,12 +105,15 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         </ParagraphWithCircle>
                     </ParagraphOne>
 
-                    <ParagraphThree variants={itemVariants}>
-                        From climate change and geopolitical instability to
-                        cyber threat and the rise of artificial intelligence,
-                        the 21st century has brought new themes and threats that
-                        diverse stakeholders need to understand and plan for.
-                    </ParagraphThree>
+                    <HalfWidthLeftWrapper backgroundColor={backgroundColor}>
+                        <Paragraph variants={itemVariants}>
+                            From climate change and geopolitical instability to
+                            cyber threat and the rise of artificial
+                            intelligence, the 21st century has brought new
+                            themes and threats that diverse stakeholders need to
+                            understand and plan for.
+                        </Paragraph>
+                    </HalfWidthLeftWrapper>
                     <FullWidthSVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 1038 467"
@@ -123,16 +128,18 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         />
                     </FullWidthSVGWrapper>
 
-                    <ParagraphFour variants={paragraphFourVariants}>
-                        <ParagraphFourCircle />
-                        <ParagraphFourText>
+                    <HalfWidthRightWrapperWithRightGap
+                        backgroundColor={backgroundColor}
+                    >
+                        <TopLeftCircle style={{ left: "-20px" }} />
+                        <Paragraph>
                             But what about the interplay between these new
                             risks: how do they relate to and influence one
                             another, and what is the appropriate response in
                             terms of mitigating today's risk landscape while
                             building long-term resilience?
-                        </ParagraphFourText>
-                    </ParagraphFour>
+                        </Paragraph>
+                    </HalfWidthRightWrapperWithRightGap>
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
@@ -149,9 +156,8 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             />
                         </SVGWrapper>
                     </HalfWidthRightSVGContainer>
-
-                    <ParagraphFive variants={paragraphFiveVariants}>
-                        <span>
+                    <HalfWidthLeftWrapper backgroundColor={backgroundColor}>
+                        <Paragraph variants={itemVariants}>
                             Ben Cattaneo, founder of The Decision-Making Studio,
                             a consultancy that helps organisations make choices
                             in an increasingly uncertain world, argues that{" "}
@@ -166,8 +172,9 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             "We've entered an era of overlapping risks where
                             everything is interconnected and hard to isolate,"
                             he says.
-                        </span>
-                    </ParagraphFive>
+                        </Paragraph>
+                        <TopRightCircle />
+                    </HalfWidthLeftWrapper>
 
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
