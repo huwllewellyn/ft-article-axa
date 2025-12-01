@@ -102,6 +102,14 @@ export const AboveTopLeftCircle = styled(Circle)`
     transform: translateX(-50%) translateY(-10px);
 `;
 
+export const TopLeftCircle = styled(Circle)`
+    position: absolute;
+    left: -${CIRCLE_SIZE / 2}px;
+    margin-bottom: auto;
+    top: -${CIRCLE_SIZE / 2}px;
+    transform: none;
+`;
+
 export const ParagraphFourCircle = styled(Circle)`
     position: relative;
     left: -${CIRCLE_SIZE}px;
@@ -136,6 +144,23 @@ export const BottomLeftCircle = styled(Circle)`
     bottom: ${-CIRCLE_SIZE / 2}px;
     left: ${-CIRCLE_SIZE / 2}px;
     margin-right: 0;
+    flex-shrink: 0;
+    transform: none;
+`;
+
+export const BottomRightCircle = styled(Circle)`
+    position: absolute;
+    bottom: ${-CIRCLE_SIZE / 2}px;
+    right: ${-CIRCLE_SIZE / 2}px;
+    margin-right: 0;
+    flex-shrink: 0;
+    transform: none;
+`;
+
+export const NotQuiteBottomRightCircle = styled(Circle)`
+    position: absolute;
+    bottom: ${-CIRCLE_SIZE / 2}px;
+    right: calc(2% + ${CIRCLE_SIZE / 2}px);
     flex-shrink: 0;
     transform: none;
 `;

@@ -14,13 +14,26 @@ import {
     polycrisisItemVariants,
     AboveTopLeftCircle,
     BottomLeftCircle,
+    NotQuiteBottomRightCircle,
     HalfWidthRightSVGContainer,
     SVGWrapper,
     HalfWidthLeftSVGContainer,
+    HalfWidthRightSVGWrapper,
+    TopLeftCircle,
 } from "./shared/SectionLayout";
 
 const ParagraphWrapper = styled.div`
     width: 493px;
+`;
+
+const HalfWidthRightWrapperWithRightGap = styled.div`
+    position: relative;
+    width: 50%;
+    margin-left: auto;
+    margin-right: 10%;
+    padding-left: 40px;
+    background: ${(props) => props.backgroundColor || "transparent"};
+    outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
 `;
 
 export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
@@ -113,29 +126,24 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
             />
             <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={polycrisisContainerVariants}
-                    >
-                        <HalfWidthLeftSVGContainer>
-                            <SVGWrapper
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 521 469"
-                                fill="none"
-                                preserveAspectRatio="none"
-                                height="400px"
-                            >
-                                <path
-                                    d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
-                                    stroke="black"
-                                    strokeWidth="1"
-                                    vectorEffect="non-scaling-stroke"
-                                />
-                            </SVGWrapper>
-                            <BottomLeftCircle />
-                        </HalfWidthLeftSVGContainer>
+                    <HalfWidthLeftSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 521 339"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="300px"
+                        >
+                            <path
+                                d="M480.647 338L100.5 338C45.2716 338 0.500016 293.228 0.500021 238L0.500027 167.088C0.500032 111.86 45.2716 67.0882 100.5 67.0882L520.5 67.0882L520.5 2.07424e-05"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                    </HalfWidthLeftSVGContainer>
+                    <HalfWidthRightWrapperWithRightGap backgroundColor={backgroundColor}>
+                        <TopLeftCircle />
                         <Paragraph variants={polycrisisItemVariants}>
                             Yet, as the recently released{" "}
                             <a href="https://axaxl.com/fast-fast-forward/articles/axa-future-risks-report-2025">
@@ -150,24 +158,23 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             when neither experts nor the general public ranked
                             them among their top 10 risks.
                         </Paragraph>
+                    </HalfWidthRightWrapperWithRightGap>
 
-                        <Paragraph variants={polycrisisItemVariants}>
-                            Beyond specific risks, both experts and members of
-                            the public – 95 per cent and 93 per cent,
-                            respectively – believe that{" "}
-                            <b>risks in general are increasing</b>. More
-                            importantly, the principal risks today are
-                            intertwined as never before, says Scott Gunter,
-                            Chief Executive Officer at AXA XL, the property and
-                            casualty (P&C) and specialty risk division of AXA.
-                        </Paragraph>
+                    <Paragraph variants={polycrisisItemVariants}>
+                        Beyond specific risks, both experts and members of the
+                        public – 95 per cent and 93 per cent, respectively –
+                        believe that <b>risks in general are increasing</b>.
+                        More importantly, the principal risks today are
+                        intertwined as never before, says Scott Gunter, Chief
+                        Executive Officer at AXA XL, the property and casualty
+                        (P&C) and specialty risk division of AXA.
+                    </Paragraph>
 
-                        <Quote
-                            text={`"The polycrisis adds uncertainty into the mix, and that is a challenge for insurance and reinsurance companies to deal with," he says. "When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}
-                            attribution="Scott Gunter, Chief Executive Officer, AXA XL"
-                            variants={polycrisisItemVariants}
-                        />
-                    </motion.div>
+                    <Quote
+                        text={`"The polycrisis adds uncertainty into the mix, and that is a challenge for insurance and reinsurance companies to deal with," he says. "When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}
+                        attribution="Scott Gunter, Chief Executive Officer, AXA XL"
+                        variants={polycrisisItemVariants}
+                    />
                 </ContentWrapper>
             </Container>
         </BackgroundContainer>
