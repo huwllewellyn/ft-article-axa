@@ -40,7 +40,7 @@ export const SVGWrapper = styled(motion.svg)`
     top: 0;
     left: 0;
     width: 100%;
-    height: 150px;
+    height: ${(props) => props.height || "150px"};
     pointer-events: none;
     display: block;
 `;
@@ -134,7 +134,7 @@ export const BottomCenterCircle = styled(Circle)`
 export const BottomLeftCircle = styled(Circle)`
     position: absolute;
     bottom: ${-CIRCLE_SIZE / 2}px;
-    left: 0;
+    left: ${-CIRCLE_SIZE / 2}px;
     margin-right: 0;
     flex-shrink: 0;
     transform: none;
