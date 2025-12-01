@@ -40,16 +40,6 @@ const ParagraphWithCircle = styled(motion.div)`
     align-items: center;
     margin: 0;
 `;
-const ParagraphThree = styled(Paragraph)`
-    width: 40%;
-`;
-const ParagraphFour = styled(Paragraph)`
-    display: flex !important;
-    align-items: center;
-    width: 100%;
-    padding-right: 40%;
-    gap: 32px;
-`;
 
 const ParagraphOne = styled(motion.div)`
     // Removed this styling to center the line

@@ -1,38 +1,15 @@
-import styled from "styled-components";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
-import { BackgroundContainer, Container } from "./shared/SectionLayout";
-
-const ContentWrapper = styled.div`
-    max-width: 900px;
-    margin: 0 auto;
-`;
-
-const TextBlock = styled.p`
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #000000;
-    margin-bottom: 40px;
-    letter-spacing: 0;
-
-    a {
-        color: #000000;
-        text-decoration: underline;
-    }
-
-    strong {
-        font-weight: 700;
-    }
-
-    &:last-of-type {
-        margin-bottom: 80px;
-    }
-`;
+import {
+    BackgroundContainer,
+    Container,
+    ContentWrapper,
+    Paragraph,
+} from "./shared/SectionLayout";
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,10 +31,17 @@ const itemVariants = {
     },
 };
 
-export default function PreparingForComplexitySection({ backgroundColor = "#d7d7d7" }) {
+export default function PreparingForComplexitySection({
+    backgroundColor = "#d7d7d7",
+}) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container maxWidth="1440px" padding="80px 40px">
+            <Container
+                as={motion.section}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+            >
                 <ContentWrapper>
                     <motion.div
                         initial="hidden"
@@ -72,7 +56,7 @@ export default function PreparingForComplexitySection({ backgroundColor = "#d7d7
 
                         <HeaderAnimationWrapper filename="AXA_HEAD_04_Optimised" />
 
-                        <TextBlock variants={itemVariants}>
+                        <Paragraph variants={itemVariants}>
                             Against the polycrisis backdrop, bright spots are
                             emerging. One is that a large majority of
                             respondents – 86 per cent of experts and 84 per cent
@@ -82,9 +66,9 @@ export default function PreparingForComplexitySection({ backgroundColor = "#d7d7
                             per cent of experts and 72 per cent of the general
                             population agree that insurers have an important
                             role in protecting against future risks. But how?
-                        </TextBlock>
+                        </Paragraph>
 
-                        <TextBlock variants={itemVariants}>
+                        <Paragraph variants={itemVariants}>
                             This year’s AXA Future Risks Report found that the
                             advent of AI is one of the biggest perceived risks
                             today. Yet Gunter argues that it cuts both ways.
@@ -92,9 +76,9 @@ export default function PreparingForComplexitySection({ backgroundColor = "#d7d7
                             cyber-threat world, but AI and big data is also a
                             powerful tool for helping us to manage clients’
                             risk,” he says.
-                        </TextBlock>
+                        </Paragraph>
 
-                        <TextBlock variants={itemVariants}>
+                        <Paragraph variants={itemVariants}>
                             Andrew Farr, AXA XL’s Global Chief Underwriting
                             Officer for Financial Lines, says that insurers are
                             integrating emerging technologies such as AI-driven
@@ -103,7 +87,7 @@ export default function PreparingForComplexitySection({ backgroundColor = "#d7d7
                             They are also designing insurance coverage to
                             industry-specific risks or to address other
                             fast-changing cyber risks.
-                        </TextBlock>
+                        </Paragraph>
 
                         <Quote
                             text={`"We're working closely with cyber security firms and offering proactive risk management services to help clients strengthen their defences before an attack happens"`}
@@ -111,14 +95,14 @@ export default function PreparingForComplexitySection({ backgroundColor = "#d7d7
                             variants={itemVariants}
                         />
 
-                        <TextBlock variants={itemVariants}>
+                        <Paragraph variants={itemVariants}>
                             Insurers are also promoting cyber resilience through
                             consulting, employee training, and incident response
                             planning. “Fostering better industry-wide
                             information sharing and best practices will improve
                             our collective defences and make everyone more
                             resilient against cyber threats,” says Farr.
-                        </TextBlock>
+                        </Paragraph>
                     </motion.div>
                 </ContentWrapper>
             </Container>

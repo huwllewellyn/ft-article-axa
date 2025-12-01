@@ -8,15 +8,11 @@ import {
     AboveTopLeftCircle,
     BackgroundContainer,
     Container,
+    ContentWrapper,
     SVGWrapper,
     HalfWidthLeftSVGContainer,
     BottomCenterCircle,
 } from "./shared/SectionLayout";
-
-const ContentWrapper = styled.div`
-    max-width: 1000px;
-    margin: 0 auto;
-`;
 
 const Description = styled(motion.p)`
     font-size: 19px;
@@ -56,7 +52,12 @@ export default function RiskPerceptionsSection({
 }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container maxWidth="1440px" padding="80px 40px">
+            <Container
+                as={motion.section}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+            >
                 <ContentWrapper>
                     <motion.div
                         initial="hidden"

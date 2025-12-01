@@ -3,6 +3,7 @@ import { ChapterNumber } from "./ChapterNumber";
 import { SectionTitle } from "./SectionTitle";
 
 export const TitleGroup = styled.div`
+    padding-top: 80px;
     text-align: center;
     margin-bottom: 80px;
 `;
