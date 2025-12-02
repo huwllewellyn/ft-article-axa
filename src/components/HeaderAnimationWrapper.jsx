@@ -12,7 +12,7 @@ const HeaderAnimationContainer = styled.div`
 `;
 
 export default function HeaderAnimationWrapper({
-    filename = "AXA_HEAD_01_Optimised",
+    filename = "AXA_HEAD_01_HALVED",
     animationPath,
 }) {
     const path = animationPath || `/lottie/headers/${filename}.json`;

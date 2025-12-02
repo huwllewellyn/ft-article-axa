@@ -47,7 +47,7 @@ export default function RiskPerceptionsSection({
                         title="Risk perceptions around the world"
                     />
 
-                    <HeaderAnimationWrapper filename="AXA_HEAD_03_Optimised" />
+                    <HeaderAnimationWrapper filename="AXA_HEAD_03_HALVED" />
 
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper

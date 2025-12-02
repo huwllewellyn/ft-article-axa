@@ -1,7 +1,10 @@
 import styled from "styled-components";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import Lottie from "lottie-react";
 import { getAssetPath } from "../utils/assetPath";
+import { getCurrentBreakpoint } from "../utils/breakpoints";
 
 const Container = styled.section`
     width: 100%;
@@ -204,6 +207,16 @@ const DecorativeVector = styled(motion.svg)`
     }
 `;
 
+const LottieAnimationWrapper = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+`;
+
 const ImageWrapper = styled(motion.div)`
     position: absolute;
     border-radius: 0;
@@ -320,6 +333,21 @@ const imageVariants = {
 };
 
 export default function IntroSection() {
+    const lottieRef = useRef(null);
+    const [animationData, setAnimationData] = useState(null);
+
+    useEffect(() => {
+        const breakpoint = getCurrentBreakpoint();
+        const animationPath = breakpoint === "mobile"
+            ? "/lottie/mobile/AXA_TOP.json"
+            : "/lottie/desktop/AXA_TOP.json";
+
+        fetch(animationPath)
+            .then((res) => res.json())
+            .then((data) => setAnimationData(data))
+            .catch((err) => console.error("Failed to load animation:", err));
+    }, []);
+
     return (
         <Container
             as={motion.section}
@@ -328,38 +356,17 @@ export default function IntroSection() {
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
         >
+            {animationData && (
+                <LottieAnimationWrapper>
+                    <Lottie
+                        lottieRef={lottieRef}
+                        animationData={animationData}
+                        loop={false}
+                        autoplay={true}
+                    />
+                </LottieAnimationWrapper>
+            )}
             <ContentWrapper>
-                {/* Decorative vector elements - positioned absolutely */}
-                <DecorativeVector
-                    className="vector-1"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    viewBox="0 0 852 370"
-                >
-                    <path
-                        d="M 852 0 Q 600 100, 400 250 Q 200 350, 0 370"
-                        stroke="#000000"
-                        strokeWidth="1"
-                        fill="none"
-                    />
-                </DecorativeVector>
-
-                <DecorativeVector
-                    className="vector-2"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    viewBox="0 0 852 915"
-                >
-                    <path
-                        d="M 0 0 Q 200 200, 400 400 Q 600 600, 852 915"
-                        stroke="#000000"
-                        strokeWidth="1"
-                        fill="none"
-                    />
-                </DecorativeVector>
-
                 <TitleContainer
                     initial="hidden"
                     animate="visible"

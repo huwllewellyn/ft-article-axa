@@ -51,7 +51,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             title="The age of polycrisis"
                         />
 
-                        <HeaderAnimationWrapper filename="AXA_HEAD_01_Optimised" />
+                        <HeaderAnimationWrapper filename="AXA_HEAD_01_HALVED" />
 
                         <HalfWidthLeftSVGContainer>
                             <SVGWrapper
