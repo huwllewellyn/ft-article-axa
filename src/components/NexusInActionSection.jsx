@@ -49,7 +49,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                         title="The nexus in action - how risks collide"
                     />
 
-                    <HeaderAnimationWrapper filename="AXA_HEAD_02_HALVED" />
+                    <HeaderAnimationWrapper filename="AXA_HEAD_02_HALVED" enableScrollSync={true} />
 
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper

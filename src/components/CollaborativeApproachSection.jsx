@@ -40,7 +40,7 @@ export default function CollaborativeApproachSection({
                         title="A collaborative approach"
                     />
 
-                    <HeaderAnimationWrapper filename="AXA_HEAD_05_HALVED" />
+                    <HeaderAnimationWrapper filename="AXA_HEAD_05_HALVED" enableScrollSync={true} />
 
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper

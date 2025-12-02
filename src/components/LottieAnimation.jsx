@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import styled from "styled-components";
-import { useMotionValueEvent } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
 
 const Container = styled.div`
@@ -30,7 +29,6 @@ export default function LottieAnimation({
     useEffect(() => {
         const loadAnimation = async () => {
             let data;
-            let loadedPath = path;
 
             try {
                 const fullPath = getAssetPath(path);
@@ -54,7 +52,6 @@ export default function LottieAnimation({
                             );
                         }
                         data = await fallbackResponse.json();
-                        loadedPath = fallbackPath;
                     } catch (fallbackErr) {
                         console.error(
                             `Failed to load both primary and fallback animation`,
@@ -64,7 +61,10 @@ export default function LottieAnimation({
                         return;
                     }
                 } else {
-                    console.error(`Failed to load lottie animation: ${path}`, err);
+                    console.error(
+                        `Failed to load lottie animation: ${path}`,
+                        err
+                    );
                     return;
                 }
             }
@@ -124,8 +124,7 @@ export default function LottieAnimation({
 
             // Calculate scroll progress (0 to 1)
             // Animation plays as element scrolls from bottom of viewport to top
-            const scrollProgress =
-                1 - (rect.top / (windowHeight + rect.height));
+            const scrollProgress = 1 - rect.top / (windowHeight + rect.height);
             const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
 
             // Get total frames and calculate target frame
@@ -144,13 +143,10 @@ export default function LottieAnimation({
 
     // Handle framer-motion scroll progress (only when scrollProgress MotionValue is provided)
     useEffect(() => {
-        if (!scrollProgress) {
-            return;
-        }
-
         const unsubscribe = scrollProgress.onChange((latest) => {
             const animation = animationRef.current;
             if (!animation) {
+                console.warn("[LottieAnimation] Animation not loaded yet");
                 return;
             }
 

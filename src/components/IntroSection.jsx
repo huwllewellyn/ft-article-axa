@@ -338,9 +338,10 @@ export default function IntroSection() {
 
     useEffect(() => {
         const breakpoint = getCurrentBreakpoint();
-        const animationPath = breakpoint === "mobile"
-            ? "/lottie/mobile/AXA_TOP.json"
-            : "/lottie/desktop/AXA_TOP.json";
+        const animationPath =
+            breakpoint === "mobile"
+                ? "/lottie/mobile/AXA_TOP.json"
+                : "/lottie/desktop/AXA_TOP.json";
 
         fetch(animationPath)
             .then((res) => res.json())
@@ -409,7 +410,7 @@ export default function IntroSection() {
                 </Subtitle>
 
                 {/* Images - positioned absolutely over content */}
-                <ImageWrapper
+                {/* <ImageWrapper
                     className="image-1"
                     variants={imageVariants}
                     initial="hidden"
@@ -467,7 +468,7 @@ export default function IntroSection() {
                         )}
                         alt="Supporting image"
                     />
-                </ImageWrapper>
+                </ImageWrapper> */}
             </ContentWrapper>
         </Container>
     );

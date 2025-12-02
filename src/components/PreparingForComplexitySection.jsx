@@ -43,7 +43,7 @@ export default function PreparingForComplexitySection({
                         title="Preparing for complexity – rethinking resilience"
                     />
 
-                    <HeaderAnimationWrapper filename="AXA_HEAD_04_HALVED" />
+                    <HeaderAnimationWrapper filename="AXA_HEAD_04_HALVED" enableScrollSync={true} />
 
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper

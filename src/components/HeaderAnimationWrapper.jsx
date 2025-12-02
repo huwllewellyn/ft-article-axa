@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useMotionValueEvent, useMotionValue } from "framer-motion";
 import styled from "styled-components";
 import LottieAnimation from "./LottieAnimation";
 
@@ -18,6 +19,8 @@ export default function HeaderAnimationWrapper({
 }) {
     const path = animationPath || `/lottie/headers/${filename}.json`;
     const [height, setHeight] = useState("150px");
+    const containerRef = useRef(null);
+    const scrollProgress = useMotionValue(0);
 
     useEffect(() => {
         const fetchAspectRatio = async () => {
@@ -46,15 +49,46 @@ export default function HeaderAnimationWrapper({
         return () => window.removeEventListener("resize", fetchAspectRatio);
     }, [path]);
 
+    // Custom scroll handler for viewport-based animation scrubbing
+    useEffect(() => {
+        const handleScroll = () => {
+            const container = containerRef.current;
+            if (!container) return;
+
+            const rect = container.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const headerTop = rect.top;
+
+            let progress = 0;
+
+            // 1. Calculate raw progress based on the full distance
+            // Range: Moves from 100% viewportHeight down to 50% viewportHeight
+            let rawProgress =
+                (viewportHeight - headerTop) / (2 * viewportHeight);
+
+            // 2. Clamp the value between 0 and 1
+            // This handles the "above viewport" and "below trigger" states automatically
+            progress = Math.max(0, Math.min(1, rawProgress));
+
+            scrollProgress.set(progress);
+        };
+
+        window.addEventListener("scroll", handleScroll, false);
+        handleScroll(); // Call once on mount to set initial state
+        return () => {
+            window.removeEventListener("scroll", handleScroll, false);
+        };
+    }, [enableScrollSync, scrollProgress]);
+
     return (
-        <HeaderAnimationContainer $height={height}>
+        <HeaderAnimationContainer ref={containerRef} $height={height}>
             <LottieAnimation
                 path={path}
                 height={height}
                 width="100%"
-                loop={!enableScrollSync}
-                autoplay={!enableScrollSync}
-                scrollSync={enableScrollSync}
+                loop={false}
+                autoplay={false}
+                scrollProgress={enableScrollSync ? scrollProgress : null}
             />
         </HeaderAnimationContainer>
     );
