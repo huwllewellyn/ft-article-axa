@@ -40,7 +40,10 @@ export default function CollaborativeApproachSection({
                         title="A collaborative approach"
                     />
 
-                    <HeaderAnimationWrapper filename="AXA_HEAD_05_HALVED" enableScrollSync={true} />
+                    <HeaderAnimationWrapper
+                        filename="AXA_HEAD_05_HALVED"
+                        enableScrollSync={true}
+                    />
 
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper
@@ -139,7 +142,7 @@ export default function CollaborativeApproachSection({
                         </FinalQuoteSVGWrapper>
                         <FinalQuoteContent>
                             <Quote
-                                text={`“It’s about going beyond providing a safety net and giving clients the confidence and comfort they need to be able to invest in the next phase of their business growth.”`}
+                                text={`“It’s about going beyond providing a safety net and giving clients the confidence and comfort they need to be able to invest in the next phase of their business growth”`}
                                 attribution="Scott Gunter, Chief Executive Officer, AXA XL"
                             />
                         </FinalQuoteContent>

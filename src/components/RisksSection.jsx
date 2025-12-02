@@ -208,7 +208,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                                         away from analysing risks in isolation,
                                         and towards examining them in an
                                         integrated way at the moments when key
-                                        decisions are made"
+                                        decisions are made."
                                     </>
                                 }
                                 attribution="Ben Cattaneo, Founder, The Decision-Making Studio"

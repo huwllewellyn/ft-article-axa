@@ -47,7 +47,10 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             title="The age of polycrisis"
                         />
 
-                        <HeaderAnimationWrapper filename="AXA_HEAD_01_HALVED" enableScrollSync={true} />
+                        <HeaderAnimationWrapper
+                            filename="AXA_HEAD_01_HALVED"
+                            enableScrollSync={true}
+                        />
 
                         <HalfWidthLeftSVGContainer>
                             <SVGWrapper
@@ -209,7 +212,21 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                         </QuoteSVGWrapper>
                         <QuoteContent>
                             <Quote
-                                text={`"The polycrisis adds uncertainty into the mix, and that is a challenge for insurance and reinsurance companies to deal with," he says. "When it comes to risk, we've got data, we've got information and we've got answers. Uncertainty relates to perception, and we have to go even deeper to understand what's going on"`}
+                                text={
+                                    <>
+                                        "The polycrisis adds uncertainty into
+                                        the mix, and that is a challenge for
+                                        insurance and reinsurance companies to
+                                        deal with."
+                                        <br />
+                                        <br />
+                                        "When it comes to risk, we've got data,
+                                        we've got information and we've got
+                                        answers. Uncertainty relates to
+                                        perception, and we have to go even
+                                        deeper to understand what's going on."
+                                    </>
+                                }
                                 attribution="Scott Gunter, Chief Executive Officer, AXA XL"
                                 variants={polycrisisItemVariants}
                             />

@@ -29,11 +29,9 @@ export default function HeaderAnimationWrapper({
 
             if (containerRef.current) {
                 const containerWidth = containerRef.current.offsetWidth;
-                console.log("[HeaderAnimationWrapper] Container width:", containerWidth, "Aspect ratio:", ASPECT_RATIO);
 
                 if (containerWidth > 0) {
                     const calculatedHeight = containerWidth / ASPECT_RATIO;
-                    console.log("[HeaderAnimationWrapper] Calculated height:", calculatedHeight);
                     setHeight(`${calculatedHeight}px`);
                 }
             }
