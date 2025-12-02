@@ -79,12 +79,16 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
 
                         <SVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 1 388"
+                            // 1. Widen the viewBox width from 1 to 20 (or 100)
+                            // This creates a stable coordinate system
+                            viewBox="0 0 20 388"
                             fill="none"
                             preserveAspectRatio="none"
                         >
                             <path
-                                d="M0 0L0 388"
+                                // 2. Center the line in the new width (x=10)
+                                // This ensures the stroke is never clipped
+                                d="M0 0 L0 388"
                                 stroke="black"
                                 strokeWidth="2"
                                 vectorEffect="non-scaling-stroke"
@@ -167,12 +171,12 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
 
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 1 121"
+                        viewBox="0 0 20 388"
                         fill="none"
                         preserveAspectRatio="none"
                     >
                         <path
-                            d="M0 0L0 121"
+                            d="M0 0 L0 388"
                             stroke="black"
                             strokeWidth="2"
                             vectorEffect="non-scaling-stroke"

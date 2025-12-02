@@ -1,11 +1,69 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
 
 // ============================================================================
 // CORE CONSTANTS
 // ============================================================================
 
 export const CIRCLE_SIZE = 22.8;
+
+// ============================================================================
+// HOOKS
+// ============================================================================
+
+export const useDrawingAnimation = (animationDuration = 5, reverse = false) => {
+    const [inView, setInView] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                }
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+    const animatePathChildren = (children) => {
+        return React.Children.map(children, (child) => {
+            if (child && child.type === "path") {
+                const fromLength = reverse ? 1.5 : 0;
+                const toLength = reverse ? 0 : 1.5;
+
+                return (
+                    <motion.path
+                        key={child.key}
+                        {...child.props}
+                        strokeLinecap="round" // Optional: square helps fill gaps better than round
+                        strokeLinejoin="round"
+                        initial={{ pathLength: fromLength }}
+                        animate={
+                            inView
+                                ? { pathLength: toLength }
+                                : { pathLength: fromLength }
+                        }
+                        transition={{
+                            duration: animationDuration,
+                            ease: "easeInOut",
+                        }}
+                    />
+                );
+            }
+            return child;
+        });
+    };
+
+    return { ref, animatePathChildren, inView };
+};
 
 // ============================================================================
 // BACKGROUND & CONTAINER
@@ -36,7 +94,7 @@ export const ContentWrapper = styled(motion.div)`
 // SVG WRAPPERS
 // ============================================================================
 
-export const SVGWrapper = styled(motion.svg)`
+const StyledSVGWrapper = styled(motion.svg)`
     top: 0;
     left: 0;
     width: 100%;
@@ -45,19 +103,40 @@ export const SVGWrapper = styled(motion.svg)`
     display: block;
 `;
 
-export const FirstSVGWrapper = styled(SVGWrapper)`
-    transform: translateY(10px);
-`;
+export const SVGWrapper = React.forwardRef(
+    ({ children, animationDuration = 1, reverse = false, ...props }, ref) => {
+        const { ref: internalRef, animatePathChildren } = useDrawingAnimation(
+            animationDuration,
+            reverse
+        );
+        const animatedChildren = animatePathChildren(children);
 
-export const FullWidthSVGWrapper = styled(SVGWrapper)`
-    width: 100%;
-`;
+        return (
+            <StyledSVGWrapper ref={internalRef} {...props}>
+                {animatedChildren}
+            </StyledSVGWrapper>
+        );
+    }
+);
 
-export const HalfWidthRightSVGWrapper = styled(SVGWrapper)`
-    width: 50%;
-    height: 200px;
-    margin-left: 50%;
-`;
+export const FirstSVGWrapper = (props) => (
+    <SVGWrapper
+        {...props}
+        style={{ transform: "translateY(10px)", ...props.style }}
+    />
+);
+
+export const FullWidthSVGWrapper = (props) => (
+    <SVGWrapper {...props} style={{ width: "100%", ...props.style }} />
+);
+
+export const HalfWidthRightSVGWrapper = (props) => (
+    <SVGWrapper
+        {...props}
+        height={props.height || "200px"}
+        style={{ width: "50%", marginLeft: "50%", ...props.style }}
+    />
+);
 
 export const HalfWidthLeftSVGContainer = styled.div`
     position: relative;

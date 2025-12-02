@@ -49,7 +49,10 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                         title="The nexus in action - how risks collide"
                     />
 
-                    <HeaderAnimationWrapper filename="AXA_HEAD_02_HALVED" enableScrollSync={true} />
+                    <HeaderAnimationWrapper
+                        filename="AXA_HEAD_02_HALVED"
+                        enableScrollSync={true}
+                    />
 
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper
@@ -117,12 +120,12 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                 <ContentWrapper>
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 1 121"
+                        viewBox="0 0 20 388"
                         fill="none"
                         preserveAspectRatio="none"
                     >
                         <path
-                            d="M0 0L0 121"
+                            d="M0 0 L0 388"
                             stroke="black"
                             strokeWidth="2"
                             vectorEffect="non-scaling-stroke"
