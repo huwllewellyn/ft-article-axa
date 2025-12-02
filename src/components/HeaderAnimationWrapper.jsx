@@ -32,9 +32,12 @@ export default function HeaderAnimationWrapper({
                     const aspectRatio = data.w / data.h;
                     // Get the actual width of the container div
                     const containerWidth = containerRef.current.offsetWidth;
-                    // Calculate height based on the container's width
-                    const calculatedHeight = containerWidth / aspectRatio;
-                    setHeight(`${calculatedHeight}px`);
+
+                    if (containerWidth > 0) {
+                        // Calculate height based on the container's width
+                        const calculatedHeight = containerWidth / aspectRatio;
+                        setHeight(`${calculatedHeight}px`);
+                    }
                 }
             } catch (err) {
                 console.warn(
@@ -44,12 +47,22 @@ export default function HeaderAnimationWrapper({
             }
         };
 
-        // Use a small delay to ensure the DOM is fully rendered
-        const timer = setTimeout(fetchAspectRatio, 0);
-        window.addEventListener("resize", fetchAspectRatio);
+        if (!containerRef.current) {
+            return;
+        }
+
+        // Use ResizeObserver to detect when container has actual dimensions
+        const resizeObserver = new ResizeObserver(() => {
+            fetchAspectRatio();
+        });
+
+        resizeObserver.observe(containerRef.current);
+
+        // Also call once immediately in case it's already sized
+        fetchAspectRatio();
+
         return () => {
-            clearTimeout(timer);
-            window.removeEventListener("resize", fetchAspectRatio);
+            resizeObserver.disconnect();
         };
     }, [path]);
 
