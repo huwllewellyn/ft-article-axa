@@ -28,12 +28,12 @@ export default function HeaderAnimationWrapper({
                 const response = await fetch(path);
                 const data = await response.json();
 
-                if (data.w && data.h) {
+                if (data.w && data.h && containerRef.current) {
                     const aspectRatio = data.w / data.h;
-                    const viewportWidth = window.innerWidth;
-                    // Account for padding (40px on each side = 80px total)
-                    const availableWidth = viewportWidth - 80;
-                    const calculatedHeight = availableWidth / aspectRatio;
+                    // Get the actual width of the container div
+                    const containerWidth = containerRef.current.offsetWidth;
+                    // Calculate height based on the container's width
+                    const calculatedHeight = containerWidth / aspectRatio;
                     setHeight(`${calculatedHeight}px`);
                 }
             } catch (err) {
@@ -44,9 +44,13 @@ export default function HeaderAnimationWrapper({
             }
         };
 
-        fetchAspectRatio();
+        // Use a small delay to ensure the DOM is fully rendered
+        const timer = setTimeout(fetchAspectRatio, 0);
         window.addEventListener("resize", fetchAspectRatio);
-        return () => window.removeEventListener("resize", fetchAspectRatio);
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("resize", fetchAspectRatio);
+        };
     }, [path]);
 
     // Custom scroll handler for viewport-based animation scrubbing
