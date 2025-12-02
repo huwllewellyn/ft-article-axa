@@ -23,48 +23,31 @@ export default function HeaderAnimationWrapper({
     const scrollProgress = useMotionValue(0);
 
     useEffect(() => {
-        const fetchAspectRatio = async () => {
-            try {
-                const response = await fetch(path);
-                const data = await response.json();
+        const calculateHeight = () => {
+            // Hard-coded aspect ratio: 1440 x 350
+            const ASPECT_RATIO = 1440 / 350;
 
-                if (data.w && data.h && containerRef.current) {
-                    const aspectRatio = data.w / data.h;
-                    // Get the actual width of the container div
-                    const containerWidth = containerRef.current.offsetWidth;
+            if (containerRef.current) {
+                const containerWidth = containerRef.current.offsetWidth;
+                console.log("[HeaderAnimationWrapper] Container width:", containerWidth, "Aspect ratio:", ASPECT_RATIO);
 
-                    if (containerWidth > 0) {
-                        // Calculate height based on the container's width
-                        const calculatedHeight = containerWidth / aspectRatio;
-                        setHeight(`${calculatedHeight}px`);
-                    }
+                if (containerWidth > 0) {
+                    const calculatedHeight = containerWidth / ASPECT_RATIO;
+                    console.log("[HeaderAnimationWrapper] Calculated height:", calculatedHeight);
+                    setHeight(`${calculatedHeight}px`);
                 }
-            } catch (err) {
-                console.warn(
-                    "Could not fetch header animation aspect ratio",
-                    err
-                );
             }
         };
 
-        if (!containerRef.current) {
-            return;
-        }
-
-        // Use ResizeObserver to detect when container has actual dimensions
-        const resizeObserver = new ResizeObserver(() => {
-            fetchAspectRatio();
-        });
-
-        resizeObserver.observe(containerRef.current);
-
-        // Also call once immediately in case it's already sized
-        fetchAspectRatio();
+        // Use 1 second timeout to ensure DOM is fully laid out
+        const timer = setTimeout(calculateHeight, 1000);
+        window.addEventListener("resize", calculateHeight);
 
         return () => {
-            resizeObserver.disconnect();
+            clearTimeout(timer);
+            window.removeEventListener("resize", calculateHeight);
         };
-    }, [path]);
+    }, []);
 
     // Custom scroll handler for viewport-based animation scrubbing
     useEffect(() => {
