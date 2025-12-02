@@ -13,11 +13,11 @@ const AppContainer = styled.div``;
 function App() {
     return (
         <AppContainer>
-            {/* <IntroSection /> */}
-            {/* <RisksSection backgroundColor="#f2f0ea" /> */}
-            {/* <PolycrisisSection backgroundColor="#b6c1d3" /> */}
-            {/* <NexusInActionSection backgroundColor="#fde432" /> */}
-            {/* <RiskPerceptionsSection backgroundColor="#ed5027" /> */}
+            <IntroSection />
+            <RisksSection backgroundColor="#f2f0ea" />
+            <PolycrisisSection backgroundColor="#b6c1d3" />
+            <NexusInActionSection backgroundColor="#fde432" />
+            <RiskPerceptionsSection backgroundColor="#ed5027" />
             <PreparingForComplexitySection backgroundColor="#d7d7d7" />
             <CollaborativeApproachSection backgroundColor="#f0eedf" />
         </AppContainer>
