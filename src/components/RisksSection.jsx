@@ -26,7 +26,6 @@ import {
     FinalQuoteSVGWrapper,
     FinalQuoteContent,
     BottomCenterCircle,
-    itemVariants,
     HalfWidthLeftParagraph,
     HalfWidthLeftSVGContainer,
     CIRCLE_SIZE,
@@ -35,13 +34,13 @@ import {
     TopRightCircle,
 } from "./shared/SectionLayout";
 
-const ParagraphWithCircle = styled(motion.div)`
+const ParagraphWithCircle = styled.div`
     display: flex;
     align-items: center;
     margin: 0;
 `;
 
-const ParagraphOne = styled(motion.div)`
+const ParagraphOne = styled.div`
     // Removed this styling to center the line
 `;
 
@@ -73,7 +72,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             </SVGWrapper>
                         </HalfWidthLeftSVGContainer>
 
-                        <ParagraphWithCircle variants={itemVariants}>
+                        <ParagraphWithCircle>
                             <Circle />
                             <Paragraph>Risk is all around us.</Paragraph>
                         </ParagraphWithCircle>
@@ -95,13 +94,13 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                                 vectorEffect="non-scaling-stroke"
                             />
                         </SVGWrapper>
-                        <ParagraphWithCircle variants={itemVariants}>
+                        <ParagraphWithCircle>
                             <AboveTopLeftCircle />
                         </ParagraphWithCircle>
                     </ParagraphOne>
 
                     <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
-                        <Paragraph variants={itemVariants}>
+                        <Paragraph>
                             From climate change and geopolitical instability to
                             cyber threat and the rise of artificial
                             intelligence, the 21st century has brought new
@@ -151,7 +150,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         </SVGWrapper>
                     </HalfWidthRightSVGContainer>
                     <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
-                        <Paragraph variants={itemVariants}>
+                        <Paragraph>
                             Ben Cattaneo, founder of The Decision-Making Studio,
                             a consultancy that helps organisations make choices
                             in an increasingly uncertain world, argues that{" "}
@@ -217,12 +216,11 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                                     </>
                                 }
                                 attribution="Ben Cattaneo, Founder, The Decision-Making Studio"
-                                variants={itemVariants}
                             />
                         </QuoteContent>
                     </LeftToBottomQuoteWrapper>
 
-                    <ParagraphSixWrapper variants={itemVariants}>
+                    <ParagraphSixWrapper>
                         <ParagraphSixCircle />
                         <ParagraphSix>
                             All of that has profound implications for the role
@@ -259,7 +257,6 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             <Quote
                                 text={`"Insurers and reinsurers are in some ways the voice and the guide. Their expertise, especially when it comes to very large events such as hurricanes and floods, is what industry outside insurance relies on"`}
                                 attribution="Daniel Ralph, Professor of Operations Research, Cambridge Judge Business School, Academic Director, Cambridge Centre for Risk Studies"
-                                variants={itemVariants}
                             />
                         </FinalQuoteContent>
                     </FinalLeftToBottomQuoteWrapper>

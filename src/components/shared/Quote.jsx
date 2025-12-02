@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const QuoteContainer = styled(motion.div)`
+export const QuoteContainer = styled.div`
     padding: 0;
 `;
 

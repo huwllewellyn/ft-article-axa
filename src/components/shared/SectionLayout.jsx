@@ -42,10 +42,10 @@ export const useDrawingAnimation = (animationDuration = 5, reverse = false) => {
                 const variants = {
                     hidden: {
                         pathLength: 0,
-                        pathOffset: reverse ? 1 : 0, // If reverse, start the dash at the very end
+                        pathOffset: reverse ? 1.5 : 0, // If reverse, start the dash at the very end
                     },
                     visible: {
-                        pathLength: 1.05, // Overshoot slightly to ensure full closure
+                        pathLength: 1.5, // Overshoot slightly to ensure full closure
                         pathOffset: 0, // Always end at 0 offset (covering the whole line)
                     },
                 };
@@ -73,6 +73,39 @@ export const useDrawingAnimation = (animationDuration = 5, reverse = false) => {
     return { ref, animatePathChildren, inView };
 };
 
+export const useIndependentParagraphAnimation = (animationDuration = 0.6) => {
+    const [inView, setInView] = useState(false);
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                }
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+    const variants = {
+        hidden: { opacity: 0, y: 80 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: animationDuration, ease: "easeOut" },
+        },
+    };
+
+    return { ref, variants, inView };
+};
+
 // ============================================================================
 // BACKGROUND & CONTAINER
 // ============================================================================
@@ -93,7 +126,7 @@ export const Container = styled.section`
     position: relative;
 `;
 
-export const ContentWrapper = styled(motion.div)`
+export const ContentWrapper = styled.div`
     margin: 0 auto;
     position: relative;
 `;
@@ -292,7 +325,7 @@ export const NotQuiteBottomRightCircle = styled(Circle)`
 // TEXT & PARAGRAPH STYLES
 // ============================================================================
 
-export const Paragraph = styled(motion.p)`
+const StyledParagraph = styled(motion.p)`
     font-size: 19px;
     font-weight: 400;
     line-height: 1.2;
@@ -317,6 +350,27 @@ export const Paragraph = styled(motion.p)`
         }
     }
 `;
+
+export const Paragraph = React.forwardRef(
+    ({ children, animationDuration = 0.6, ...props }, ref) => {
+        const {
+            ref: animationRef,
+            variants,
+            inView,
+        } = useIndependentParagraphAnimation(animationDuration);
+
+        return (
+            <motion.div
+                ref={animationRef}
+                initial="hidden"
+                animate={inView ? "visible" : "hidden"}
+                variants={variants}
+            >
+                <StyledParagraph {...props}>{children}</StyledParagraph>
+            </motion.div>
+        );
+    }
+);
 
 export const TextBlock = styled.p`
     font-size: 19px;

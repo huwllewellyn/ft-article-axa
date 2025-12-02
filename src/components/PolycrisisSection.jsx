@@ -36,76 +36,65 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                 viewport={{ once: true, margin: "-100px" }}
             >
                 <ContentWrapper>
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={polycrisisContainerVariants}
-                    >
-                        <SectionTitleGroup
-                            chapter="Chapter one"
-                            title="The age of polycrisis"
-                        />
+                    <SectionTitleGroup
+                        chapter="Chapter one"
+                        title="The age of polycrisis"
+                    />
 
-                        <HeaderAnimationWrapper
-                            filename="AXA_HEAD_01_HALVED"
-                            enableScrollSync={true}
-                        />
+                    <HeaderAnimationWrapper
+                        filename="AXA_HEAD_01_HALVED"
+                        enableScrollSync={true}
+                    />
 
-                        <HalfWidthLeftSVGContainer>
-                            <SVGWrapper
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 521 469"
-                                fill="none"
-                                preserveAspectRatio="none"
-                                height="400px"
-                            >
-                                <path
-                                    d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
-                                    stroke="black"
-                                    strokeWidth="1"
-                                    vectorEffect="non-scaling-stroke"
-                                />
-                            </SVGWrapper>
-                        </HalfWidthLeftSVGContainer>
-
-                        <HalfWidthLeftParagraph
-                            backgroundColor={backgroundColor}
-                        >
-                            <Paragraph variants={polycrisisItemVariants}>
-                                <AboveTopLeftCircle />
-                                One dimension of this more complex threat
-                                landscape is the emergence of new threats that
-                                were barely on the horizon just a few years ago.
-                                <br />
-                                <br />
-                                GenAI has already had a significant impact, with{" "}
-                                <a href="https://www.hostinger.com/in/tutorials/how-many-companies-use-ai">
-                                    78 per cent of companies worldwide now using
-                                    AI
-                                </a>{" "}
-                                in some part of their operations, according to
-                                Hostinger, the web-hosting service. That is a{" "}
-                                <b>55 per cent</b> increase over the previous
-                                year.
-                            </Paragraph>
-                        </HalfWidthLeftParagraph>
-                        <FullWidthSVGWrapper
+                    <HalfWidthLeftSVGContainer>
+                        <SVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 846 360"
+                            viewBox="0 0 521 469"
                             fill="none"
                             preserveAspectRatio="none"
                             height="400px"
                         >
                             <path
-                                d="M355.538 0.5H745.5C800.728 0.5 845.5 45.2715 845.5 100.5V171.011C845.5 226.24 800.728 271.011 745.5 271.011H0.5V359.5"
+                                d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
                                 stroke="black"
                                 strokeWidth="1"
                                 vectorEffect="non-scaling-stroke"
                             />
-                        </FullWidthSVGWrapper>
-                        <BottomLeftCircle />
-                    </motion.div>
+                        </SVGWrapper>
+                    </HalfWidthLeftSVGContainer>
+
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
+                        <Paragraph variants={polycrisisItemVariants}>
+                            <AboveTopLeftCircle />
+                            One dimension of this more complex threat landscape
+                            is the emergence of new threats that were barely on
+                            the horizon just a few years ago.
+                            <br />
+                            <br />
+                            GenAI has already had a significant impact, with{" "}
+                            <a href="https://www.hostinger.com/in/tutorials/how-many-companies-use-ai">
+                                78 per cent of companies worldwide now using AI
+                            </a>{" "}
+                            in some part of their operations, according to
+                            Hostinger, the web-hosting service. That is a{" "}
+                            <b>55 per cent</b> increase over the previous year.
+                        </Paragraph>
+                    </HalfWidthLeftParagraph>
+                    <FullWidthSVGWrapper
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 846 360"
+                        fill="none"
+                        preserveAspectRatio="none"
+                        height="400px"
+                    >
+                        <path
+                            d="M355.538 0.5H745.5C800.728 0.5 845.5 45.2715 845.5 100.5V171.011C845.5 226.24 800.728 271.011 745.5 271.011H0.5V359.5"
+                            stroke="black"
+                            strokeWidth="1"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                    </FullWidthSVGWrapper>
+                    <BottomLeftCircle />
                 </ContentWrapper>
             </Container>
             <LottieScrolljack
