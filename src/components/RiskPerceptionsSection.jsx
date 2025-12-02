@@ -57,7 +57,8 @@ export default function RiskPerceptionsSection({
                             viewBox="0 0 521 469"
                             fill="none"
                             preserveAspectRatio="none"
-                            height="400px"
+                            height="450px"
+                            reverse
                         >
                             <path
                                 d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
@@ -112,7 +113,7 @@ export default function RiskPerceptionsSection({
                 loop={false}
                 initialFrame={0.08}
             />
-            <Container maxWidth="1440px" padding="80px 40px">
+            <Container>
                 <ContentWrapper>
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper
@@ -120,7 +121,8 @@ export default function RiskPerceptionsSection({
                             viewBox="0 0 521 469"
                             fill="none"
                             preserveAspectRatio="none"
-                            height="400px"
+                            height="450px"
+                            reverse
                         >
                             <path
                                 d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
@@ -225,6 +227,8 @@ export default function RiskPerceptionsSection({
                 loop={true}
                 initialFrame={0.15}
             />
+            <br />
+            <br />
         </BackgroundContainer>
     );
 }

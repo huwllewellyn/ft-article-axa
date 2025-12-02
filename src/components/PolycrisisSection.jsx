@@ -52,7 +52,8 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             viewBox="0 0 521 469"
                             fill="none"
                             preserveAspectRatio="none"
-                            height="400px"
+                            height="450px"
+                            reverse
                         >
                             <path
                                 d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
@@ -107,7 +108,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                 loop={false}
                 initialFrame={0.1}
             />
-            <Container maxWidth="1440px" padding="80px 40px">
+            <Container>
                 <ContentWrapper>
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper
@@ -116,6 +117,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             fill="none"
                             preserveAspectRatio="none"
                             height="400px"
+                            reverse
                         >
                             <path
                                 d="M480.647 338L100.5 338C45.2716 338 0.500016 293.228 0.500021 238L0.500027 167.088C0.500032 111.86 45.2716 67.0882 100.5 67.0882L520.5 67.0882L520.5 2.07424e-05"
@@ -148,7 +150,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             viewBox="0 0 484 181"
                             fill="none"
                             preserveAspectRatio="none"
-                            height="200px"
+                            height="300px"
                         >
                             <path
                                 d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"

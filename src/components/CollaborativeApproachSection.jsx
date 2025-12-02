@@ -21,6 +21,7 @@ import {
     FinalQuoteSVGWrapper,
     FinalQuoteContent,
     FinalLeftToBottomQuoteWrapper,
+    BottomRightCircle,
 } from "./shared/SectionLayout";
 
 export default function CollaborativeApproachSection({
@@ -51,7 +52,8 @@ export default function CollaborativeApproachSection({
                             viewBox="0 0 521 469"
                             fill="none"
                             preserveAspectRatio="none"
-                            height="400px"
+                            height="450px"
+                            reverse
                         >
                             <path
                                 d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
@@ -64,6 +66,7 @@ export default function CollaborativeApproachSection({
 
                     <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
                         <AboveTopLeftCircle />
+                        <br />
                         <Paragraph>
                             Insurers are also partnering with <b>academia</b> in
                             their use of AI and big data to better understand
@@ -117,6 +120,8 @@ export default function CollaborativeApproachSection({
                         </SVGWrapper>
                     </HalfWidthRightSVGContainer>
                     <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
+                        <TopRightCircle right="-20px" />
+                        <BottomRightCircle />
                         <Paragraph>
                             Sharing of data and insight through closer
                             collaboration with clients, argues AXA XL’s Gunter,
