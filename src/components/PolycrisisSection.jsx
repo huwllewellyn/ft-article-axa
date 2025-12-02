@@ -26,10 +26,6 @@ import {
     FullWidthSVGWrapper,
 } from "./shared/SectionLayout";
 
-const ParagraphWrapper = styled.div`
-    width: 493px;
-`;
-
 export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>

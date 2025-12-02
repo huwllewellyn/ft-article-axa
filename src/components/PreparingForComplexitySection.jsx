@@ -9,6 +9,21 @@ import {
     Container,
     ContentWrapper,
     Paragraph,
+    AboveTopLeftCircle,
+    BottomLeftCircle,
+    HalfWidthRightSVGContainer,
+    SVGWrapper,
+    HalfWidthLeftSVGContainer,
+    TopLeftCircle,
+    TopRightCircle,
+    QuoteContent,
+    QuoteSVGWrapper,
+    LeftToBottomQuoteWrapper,
+    HalfWidthRightParagraph,
+    HalfWidthLeftParagraph,
+    FullWidthSVGWrapper,
+    BottomCenterCircle,
+    itemVariants,
 } from "./shared/SectionLayout";
 
 const containerVariants = {
@@ -19,15 +34,6 @@ const containerVariants = {
             staggerChildren: 0.2,
             delayChildren: 0.1,
         },
-    },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: "easeOut" },
     },
 };
 
@@ -43,20 +49,33 @@ export default function PreparingForComplexitySection({
                 viewport={{ once: true, margin: "-100px" }}
             >
                 <ContentWrapper>
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={containerVariants}
-                    >
-                        <SectionTitleGroup
-                            chapter="Chapter four"
-                            title="Preparing for complexity – rethinking resilience"
-                        />
+                    <SectionTitleGroup
+                        chapter="Chapter four"
+                        title="Preparing for complexity – rethinking resilience"
+                    />
 
-                        <HeaderAnimationWrapper filename="AXA_HEAD_04_HALVED" />
+                    <HeaderAnimationWrapper filename="AXA_HEAD_04_HALVED" />
 
-                        <Paragraph variants={itemVariants}>
+                    <HalfWidthLeftSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 521 469"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="400px"
+                        >
+                            <path
+                                d="M0.5 469L0.5 324.536L447.5 324.536C487.817 324.536 520.5 291.853 520.5 251.536L520.5 7.78766e-06"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                    </HalfWidthLeftSVGContainer>
+
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
+                        <AboveTopLeftCircle />
+                        <Paragraph>
                             Against the polycrisis backdrop, bright spots are
                             emerging. One is that a large majority of
                             respondents – 86 per cent of experts and 84 per cent
@@ -67,8 +86,24 @@ export default function PreparingForComplexitySection({
                             population agree that insurers have an important
                             role in protecting against future risks. But how?
                         </Paragraph>
-
-                        <Paragraph variants={itemVariants}>
+                    </HalfWidthLeftParagraph>
+                    <SVGWrapper
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 839 499"
+                        fill="none"
+                        preserveAspectRatio="none"
+                        height="400px"
+                    >
+                        <path
+                            d="M528.13 0.5H738.5C793.728 0.5 838.5 45.2715 838.5 100.5V156.125C838.5 211.354 793.728 256.125 738.5 256.125H100.5C45.2715 256.125 0.5 300.897 0.5 356.125V398.5C0.5 453.728 45.2715 498.5 100.5 498.5H419.5"
+                            stroke="black"
+                            strokeWidth="1"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                    </SVGWrapper>
+                    <HalfWidthRightParagraph backgroundColor={backgroundColor}>
+                        <TopLeftCircle />
+                        <Paragraph>
                             This year’s AXA Future Risks Report found that the
                             advent of AI is one of the biggest perceived risks
                             today. Yet Gunter argues that it cuts both ways.
@@ -77,7 +112,24 @@ export default function PreparingForComplexitySection({
                             powerful tool for helping us to manage clients’
                             risk,” he says.
                         </Paragraph>
-
+                    </HalfWidthRightParagraph>
+                    <HalfWidthRightSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 484 181"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="200px"
+                        >
+                            <path
+                                d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                    </HalfWidthRightSVGContainer>
+                    <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
                         <Paragraph variants={itemVariants}>
                             Andrew Farr, AXA XL’s Global Chief Underwriting
                             Officer for Financial Lines, says that insurers are
@@ -88,13 +140,32 @@ export default function PreparingForComplexitySection({
                             industry-specific risks or to address other
                             fast-changing cyber risks.
                         </Paragraph>
-
-                        <Quote
-                            text={`"We're working closely with cyber security firms and offering proactive risk management services to help clients strengthen their defences before an attack happens"`}
-                            attribution="Andrew Farr, AXA XL's Global Chief Underwriting Officer"
-                            variants={itemVariants}
-                        />
-
+                        <TopRightCircle />
+                    </HalfWidthLeftParagraph>
+                    <LeftToBottomQuoteWrapper height="600px">
+                        <QuoteSVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1037 667"
+                            fill="none"
+                            preserveAspectRatio="none"
+                        >
+                            <path
+                                d="M1036.5 256.988L1036.5 100.5C1036.5 45.2711 991.73 0.499633 936.502 0.499631L-6.38027e-05 0.499604M1.00065 199.002L1.00063 413.502C1.00063 468.731 45.7722 513.502 101.001 513.502L300.5 513.502L346.002 513.502L446.894 513.502C487.35 513.502 520.091 546.403 519.894 586.859L519.502 667.003"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </QuoteSVGWrapper>
+                        <QuoteContent>
+                            <Quote
+                                text={`"We're working closely with cyber security firms and offering proactive risk management services to help clients strengthen their defences before an attack happens"`}
+                                attribution="Andrew Farr, AXA XL's Global Chief Underwriting Officer"
+                                variants={itemVariants}
+                            />
+                        </QuoteContent>
+                    </LeftToBottomQuoteWrapper>
+                    <HalfWidthRightParagraph>
+                        <AboveTopLeftCircle />
                         <Paragraph variants={itemVariants}>
                             Insurers are also promoting cyber resilience through
                             consulting, employee training, and incident response
@@ -103,7 +174,24 @@ export default function PreparingForComplexitySection({
                             our collective defences and make everyone more
                             resilient against cyber threats,” says Farr.
                         </Paragraph>
-                    </motion.div>
+                    </HalfWidthRightParagraph>
+                    <HalfWidthRightSVGContainer>
+                        <SVGWrapper
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 484 181"
+                            fill="none"
+                            preserveAspectRatio="none"
+                            height="200px"
+                        >
+                            <path
+                                d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"
+                                stroke="black"
+                                strokeWidth="1"
+                                vectorEffect="non-scaling-stroke"
+                            />
+                        </SVGWrapper>
+                        <BottomLeftCircle />
+                    </HalfWidthRightSVGContainer>
                 </ContentWrapper>
             </Container>
             <LottieScrolljack
