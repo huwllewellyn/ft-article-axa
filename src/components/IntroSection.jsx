@@ -343,10 +343,43 @@ export default function IntroSection() {
                 ? "/lottie/mobile/AXA_TOP.json"
                 : "/lottie/desktop/AXA_TOP.json";
 
-        fetch(animationPath)
-            .then((res) => res.json())
-            .then((data) => setAnimationData(data))
-            .catch((err) => console.error("Failed to load animation:", err));
+        const loadAnimation = async () => {
+            try {
+                const fullPath = getAssetPath(animationPath);
+                const response = await fetch(fullPath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                setAnimationData(data);
+            } catch (err) {
+                // Retry with desktop version if mobile fails
+                if (breakpoint === "mobile") {
+                    try {
+                        console.warn(
+                            `Mobile animation failed, retrying with desktop version`
+                        );
+                        const desktopPath = getAssetPath("/lottie/desktop/AXA_TOP.json");
+                        const response = await fetch(desktopPath);
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        const data = await response.json();
+                        setAnimationData(data);
+                    } catch (fallbackErr) {
+                        console.error(
+                            "Failed to load both mobile and desktop animations",
+                            err,
+                            fallbackErr
+                        );
+                    }
+                } else {
+                    console.error("Failed to load animation:", err);
+                }
+            }
+        };
+
+        loadAnimation();
     }, []);
 
     return (
