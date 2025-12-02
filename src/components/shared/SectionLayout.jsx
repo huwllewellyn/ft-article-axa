@@ -35,22 +35,30 @@ export const useDrawingAnimation = (animationDuration = 5, reverse = false) => {
 
     const animatePathChildren = (children) => {
         return React.Children.map(children, (child) => {
-            if (child && child.type === "path") {
-                const fromLength = reverse ? 1.5 : 0;
-                const toLength = reverse ? 0 : 1.5;
+            if (React.isValidElement(child) && child.type === "path") {
+                // --- THE FIX ---
+                // We define specific animation variants for Normal vs Reverse
+
+                const variants = {
+                    hidden: {
+                        pathLength: 0,
+                        pathOffset: reverse ? 1 : 0, // If reverse, start the dash at the very end
+                    },
+                    visible: {
+                        pathLength: 1.05, // Overshoot slightly to ensure full closure
+                        pathOffset: 0, // Always end at 0 offset (covering the whole line)
+                    },
+                };
 
                 return (
                     <motion.path
                         key={child.key}
                         {...child.props}
-                        strokeLinecap="round" // Optional: square helps fill gaps better than round
+                        strokeLinecap="round"
                         strokeLinejoin="round"
-                        initial={{ pathLength: fromLength }}
-                        animate={
-                            inView
-                                ? { pathLength: toLength }
-                                : { pathLength: fromLength }
-                        }
+                        initial="hidden"
+                        animate={inView ? "visible" : "hidden"}
+                        variants={variants}
                         transition={{
                             duration: animationDuration,
                             ease: "easeInOut",

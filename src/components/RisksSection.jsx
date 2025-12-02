@@ -62,6 +62,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                                 viewBox="0 0 523 290"
                                 fill="none"
                                 preserveAspectRatio="none"
+                                reverse="true"
                             >
                                 <path
                                     d="M0.5 289.5V104.5V1H69.3292C84.3077 1 98.9236 5.60756 111.194 14.1976L205.19 80.0001C205.19 80.0001 521.764 295.5 521.764 54.5V0"
