@@ -21,6 +21,7 @@ export default function LottieAnimation({
     renderer = "svg",
     scrollSync = false,
     scrollProgress = null,
+    initialFrame = 0,
 }) {
     const containerRef = useRef(null);
     const animationLoadedRef = useRef(false);
@@ -87,6 +88,14 @@ export default function LottieAnimation({
                                 animationData: data,
                             });
                             animationRef.current = anim;
+
+                            // Set initial frame based on initialFrame prop (0-1 range)
+                            if (initialFrame > 0) {
+                                const totalFrames = anim.getDuration(true);
+                                const targetFrame = initialFrame * totalFrames;
+                                anim.goToAndStop(Math.round(targetFrame), true);
+                            }
+
                             observer.unobserve(entry.target);
                         }
                     });
@@ -104,7 +113,7 @@ export default function LottieAnimation({
         };
 
         loadAnimation();
-    }, [path, fallbackPath, loop, autoplay, renderer, scrollSync]);
+    }, [path, fallbackPath, loop, autoplay, renderer, scrollSync, initialFrame]);
 
     // Handle scroll-synced animation (legacy window scroll)
     useEffect(() => {
@@ -151,14 +160,15 @@ export default function LottieAnimation({
             }
 
             const totalFrames = animation.getDuration(true);
-            const targetFrame = latest * totalFrames;
+            // If initialFrame is set, animate from initialFrame to end, not from 0 to end
+            const targetFrame = (initialFrame + latest * (1 - initialFrame)) * totalFrames;
 
             // Move animation to frame based on scroll progress
             animation.goToAndStop(Math.round(targetFrame), true);
         });
 
         return () => unsubscribe();
-    }, [scrollProgress]);
+    }, [scrollProgress, initialFrame]);
 
     return (
         <Container

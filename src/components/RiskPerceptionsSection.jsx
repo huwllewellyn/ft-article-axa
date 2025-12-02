@@ -46,7 +46,10 @@ export default function RiskPerceptionsSection({
                         title="Risk perceptions around the world"
                     />
 
-                    <HeaderAnimationWrapper filename="AXA_HEAD_03_HALVED" enableScrollSync={true} />
+                    <HeaderAnimationWrapper
+                        filename="AXA_HEAD_03_HALVED"
+                        enableScrollSync={true}
+                    />
 
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper
@@ -107,6 +110,7 @@ export default function RiskPerceptionsSection({
                 }}
                 backgroundColor={backgroundColor}
                 loop={false}
+                initialFrame={0.08}
             />
             <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
@@ -219,6 +223,7 @@ export default function RiskPerceptionsSection({
                 }}
                 backgroundColor={backgroundColor}
                 loop={true}
+                initialFrame={0.15}
             />
         </BackgroundContainer>
     );

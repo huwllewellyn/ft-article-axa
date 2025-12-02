@@ -39,6 +39,7 @@ const StickyContainer = styled.div`
  * @param {string} headerHeight - Height of the page header to avoid overlap (optional, default: "60px")
  * @param {boolean} loop - Whether animation should loop (default: false for scrolljack)
  * @param {boolean} autoplay - Whether animation should autoplay (default: false for scrolljack)
+ * @param {number} initialFrame - Initial frame position as a percentage (0-1, default: 0)
  */
 export default function LottieScrolljack({
     animations,
@@ -46,6 +47,7 @@ export default function LottieScrolljack({
     headerHeight = "60px",
     loop = false,
     autoplay = false,
+    initialFrame = 0,
 }) {
     const animationTrackRef = useRef(null);
     const [aspectRatioDecimal, setAspectRatioDecimal] = useState(16 / 9);
@@ -138,6 +140,7 @@ export default function LottieScrolljack({
                     loop={loop}
                     autoplay={autoplay}
                     scrollProgress={scrollYProgress}
+                    initialFrame={initialFrame}
                 />
             </StickyContainer>
         </AnimationTrack>

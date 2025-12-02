@@ -35,6 +35,7 @@ export default function ResponsiveLottieAnimation({
     autoplay = true,
     scrollSync = false,
     scrollProgress = null,
+    initialFrame = 0,
 }) {
     const [currentBreakpoint, setCurrentBreakpoint] = useState("desktop");
     const [isClient, setIsClient] = useState(false);
@@ -80,6 +81,7 @@ export default function ResponsiveLottieAnimation({
                 autoplay={autoplay}
                 scrollSync={scrollSync}
                 scrollProgress={scrollProgress}
+                initialFrame={initialFrame}
             />
         </Container>
     );

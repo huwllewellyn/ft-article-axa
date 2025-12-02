@@ -37,12 +37,7 @@ const itemVariants = {
 export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container
-                as={motion.section}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-            >
+            <Container>
                 <ContentWrapper>
                     <SectionTitleGroup
                         chapter="Chapter two"
@@ -115,6 +110,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                 }}
                 backgroundColor={backgroundColor}
                 loop={false}
+                initialFrame={0.16}
             />
             <Container>
                 <ContentWrapper>

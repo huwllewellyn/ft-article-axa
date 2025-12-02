@@ -105,6 +105,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                 }}
                 backgroundColor="#B6C1D3"
                 loop={false}
+                initialFrame={0.1}
             />
             <Container maxWidth="1440px" padding="80px 40px">
                 <ContentWrapper>
