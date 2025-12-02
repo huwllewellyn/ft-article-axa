@@ -14,6 +14,7 @@ const HeaderAnimationContainer = styled.div`
 export default function HeaderAnimationWrapper({
     filename = "AXA_HEAD_01_HALVED",
     animationPath,
+    enableScrollSync = false,
 }) {
     const path = animationPath || `/lottie/headers/${filename}.json`;
     const [height, setHeight] = useState("150px");
@@ -51,8 +52,9 @@ export default function HeaderAnimationWrapper({
                 path={path}
                 height={height}
                 width="100%"
-                loop={true}
-                autoplay={true}
+                loop={!enableScrollSync}
+                autoplay={!enableScrollSync}
+                scrollSync={enableScrollSync}
             />
         </HeaderAnimationContainer>
     );
