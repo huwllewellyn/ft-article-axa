@@ -32,6 +32,7 @@ import {
     HalfWidthRightParagraph,
     TopLeftCircle,
     TopRightCircle,
+    TopCenterCircle,
 } from "./shared/SectionLayout";
 
 const ParagraphWithCircle = styled.div`
@@ -54,6 +55,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                 viewport={{ once: true, margin: "-100px" }}
             >
                 <ContentWrapper>
+                    <TopCenterCircle />
                     <ParagraphOne>
                         <HalfWidthLeftSVGContainer>
                             <SVGWrapper

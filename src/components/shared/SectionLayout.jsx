@@ -295,6 +295,15 @@ export const BottomCenterCircle = styled(Circle)`
     transform: none;
 `;
 
+export const TopCenterCircle = styled(Circle)`
+    position: absolute;
+    top: ${-CIRCLE_SIZE / 2}px;
+    left: ${(props) => props.left || `calc(50% - ${CIRCLE_SIZE / 1.8}px)`};
+    margin-right: 0;
+    flex-shrink: 0;
+    transform: none;
+`;
+
 export const BottomLeftCircle = styled(Circle)`
     position: absolute;
     bottom: ${-CIRCLE_SIZE / 2}px;

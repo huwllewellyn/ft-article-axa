@@ -2,7 +2,7 @@ import styled from "styled-components";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
-import { SVGWrapper } from "./shared/SectionLayout";
+import { TopCenterCircle, SVGWrapper } from "./shared/SectionLayout";
 
 const Container = styled.section`
     width: 100%;
@@ -18,21 +18,20 @@ const Container = styled.section`
 
 const ContentWrapper = styled(motion.div)`
     width: 100%;
-    max-width: 1441px;
-    height: 802px;
-    position: relative;
+    height: 100%;
+    position: absolute;
     z-index: 2;
     padding: 0 40px;
-    padding: 0;
 `;
 
 const Subtitle = styled(motion.p)`
     position: absolute;
-    bottom: 0;
-    left: 50%;
+    bottom: 130px;
+    right: 20px;
     font-size: 19px;
     font-weight: 500;
     line-height: 1.2;
+    transform: none;
     color: #0f0707;
     margin: 0;
     max-width: 433px;
@@ -40,7 +39,7 @@ const Subtitle = styled(motion.p)`
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     z-index: 4;
-    text-align: center;
+    text-align: left;
 
     @media (max-width: 768px) {
         font-size: 16px;
@@ -304,6 +303,18 @@ const ImageWrapper = styled(motion.div)`
 `;
 
 const imageVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            duration: 0.6,
+            ease: "easeOut",
+        },
+    },
+};
+
+const containerImageVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -335,11 +346,10 @@ const itemVariants = {
 };
 
 const subtitleVariants = {
-    hidden: { opacity: 0, y: 30, x: "20vh" },
+    hidden: { opacity: 0, y: 30 },
     visible: {
         opacity: 1,
         y: 0,
-        x: "20vh",
         transition: { duration: 0.8, ease: "easeOut" },
     },
 };
@@ -438,6 +448,11 @@ export default function IntroSection() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
+                        transition={{
+                            duration: 0.6,
+                            ease: "easeOut",
+                            delay: 0,
+                        }}
                     >
                         <img
                             src={getAssetPath(
@@ -452,6 +467,11 @@ export default function IntroSection() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
+                        transition={{
+                            duration: 0.6,
+                            ease: "easeOut",
+                            delay: 0.15,
+                        }}
                     >
                         <img
                             src={getAssetPath(
@@ -466,6 +486,11 @@ export default function IntroSection() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
+                        transition={{
+                            duration: 0.6,
+                            ease: "easeOut",
+                            delay: 0.3,
+                        }}
                     >
                         <img
                             src={getAssetPath(
@@ -480,6 +505,11 @@ export default function IntroSection() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
+                        transition={{
+                            duration: 0.6,
+                            ease: "easeOut",
+                            delay: 0.45,
+                        }}
                     >
                         <img
                             src={getAssetPath(
