@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
@@ -21,10 +20,9 @@ import {
     LeftToBottomQuoteWrapper,
     HalfWidthRightParagraph,
     HalfWidthLeftParagraph,
-    FullWidthSVGWrapper,
-    BottomCenterCircle,
     itemVariants,
 } from "./shared/SectionLayout";
+import OverlayImage from "./shared/OverlayImage";
 
 export default function PreparingForComplexitySection({
     backgroundColor = "#d7d7d7",
@@ -79,6 +77,13 @@ export default function PreparingForComplexitySection({
                             population agree that insurers have an important
                             role in protecting against future risks. But how?
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s5/1.jpg"
+                            decorative
+                            desktop={{ top: "130%", left: "20%" }}
+                            tablet={{ top: "130%", left: "20%" }}
+                            mobile={{ top: "130%", left: "20%" }}
+                        />
                     </HalfWidthLeftParagraph>
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
@@ -105,6 +110,13 @@ export default function PreparingForComplexitySection({
                             powerful tool for helping us to manage clients’
                             risk,” he says.
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s5/2.jpg"
+                            decorative
+                            desktop={{ top: "150%", left: "50%" }}
+                            tablet={{ top: "150%", left: "50%" }}
+                            mobile={{ top: "150%", left: "50%" }}
+                        />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper

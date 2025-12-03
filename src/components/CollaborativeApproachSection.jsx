@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
 import Quote from "./shared/Quote";
@@ -23,6 +22,7 @@ import {
     FinalLeftToBottomQuoteWrapper,
     BottomRightCircle,
 } from "./shared/SectionLayout";
+import OverlayImage from "./shared/OverlayImage";
 
 export default function CollaborativeApproachSection({
     backgroundColor = "#f0eedf",
@@ -72,6 +72,13 @@ export default function CollaborativeApproachSection({
                             understanding of the risks posed by wildfires, for
                             example.
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s6/1.jpg"
+                            decorative
+                            desktop={{ top: "135%", left: "80%" }}
+                            tablet={{ top: "135%", left: "80%" }}
+                            mobile={{ top: "135%", left: "80%" }}
+                        />
                     </HalfWidthLeftParagraph>
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
@@ -97,6 +104,13 @@ export default function CollaborativeApproachSection({
                             shared by the insurance industry, and it’s useful
                             because it literally reduces risk.”
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s6/2.jpg"
+                            decorative
+                            desktop={{ top: "155%", left: "50%" }}
+                            tablet={{ top: "155%", left: "50%" }}
+                            mobile={{ top: "155%", left: "50%" }}
+                        />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper
