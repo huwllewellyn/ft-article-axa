@@ -109,6 +109,29 @@ Images in `public/images/` can be compressed and resized using the provided scri
 
 **Configuration:** Edit the WIDTH, HEIGHT, and other settings at the top of `compress-images.sh` to adjust target dimensions or compression quality.
 
+### Video Compression
+
+Videos in `public/images/` can be compressed and resized using a similar script. This scales landscape videos to portrait dimensions (354x590px) by scaling and cropping.
+
+```bash
+./compress-videos.sh
+```
+
+**What it does:**
+- Scales videos to height of 590px (maintaining aspect ratio)
+- Crops excess width from left and right to achieve 354x590px portrait dimensions
+- Re-encodes with H.264 codec for web delivery
+- Backs up original videos to `public/images-src/`
+- Replaces originals with compressed versions
+
+**Example results:**
+- 1.0MB → 376KB (2.7x smaller)
+- 13MB → 2.8MB (4.6x smaller)
+
+**Configuration:** Edit WIDTH, HEIGHT, and CRF (quality) settings at the top of `compress-videos.sh`:
+- `CRF`: 0-51 (lower = better quality; 18-28 is good quality range; 23 is default)
+- `preset`: ultrafast to veryslow (affects encoding speed and final size)
+
 ## Deployment
 
 ### GitHub Pages (for Preview/Review)
