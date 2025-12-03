@@ -86,6 +86,29 @@ This creates a `dist` folder with:
 - `index.html` - The complete HTML file with inlined React code
 - `assets/` - JavaScript and CSS bundles
 
+## Image Optimization
+
+Images in `public/images/` can be compressed and resized using the provided script. This significantly reduces file sizes while maintaining high quality.
+
+### Running Image Compression
+
+```bash
+./compress-images.sh
+```
+
+**What it does:**
+- Resizes all PNG and JPG images to 354x590px (with aspect ratio preservation and padding if needed)
+- Compresses images to high quality using ffmpeg
+- Backs up original images to `public/images-src/`
+- Replaces originals with compressed versions
+
+**Example results:**
+- 19MB → 148KB (128x smaller)
+- 10MB → 24KB (417x smaller)
+- Most files: 5-15MB → 32-72KB (100-300x smaller)
+
+**Configuration:** Edit the WIDTH, HEIGHT, and other settings at the top of `compress-images.sh` to adjust target dimensions or compression quality.
+
 ## Deployment
 
 ### GitHub Pages (for Preview/Review)
