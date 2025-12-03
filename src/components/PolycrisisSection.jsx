@@ -9,7 +9,6 @@ import {
     Container,
     ContentWrapper,
     Paragraph,
-    polycrisisContainerVariants,
     polycrisisItemVariants,
     AboveTopLeftCircle,
     BottomLeftCircle,
@@ -25,6 +24,7 @@ import {
     HalfWidthLeftParagraph,
     FullWidthSVGWrapper,
 } from "./shared/SectionLayout";
+import OverlayImage from "./shared/OverlayImage";
 
 export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
     return (
@@ -80,6 +80,13 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             Hostinger, the web-hosting service. That is a{" "}
                             <b>55 per cent</b> increase over the previous year.
                         </Paragraph>
+                        <OverlayImage
+                            videoSrc="/images/s2/1.mp4"
+                            decorative
+                            desktop={{ top: "400px", left: "80%" }}
+                            tablet={{ top: "400px", left: "80%" }}
+                            mobile={{ top: "400px", left: "80%" }}
+                        />
                     </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
                         xmlns="http://www.w3.org/2000/svg"

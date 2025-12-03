@@ -13,10 +13,7 @@ import {
     HalfWidthRightSVGContainer,
     Circle,
     AboveTopLeftCircle,
-    ParagraphFourCircle,
     Paragraph,
-    ParagraphFourText,
-    ParagraphFive,
     LeftToBottomQuoteWrapper,
     QuoteSVGWrapper,
     QuoteContent,
@@ -26,10 +23,8 @@ import {
     FinalLeftToBottomQuoteWrapper,
     FinalQuoteSVGWrapper,
     FinalQuoteContent,
-    BottomCenterCircle,
     HalfWidthLeftParagraph,
     HalfWidthLeftSVGContainer,
-    CIRCLE_SIZE,
     HalfWidthRightParagraph,
     TopLeftCircle,
     TopRightCircle,
@@ -115,8 +110,16 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         <OverlayImage
                             src="/images/s1/1.jpg"
                             decorative
-                            top="0%"
-                            left="120%"
+                            desktop={{ top: "0", left: "120%" }}
+                            tablet={{ top: "0", left: "120%" }}
+                            mobile={{ top: "0", left: "120%" }}
+                        />
+                        <OverlayImage
+                            src="/images/s1/2.jpg"
+                            decorative
+                            desktop={{ top: "150%", left: "20%" }}
+                            tablet={{ top: "150%", left: "20%" }}
+                            mobile={{ display: "none" }}
                         />
                     </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
