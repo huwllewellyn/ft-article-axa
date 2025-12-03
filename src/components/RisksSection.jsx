@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Quote from "./shared/Quote";
 import LottieScrolljack from "./LottieScrolljack";
 import styled from "styled-components";
+import OverlayImage from "./shared/OverlayImage";
 import {
     BackgroundContainer,
     Container,
@@ -111,6 +112,12 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             themes and threats that diverse stakeholders need to
                             understand and plan for.
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s1/1.jpg"
+                            decorative
+                            top="0%"
+                            left="120%"
+                        />
                     </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
                         xmlns="http://www.w3.org/2000/svg"

@@ -97,7 +97,8 @@ Images in `public/images/` can be compressed and resized using the provided scri
 ```
 
 **What it does:**
-- Resizes all PNG and JPG images to 354x590px (with aspect ratio preservation and padding if needed)
+- Scales images to height of 590px (maintaining aspect ratio)
+- Crops excess width from left and right to achieve 354x590px portrait dimensions
 - Compresses images to high quality using ffmpeg
 - Backs up original images to `public/images-src/`
 - Replaces originals with compressed versions
