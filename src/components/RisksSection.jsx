@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import Quote from "./shared/Quote";
 import LottieScrolljack from "./LottieScrolljack";
 import styled from "styled-components";
@@ -44,12 +43,7 @@ const ParagraphOne = styled.div`
 export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container
-                as={motion.section}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-            >
+            <Container>
                 <ContentWrapper>
                     <TopCenterCircle />
                     <ParagraphOne>
@@ -279,12 +273,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                     <BottomLeftCircle />
                 </ContentWrapper>
                 <LottieScrolljack
-                    animations={{
-                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP01.json",
-                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
-                        desktop:
-                            "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
-                    }}
+                    animations="AXA_Scrolly_DP01.json"
                     trackHeight={"2000px"}
                     loop={true}
                 />

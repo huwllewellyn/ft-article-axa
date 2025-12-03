@@ -20,7 +20,6 @@ import {
     BottomCenterCircle,
     HalfWidthRightSVGContainer,
     HalfWidthRightParagraph,
-    TopLeftCircle,
     TopRightCircle,
 } from "./shared/SectionLayout";
 
@@ -118,15 +117,11 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                     <BottomLeftCircle />
                 </ContentWrapper>
                 <LottieScrolljack
-                    animations={{
-                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP03.json",
-                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP03.json",
-                        desktop:
-                            "/lottie/desktop/AXA_Scrolly_Desktop_DP03.json",
-                    }}
+                    animations="AXA_Scrolly_DP03.json"
                     backgroundColor={backgroundColor}
                     loop={false}
                     initialFrame={0.2}
+                    initialFrameMobile={0.1}
                 />
                 <ContentWrapper>
                     <SVGWrapper
@@ -222,12 +217,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                     </HalfWidthLeftParagraph>
                 </ContentWrapper>
                 <LottieScrolljack
-                    animations={{
-                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP04.json",
-                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP04.json",
-                        desktop:
-                            "/lottie/desktop/AXA_Scrolly_Desktop_DP04.json",
-                    }}
+                    animations="AXA_Scrolly_DP04.json"
                     trackHeight="3500px"
                     backgroundColor={backgroundColor}
                     loop={true}

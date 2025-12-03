@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
@@ -29,12 +28,7 @@ export default function PreparingForComplexitySection({
 }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container
-                as={motion.section}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-            >
+            <Container>
                 <ContentWrapper>
                     <SectionTitleGroup
                         chapter="Chapter four"
@@ -207,12 +201,7 @@ export default function PreparingForComplexitySection({
                     </HalfWidthRightSVGContainer>
                 </ContentWrapper>
                 <LottieScrolljack
-                    animations={{
-                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
-                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
-                        desktop:
-                            "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
-                    }}
+                    animations="AXA_Scrolly_DP07.json"
                     backgroundColor={backgroundColor}
                 />
             </Container>

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
@@ -34,12 +33,7 @@ export default function RiskPerceptionsSection({
 }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container
-                as={motion.section}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-            >
+            <Container>
                 <ContentWrapper>
                     <SectionTitleGroup
                         chapter="Chapter three"
@@ -112,15 +106,11 @@ export default function RiskPerceptionsSection({
                     </div>
                 </ContentWrapper>
                 <LottieScrolljack
-                    animations={{
-                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP05.json",
-                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP05.json",
-                        desktop:
-                            "/lottie/desktop/AXA_Scrolly_Desktop_DP05.json",
-                    }}
+                    animations="AXA_Scrolly_DP05.json"
                     backgroundColor={backgroundColor}
                     loop={false}
                     initialFrame={0.08}
+                    initialFrameMobile={0.1}
                 />
                 <ContentWrapper>
                     <HalfWidthLeftSVGContainer>
@@ -130,6 +120,7 @@ export default function RiskPerceptionsSection({
                             fill="none"
                             preserveAspectRatio="none"
                             height="450px"
+                            mobileHeight="200px"
                             reverse
                         >
                             <path
@@ -241,12 +232,7 @@ export default function RiskPerceptionsSection({
                     </HalfWidthLeftParagraph>
                 </ContentWrapper>
                 <LottieScrolljack
-                    animations={{
-                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP06.json",
-                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP06.json",
-                        desktop:
-                            "/lottie/desktop/AXA_Scrolly_Desktop_DP06.json",
-                    }}
+                    animations="AXA_Scrolly_DP06.json"
                     backgroundColor={backgroundColor}
                     loop={true}
                     initialFrame={0.15}

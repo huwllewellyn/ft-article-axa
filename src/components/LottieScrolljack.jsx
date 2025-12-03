@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useScroll } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
+import { getCurrentBreakpoint } from "../utils/breakpoints";
 
 const AnimationTrack = styled.div`
     position: relative;
@@ -40,6 +41,9 @@ const StickyContainer = styled.div`
  * @param {boolean} loop - Whether animation should loop (default: false for scrolljack)
  * @param {boolean} autoplay - Whether animation should autoplay (default: false for scrolljack)
  * @param {number} initialFrame - Initial frame position as a percentage (0-1, default: 0)
+ * @param {number} initialFrameMobile - Mobile-specific initial frame position (0-1, optional)
+ * @param {number} initialFrameTablet - Tablet-specific initial frame position (0-1, optional)
+ * @param {number} initialFrameDesktop - Desktop-specific initial frame position (0-1, optional)
  */
 export default function LottieScrolljack({
     animations,
@@ -48,13 +52,43 @@ export default function LottieScrolljack({
     loop = false,
     autoplay = false,
     initialFrame = 0,
+    initialFrameMobile,
+    initialFrameTablet,
+    initialFrameDesktop,
 }) {
     const animationTrackRef = useRef(null);
+    const [currentBreakpoint, setCurrentBreakpoint] = useState(
+        () => getCurrentBreakpoint()
+    );
     const [aspectRatioDecimal, setAspectRatioDecimal] = useState(16 / 9);
     const [dimensions, setDimensions] = useState({
         width: "100%",
         height: "auto",
     });
+
+    // Track breakpoint changes for initial frame
+    useEffect(() => {
+        const handleResize = () => {
+            setCurrentBreakpoint(getCurrentBreakpoint());
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    // Determine the appropriate initial frame based on breakpoint
+    const getInitialFrame = () => {
+        if (currentBreakpoint === "mobile" && initialFrameMobile !== undefined) {
+            return initialFrameMobile;
+        }
+        if (currentBreakpoint === "tablet" && initialFrameTablet !== undefined) {
+            return initialFrameTablet;
+        }
+        if (currentBreakpoint === "desktop" && initialFrameDesktop !== undefined) {
+            return initialFrameDesktop;
+        }
+        return initialFrame;
+    };
 
     // Fetch animation data to get aspect ratio
     useEffect(() => {
@@ -140,7 +174,7 @@ export default function LottieScrolljack({
                     loop={loop}
                     autoplay={autoplay}
                     scrollProgress={scrollYProgress}
-                    initialFrame={initialFrame}
+                    initialFrame={getInitialFrame()}
                 />
             </StickyContainer>
         </AnimationTrack>

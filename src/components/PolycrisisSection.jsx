@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
@@ -28,12 +27,7 @@ import OverlayImage from "./shared/OverlayImage";
 export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container
-                as={motion.section}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-            >
+            <Container>
                 <ContentWrapper>
                     <SectionTitleGroup
                         chapter="Chapter one"
@@ -106,12 +100,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                     <BottomLeftCircle />
                 </ContentWrapper>
                 <LottieScrolljack
-                    animations={{
-                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP02.json",
-                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP02.json",
-                        desktop:
-                            "/lottie/desktop/AXA_Scrolly_Desktop_DP02.json",
-                    }}
+                    animations="AXA_Scrolly_DP02.json"
                     backgroundColor="#B6C1D3"
                     loop={false}
                     initialFrame={0.1}
