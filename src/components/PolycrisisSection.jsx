@@ -52,6 +52,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             fill="none"
                             preserveAspectRatio="none"
                             height="450px"
+                            mobileHeight="200px"
                             reverse
                         >
                             <path
@@ -84,7 +85,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             decorative
                             desktop={{ top: "400px", left: "80%" }}
                             tablet={{ top: "400px", left: "80%" }}
-                            mobile={{ top: "400px", left: "80%" }}
+                            mobile={{ top: "120%", left: "30%" }}
                         />
                     </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
@@ -93,6 +94,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                         fill="none"
                         preserveAspectRatio="none"
                         height="400px"
+                        mobileHeight="200px"
                     >
                         <path
                             d="M355.538 0.5H745.5C800.728 0.5 845.5 45.2715 845.5 100.5V171.011C845.5 226.24 800.728 271.011 745.5 271.011H0.5V359.5"
@@ -122,6 +124,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             fill="none"
                             preserveAspectRatio="none"
                             height="400px"
+                            mobileHeight="100px"
                             reverse
                         >
                             <path
@@ -153,7 +156,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             decorative
                             desktop={{ top: "190%", left: "50%" }}
                             tablet={{ top: "190%", left: "50%" }}
-                            mobile={{ top: "190%", left: "50%" }}
+                            mobile={{ top: "110%", left: "52%" }}
                         />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
@@ -192,6 +195,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                         viewBox="0 0 1 121"
                         fill="none"
                         preserveAspectRatio="none"
+                        mobileHeight="100px"
                     >
                         <path
                             d="M0 0L0 121"
@@ -200,7 +204,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             vectorEffect="non-scaling-stroke"
                         />
                     </SVGWrapper>
-                    <LeftToBottomQuoteWrapper>
+                    <LeftToBottomQuoteWrapper mobileHeight="600px">
                         <QuoteSVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 1037 667"

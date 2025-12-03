@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../utils/breakpoints";
 
 export const QuoteContainer = styled.div`
     padding: 0;
@@ -14,6 +15,13 @@ export const QuoteText = styled.p`
     line-height: 120%; /* 48px */
     margin: 0 0 32px 0;
     letter-spacing: 0;
+
+    ${media.tablet(`
+
+    `)}
+    ${media.mobile(`
+        font-size: 21px;
+    `)}
 `;
 
 export const QuoteAttribution = styled.p`
@@ -27,6 +35,12 @@ export const QuoteAttribution = styled.p`
     line-height: 120%; /* 20.4px */
     margin: 0;
     letter-spacing: 0;
+    ${media.tablet(`
+
+    `)}
+    ${media.mobile(`
+        font-size: 12px;
+    `)}
 `;
 
 /**

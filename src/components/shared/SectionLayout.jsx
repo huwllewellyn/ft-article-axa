@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import React, { useState, useEffect, useRef } from "react";
+import { media } from "../../utils/breakpoints";
 
 // ============================================================================
 // CORE CONSTANTS
@@ -125,6 +126,10 @@ export const Container = styled.section`
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
+
+    ${media.mobile(`
+        padding: 0px 20px};
+    `)}
 `;
 
 export const ContentWrapper = styled.div`
@@ -143,10 +148,43 @@ const StyledSVGWrapper = styled(motion.svg)`
     height: ${(props) => props.height || "150px"};
     pointer-events: none;
     display: block;
+
+    ${(props) =>
+        props.desktopHeight &&
+        `
+        @media (min-width: ${1024}px) {
+            height: ${props.desktopHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.tabletHeight &&
+        `
+        @media (min-width: ${768}px) and (max-width: ${1023}px) {
+            height: ${props.tabletHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.mobileHeight &&
+        `
+        @media (max-width: ${767}px) {
+            height: ${props.mobileHeight};
+        }
+    `}
 `;
 
 export const SVGWrapper = React.forwardRef(
-    ({ children, animationDuration = 1, reverse = false, ...props }) => {
+    ({
+        children,
+        animationDuration = 1,
+        reverse = false,
+        height,
+        desktopHeight,
+        tabletHeight,
+        mobileHeight,
+        ...props
+    }) => {
         const { ref: internalRef, animatePathChildren } = useDrawingAnimation(
             animationDuration,
             reverse
@@ -154,7 +192,14 @@ export const SVGWrapper = React.forwardRef(
         const animatedChildren = animatePathChildren(children);
 
         return (
-            <StyledSVGWrapper ref={internalRef} {...props}>
+            <StyledSVGWrapper
+                ref={internalRef}
+                height={height}
+                desktopHeight={desktopHeight}
+                tabletHeight={tabletHeight}
+                mobileHeight={mobileHeight}
+                {...props}
+            >
                 {animatedChildren}
             </StyledSVGWrapper>
         );
@@ -200,11 +245,14 @@ export const HalfWidthRightParagraph = styled.div`
     margin-right: 10%;
     padding-left: 40px;
     background: ${(props) => props.backgroundColor || "transparent"};
-    outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
+    outline: 3px solid ${(props) => props.backgroundColor || "transparent"};
 
-    @media (max-width: 1024px) {
+    ${media.tablet(`
+        width: 60%;
+    `)}
+    ${media.mobile(`
         width: 80%;
-    }
+    `)}
 `;
 
 export const HalfWidthLeftParagraph = styled.div`
@@ -213,12 +261,15 @@ export const HalfWidthLeftParagraph = styled.div`
     margin-right: auto;
     padding-right: 40px;
     background: ${(props) => props.backgroundColor || "transparent"};
-    outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
+    outline: 3px solid ${(props) => props.backgroundColor || "transparent"};
     z-index: 1;
 
-    @media (max-width: 1024px) {
+    ${media.tablet(`
+        width: 60%;
+    `)}
+    ${media.mobile(`
         width: 90%;
-    }
+    `)}
 `;
 
 export const QuoteSVGWrapper = styled.svg`
@@ -337,7 +388,6 @@ export const NotQuiteBottomRightCircle = styled(Circle)`
 
 const StyledParagraph = styled(motion.p)`
     font-size: 19px;
-    font-weight: 400;
     line-height: 1.2;
     color: #000000;
     margin: 0;
@@ -345,6 +395,13 @@ const StyledParagraph = styled(motion.p)`
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     text-align: left;
+
+    font-weight: 400;
+
+    ${media.mobile(`
+        font-weight: 300;
+        font-size: 16px;
+    `)}
 
     &:last-child {
         margin-bottom: 0;
@@ -416,23 +473,96 @@ export const LeftToBottomQuoteWrapper = styled(motion.div)`
     position: relative;
     background: transparent;
     height: ${(props) => props.height || "720px"};
+
+    ${(props) =>
+        props.desktopHeight &&
+        `
+        @media (min-width: ${1024}px) {
+            height: ${props.desktopHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.tabletHeight &&
+        `
+        @media (min-width: ${768}px) and (max-width: ${1023}px) {
+            height: ${props.tabletHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.mobileHeight &&
+        `
+        @media (max-width: ${767}px) {
+            height: ${props.mobileHeight};
+        }
+    `}
 `;
 
 export const QuoteContent = styled(motion.div)`
     position: absolute;
     bottom: 15px;
     left: 0;
-    height: 100%;
+    height: ${(props) => props.height || "100%"};
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 40px;
     padding-bottom: 80px;
+
+    ${(props) =>
+        props.desktopHeight &&
+        `
+        @media (min-width: ${1024}px) {
+            height: ${props.desktopHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.tabletHeight &&
+        `
+        @media (min-width: ${768}px) and (max-width: ${1023}px) {
+            height: ${props.tabletHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.mobileHeight &&
+        `
+        @media (max-width: ${767}px) {
+            height: ${props.mobileHeight};
+        }
+    `}
 `;
 
 export const FinalLeftToBottomQuoteWrapper = styled(motion.div)`
     position: relative;
     background: transparent;
+    height: ${(props) => props.height || "auto"};
+
+    ${(props) =>
+        props.desktopHeight &&
+        `
+        @media (min-width: ${1024}px) {
+            height: ${props.desktopHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.tabletHeight &&
+        `
+        @media (min-width: ${768}px) and (max-width: ${1023}px) {
+            height: ${props.tabletHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.mobileHeight &&
+        `
+        @media (max-width: ${767}px) {
+            height: ${props.mobileHeight};
+        }
+    `}
 `;
 
 export const FinalQuoteContent = styled(motion.div)`

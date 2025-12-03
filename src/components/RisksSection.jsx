@@ -61,6 +61,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                                 preserveAspectRatio="none"
                                 reverse
                                 height="300px"
+                                mobileHeight="100px"
                             >
                                 <path
                                     d="M0.5 289.5V104.5V1H69.3292C84.3077 1 98.9236 5.60756 111.194 14.1976L205.19 80.0001C205.19 80.0001 521.764 295.5 521.764 54.5V0"
@@ -111,8 +112,8 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             src="/images/s1/1.jpg"
                             decorative
                             desktop={{ top: "0", left: "120%" }}
-                            tablet={{ top: "100%", left: "120%" }}
-                            mobile={{ top: "130%", left: "25%" }}
+                            tablet={{ top: "0", left: "120%" }}
+                            mobile={{ top: "160%", left: "25%" }}
                         />
                         <OverlayImage
                             src="/images/s1/2.jpg"
@@ -181,6 +182,8 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             he says.
                         </Paragraph>
                         <TopRightCircle />
+                        <br />
+                        <br />
                     </HalfWidthLeftParagraph>
 
                     <SVGWrapper
@@ -188,6 +191,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                         viewBox="0 0 20 388"
                         fill="none"
                         preserveAspectRatio="none"
+                        mobileHeight="100px"
                     >
                         <path
                             d="M0 0 L0 388"
@@ -196,7 +200,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             vectorEffect="non-scaling-stroke"
                         />
                     </SVGWrapper>
-                    <LeftToBottomQuoteWrapper>
+                    <LeftToBottomQuoteWrapper mobileHeight="650px">
                         <QuoteSVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 1037 667"
@@ -251,7 +255,7 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                     <br />
                 </ContentWrapper>
                 <ContentWrapper>
-                    <FinalLeftToBottomQuoteWrapper>
+                    <FinalLeftToBottomQuoteWrapper mobileHeight="500px">
                         <FinalQuoteSVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 1038 558"
