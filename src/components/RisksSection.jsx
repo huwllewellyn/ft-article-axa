@@ -240,8 +240,6 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                     <br />
                     <br />
                 </ContentWrapper>
-            </Container>
-            <Container>
                 <ContentWrapper>
                     <FinalLeftToBottomQuoteWrapper>
                         <FinalQuoteSVGWrapper
@@ -266,16 +264,17 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                     </FinalLeftToBottomQuoteWrapper>
                     <BottomLeftCircle />
                 </ContentWrapper>
+                <LottieScrolljack
+                    animations={{
+                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP01.json",
+                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
+                        desktop:
+                            "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
+                    }}
+                    trackHeight={"2000px"}
+                    loop={true}
+                />
             </Container>
-            <LottieScrolljack
-                animations={{
-                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP01.json",
-                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP01.json",
-                    desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP01.json",
-                }}
-                trackHeight={"2000px"}
-                loop={true}
-            />
         </BackgroundContainer>
     );
 }

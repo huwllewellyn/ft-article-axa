@@ -187,15 +187,16 @@ export default function PreparingForComplexitySection({
                         <BottomLeftCircle />
                     </HalfWidthRightSVGContainer>
                 </ContentWrapper>
+                <LottieScrolljack
+                    animations={{
+                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
+                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
+                        desktop:
+                            "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
+                    }}
+                    backgroundColor={backgroundColor}
+                />
             </Container>
-            <LottieScrolljack
-                animations={{
-                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP07.json",
-                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP07.json",
-                    desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP07.json",
-                }}
-                backgroundColor={backgroundColor}
-            />
         </BackgroundContainer>
     );
 }

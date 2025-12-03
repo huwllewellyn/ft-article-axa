@@ -29,12 +29,7 @@ export default function CollaborativeApproachSection({
 }) {
     return (
         <BackgroundContainer backgroundColor={backgroundColor}>
-            <Container
-                as={motion.section}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-            >
+            <Container>
                 <ContentWrapper>
                     <SectionTitleGroup
                         chapter="Chapter five"

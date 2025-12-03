@@ -97,18 +97,17 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                     </FullWidthSVGWrapper>
                     <BottomLeftCircle />
                 </ContentWrapper>
-            </Container>
-            <LottieScrolljack
-                animations={{
-                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP02.json",
-                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP02.json",
-                    desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP02.json",
-                }}
-                backgroundColor="#B6C1D3"
-                loop={false}
-                initialFrame={0.1}
-            />
-            <Container>
+                <LottieScrolljack
+                    animations={{
+                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP02.json",
+                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP02.json",
+                        desktop:
+                            "/lottie/desktop/AXA_Scrolly_Desktop_DP02.json",
+                    }}
+                    backgroundColor="#B6C1D3"
+                    loop={false}
+                    initialFrame={0.1}
+                />
                 <ContentWrapper>
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper

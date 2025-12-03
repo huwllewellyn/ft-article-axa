@@ -102,18 +102,17 @@ export default function RiskPerceptionsSection({
                         <BottomCenterCircle />
                     </div>
                 </ContentWrapper>
-            </Container>
-            <LottieScrolljack
-                animations={{
-                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP05.json",
-                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP05.json",
-                    desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP05.json",
-                }}
-                backgroundColor={backgroundColor}
-                loop={false}
-                initialFrame={0.08}
-            />
-            <Container>
+                <LottieScrolljack
+                    animations={{
+                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP05.json",
+                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP05.json",
+                        desktop:
+                            "/lottie/desktop/AXA_Scrolly_Desktop_DP05.json",
+                    }}
+                    backgroundColor={backgroundColor}
+                    loop={false}
+                    initialFrame={0.08}
+                />
                 <ContentWrapper>
                     <HalfWidthLeftSVGContainer>
                         <SVGWrapper
@@ -216,19 +215,20 @@ export default function RiskPerceptionsSection({
                         <br />
                     </HalfWidthLeftParagraph>
                 </ContentWrapper>
+                <LottieScrolljack
+                    animations={{
+                        mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP06.json",
+                        tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP06.json",
+                        desktop:
+                            "/lottie/desktop/AXA_Scrolly_Desktop_DP06.json",
+                    }}
+                    backgroundColor={backgroundColor}
+                    loop={true}
+                    initialFrame={0.15}
+                />
+                <br />
+                <br />
             </Container>
-            <LottieScrolljack
-                animations={{
-                    mobile: "/lottie/mobile/AXA_Scrolly_Mobile_DP06.json",
-                    tablet: "/lottie/tablet/AXA_Scrolly_Tablet_DP06.json",
-                    desktop: "/lottie/desktop/AXA_Scrolly_Desktop_DP06.json",
-                }}
-                backgroundColor={backgroundColor}
-                loop={true}
-                initialFrame={0.15}
-            />
-            <br />
-            <br />
         </BackgroundContainer>
     );
 }
