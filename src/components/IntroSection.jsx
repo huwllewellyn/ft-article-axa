@@ -1,23 +1,18 @@
 import styled from "styled-components";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import Lottie from "lottie-react";
 import { getAssetPath } from "../utils/assetPath";
-import { getCurrentBreakpoint } from "../utils/breakpoints";
+import { SVGWrapper } from "./shared/SectionLayout";
 
 const Container = styled.section`
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     padding: 0;
     background: #f2f0ea;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding-bottom: 0;
 `;
 
@@ -186,34 +181,49 @@ const TitleWord = styled(motion.h1)`
     }
 `;
 
-const DecorativeVector = styled(motion.svg)`
+const SVGContainer = styled.div`
     position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100svw;
+    height: 100svh;
     z-index: 1;
     pointer-events: none;
-    overflow: visible;
-
-    &.vector-1 {
-        top: -59px;
-        left: 588px;
-        width: 852px;
-        height: 370px;
-    }
-
-    &.vector-2 {
-        top: -81px;
-        left: -132px;
-        width: 852px;
-        height: 915px;
-    }
+    display: flex;
+    align-items: flex-end;
 `;
 
-const LottieAnimationWrapper = styled.div`
+const AnimationSVGWrapper = styled(SVGWrapper)`
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+`;
+
+const TopRightSVGContainer = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50svw;
+    height: 100svh;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-start;
+`;
+
+const TopRightAnimationSVGWrapper = styled(SVGWrapper)`
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+`;
+
+const TextOverlay = styled(motion.div)`
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 2;
     pointer-events: none;
 `;
 
@@ -252,8 +262,8 @@ const ImageWrapper = styled(motion.div)`
     }
 
     &.image-4 {
-        top: 50px;
-        left: 280px;
+        bottom: 10px;
+        left: 400px;
         width: 121px;
         height: 182px;
     }
@@ -293,6 +303,17 @@ const ImageWrapper = styled(motion.div)`
     }
 `;
 
+const imageVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.1,
+        },
+    },
+};
+
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -323,65 +344,7 @@ const subtitleVariants = {
     },
 };
 
-const imageVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.8, ease: "easeOut" },
-    },
-};
-
 export default function IntroSection() {
-    const lottieRef = useRef(null);
-    const [animationData, setAnimationData] = useState(null);
-
-    useEffect(() => {
-        const breakpoint = getCurrentBreakpoint();
-        const animationPath =
-            breakpoint === "mobile"
-                ? "/lottie/mobile/AXA_TOP.json"
-                : "/lottie/desktop/AXA_TOP.json";
-
-        const loadAnimation = async () => {
-            try {
-                const fullPath = getAssetPath(animationPath);
-                const response = await fetch(fullPath);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                setAnimationData(data);
-            } catch (err) {
-                // Retry with desktop version if mobile fails
-                if (breakpoint === "mobile") {
-                    try {
-                        console.warn(
-                            `Mobile animation failed, retrying with desktop version`
-                        );
-                        const desktopPath = getAssetPath("/lottie/desktop/AXA_TOP.json");
-                        const response = await fetch(desktopPath);
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        const data = await response.json();
-                        setAnimationData(data);
-                    } catch (fallbackErr) {
-                        console.error(
-                            "Failed to load both mobile and desktop animations",
-                            err,
-                            fallbackErr
-                        );
-                    }
-                } else {
-                    console.error("Failed to load animation:", err);
-                }
-            }
-        };
-
-        loadAnimation();
-    }, []);
-
     return (
         <Container
             as={motion.section}
@@ -390,119 +353,143 @@ export default function IntroSection() {
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
         >
-            {animationData && (
-                <LottieAnimationWrapper>
-                    <Lottie
-                        lottieRef={lottieRef}
-                        animationData={animationData}
-                        loop={false}
-                        autoplay={true}
+            <SVGContainer>
+                <AnimationSVGWrapper
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="644"
+                    height="727"
+                    viewBox="0 0 644 727"
+                    fill="none"
+                    preserveAspectRatio="none"
+                    animationDuration={3}
+                >
+                    <path
+                        d="M-26.2453 -149C-26.2453 -149 157.606 -27.9187 5.52804 144.332C-263.222 448.73 -38.1597 581.498 79.2248 510.617C114.45 489.346 116.187 479.39 146.276 448.73C189.108 405.084 259.583 290.425 293.255 328.341C341.798 383.002 200.582 476.089 280.898 555.105C319.75 593.328 370.833 605.67 411.338 581.498C491.839 533.457 406.705 479.159 411.338 448.73C419.907 392.448 553.179 405.087 614.078 490.594C649.947 540.957 642.321 659.336 642.321 690.8C642.321 731.932 642.552 820 642.552 820"
+                        stroke="black"
+                        strokeWidth="1"
                     />
-                </LottieAnimationWrapper>
-            )}
-            <ContentWrapper>
-                <TitleContainer
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                        hidden: { opacity: 0 },
-                        visible: {
-                            opacity: 1,
-                            transition: {
-                                staggerChildren: 0.08,
-                                delayChildren: 0.2,
+                </AnimationSVGWrapper>
+            </SVGContainer>
+            <TopRightSVGContainer>
+                <TopRightAnimationSVGWrapper
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="682"
+                    height="308"
+                    viewBox="0 0 682 308"
+                    fill="none"
+                    preserveAspectRatio="none"
+                    animationDuration={3}
+                >
+                    <path
+                        d="M26.1383 -38.5C26.1383 -38.5 -31.5479 101.979 26.1383 143.5C67.6596 173.386 114.124 176.963 161.639 158C209.153 139.037 218.721 95.7096 250.138 57.5C287.139 12.5 350.616 22.5099 395.138 57.5C451.789 102.022 343.215 192.046 395.138 242C445.092 290.058 539.003 302.611 572.638 242C591.303 208.365 553.009 176.581 572.638 143.5C605.719 87.749 694.859 95.6886 738.638 143.5C778.725 187.279 691.226 259.784 738.638 295.5C774.354 322.404 853.138 295.5 853.138 295.5"
+                        stroke="black"
+                        strokeWidth="1"
+                    />
+                </TopRightAnimationSVGWrapper>
+            </TopRightSVGContainer>
+            <TextOverlay>
+                <ContentWrapper>
+                    <TitleContainer
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                                opacity: 1,
+                                transition: {
+                                    staggerChildren: 0.08,
+                                    delayChildren: 0.2,
+                                },
                             },
-                        },
-                    }}
-                >
-                    <TitleWord className="the" variants={itemVariants}>
-                        THE
-                    </TitleWord>
+                        }}
+                    >
+                        <TitleWord className="the" variants={itemVariants}>
+                            THE
+                        </TitleWord>
 
-                    <TitleWord className="new-nexus" variants={itemVariants}>
-                        NEW NEXUS
-                    </TitleWord>
+                        <TitleWord
+                            className="new-nexus"
+                            variants={itemVariants}
+                        >
+                            NEW NEXUS
+                        </TitleWord>
 
-                    <TitleWord className="of" variants={itemVariants}>
-                        OF
-                    </TitleWord>
+                        <TitleWord className="of" variants={itemVariants}>
+                            OF
+                        </TitleWord>
 
-                    <TitleWord className="global" variants={itemVariants}>
-                        GLOBAL
-                    </TitleWord>
+                        <TitleWord className="global" variants={itemVariants}>
+                            GLOBAL
+                        </TitleWord>
 
-                    <TitleWord className="risk" variants={itemVariants}>
-                        RISK
-                    </TitleWord>
-                </TitleContainer>
-
-                <Subtitle variants={subtitleVariants}>
-                    The biggest threats to global stability are no longer
-                    emerging, they're converging – here's what the future risk
-                    landscape reveals
-                </Subtitle>
-
-                {/* Images - positioned absolutely over content */}
-                {/* <ImageWrapper
-                    className="image-1"
-                    variants={imageVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
-                    <img
-                        src={getAssetPath(
-                            "/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
-                        )}
-                        alt="Climate activism"
-                    />
-                </ImageWrapper>
-
-                <ImageWrapper
-                    className="image-2"
-                    variants={imageVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
-                    <img
-                        src={getAssetPath(
-                            "/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
-                        )}
-                        alt="Infrastructure landscape"
-                    />
-                </ImageWrapper>
-
-                <ImageWrapper
-                    className="image-3"
-                    variants={imageVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
-                    <img
-                        src={getAssetPath(
-                            "/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
-                        )}
-                        alt="Supporting image"
-                    />
-                </ImageWrapper>
-
-                <ImageWrapper
-                    className="image-4"
-                    variants={imageVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
-                    <img
-                        src={getAssetPath(
-                            "/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
-                        )}
-                        alt="Supporting image"
-                    />
-                </ImageWrapper> */}
-            </ContentWrapper>
+                        <TitleWord className="risk" variants={itemVariants}>
+                            RISK
+                        </TitleWord>
+                    </TitleContainer>
+                    <Subtitle variants={subtitleVariants}>
+                        The biggest threats to global stability are no longer
+                        emerging, they're converging – here's what the future
+                        risk landscape reveals
+                    </Subtitle>
+                    {/* Images - positioned absolutely over content */}
+                    <ImageWrapper
+                        className="image-1"
+                        variants={imageVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                    >
+                        <img
+                            src={getAssetPath(
+                                "/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
+                            )}
+                            alt="Climate activism"
+                        />
+                    </ImageWrapper>
+                    <ImageWrapper
+                        className="image-2"
+                        variants={imageVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                    >
+                        <img
+                            src={getAssetPath(
+                                "/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
+                            )}
+                            alt="Infrastructure landscape"
+                        />
+                    </ImageWrapper>
+                    <ImageWrapper
+                        className="image-3"
+                        variants={imageVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                    >
+                        <img
+                            src={getAssetPath(
+                                "/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
+                            )}
+                            alt="Supporting image"
+                        />
+                    </ImageWrapper>
+                    <ImageWrapper
+                        className="image-4"
+                        variants={imageVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                    >
+                        <img
+                            src={getAssetPath(
+                                "/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
+                            )}
+                            alt="Supporting image"
+                        />
+                    </ImageWrapper>
+                </ContentWrapper>
+            </TextOverlay>
         </Container>
     );
 }
