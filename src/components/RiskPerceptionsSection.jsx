@@ -1,4 +1,3 @@
- 
 import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
@@ -59,6 +58,7 @@ export default function RiskPerceptionsSection({
                             fill="none"
                             preserveAspectRatio="none"
                             height="450px"
+                            mobileHeight="200px"
                             reverse
                         >
                             <path
@@ -89,7 +89,7 @@ export default function RiskPerceptionsSection({
                             decorative
                             desktop={{ top: "150%", left: "80%" }}
                             tablet={{ top: "150%", left: "80%" }}
-                            mobile={{ top: "150%", left: "80%" }}
+                            mobile={{ top: "110%", left: "30%" }}
                         />
                     </HalfWidthLeftParagraph>
                     <SVGWrapper
@@ -98,6 +98,7 @@ export default function RiskPerceptionsSection({
                         fill="none"
                         preserveAspectRatio="none"
                         height="500px"
+                        mobileHeight="300px"
                     >
                         <path
                             d="M528.13 0.5H738.5C793.728 0.5 838.5 45.2715 838.5 100.5V156.125C838.5 211.354 793.728 256.125 738.5 256.125H100.5C45.2715 256.125 0.5 300.897 0.5 356.125V398.5C0.5 453.728 45.2715 498.5 100.5 498.5H419.5"
@@ -159,7 +160,7 @@ export default function RiskPerceptionsSection({
                             decorative
                             desktop={{ top: "145%", left: "20%" }}
                             tablet={{ top: "145%", left: "20%" }}
-                            mobile={{ top: "145%", left: "20%" }}
+                            mobile={{ top: "110%", left: "30%" }}
                         />
                     </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
@@ -169,6 +170,7 @@ export default function RiskPerceptionsSection({
                         viewBox="0 0 1038 466"
                         fill="none"
                         preserveAspectRatio="none"
+                        mobileHeight="300px"
                     >
                         <path
                             d="M447.071 0.5H937.5C992.729 0.5 1037.5 45.2715 1037.5 100.5V139.186C1037.5 194.415 992.728 239.186 937.5 239.186H100.5C45.2715 239.186 0.5 283.958 0.5 339.186V365.5C0.5 420.729 45.2715 465.5 100.5 465.5H398"
@@ -188,7 +190,7 @@ export default function RiskPerceptionsSection({
                             decorative
                             desktop={{ top: "180%", left: "50%" }}
                             tablet={{ top: "180%", left: "50%" }}
-                            mobile={{ top: "180%", left: "50%" }}
+                            mobile={{ display: "none" }}
                         />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
@@ -198,6 +200,7 @@ export default function RiskPerceptionsSection({
                             fill="none"
                             preserveAspectRatio="none"
                             height="200px"
+                            mobileHeight="100px"
                         >
                             <path
                                 d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"

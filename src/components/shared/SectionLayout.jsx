@@ -11,6 +11,19 @@ import { media } from "../../utils/breakpoints";
 export const CIRCLE_SIZE = 22.8;
 
 // ============================================================================
+// UTILITY COMPONENTS
+// ============================================================================
+
+export const MobileBreak = styled.div`
+    display: none;
+    height: ${(props) => props.height || "1em"};
+
+    ${media.mobile(`
+        display: block;
+    `)}
+`;
+
+// ============================================================================
 // HOOKS
 // ============================================================================
 
@@ -280,8 +293,32 @@ export const QuoteSVGWrapper = styled.svg`
 
 export const FinalQuoteSVGWrapper = styled.svg`
     width: 100%;
-    height: 100%;
+    height: ${(props) => props.height || "100%"};
     display: block;
+
+    ${(props) =>
+        props.desktopHeight &&
+        `
+        @media (min-width: ${1024}px) {
+            height: ${props.desktopHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.tabletHeight &&
+        `
+        @media (min-width: ${768}px) and (max-width: ${1023}px) {
+            height: ${props.tabletHeight};
+        }
+    `}
+
+    ${(props) =>
+        props.mobileHeight &&
+        `
+        @media (max-width: ${767}px) {
+            height: ${props.mobileHeight};
+        }
+    `}
 `;
 
 // ============================================================================
@@ -296,6 +333,12 @@ export const Circle = styled.div`
     flex-shrink: 0;
     margin-right: 16px;
     transform: translateX(-50%);
+
+    ${(props) =>
+        props.hideOnMobile &&
+        media.mobile(`
+            display: none;
+        `)}
 `;
 
 export const AboveTopLeftCircle = styled(Circle)`
@@ -509,6 +552,12 @@ export const QuoteContent = styled(motion.div)`
     justify-content: center;
     margin: 40px;
     padding-bottom: 80px;
+    ${media.tablet(`
+
+    `)}
+    ${media.mobile(`
+        padding-bottom: 20px;
+    `)}
 
     ${(props) =>
         props.desktopHeight &&

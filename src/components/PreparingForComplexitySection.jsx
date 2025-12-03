@@ -53,6 +53,7 @@ export default function PreparingForComplexitySection({
                             fill="none"
                             preserveAspectRatio="none"
                             height="450px"
+                            mobileHeight="200px"
                             reverse
                         >
                             <path
@@ -82,7 +83,7 @@ export default function PreparingForComplexitySection({
                             decorative
                             desktop={{ top: "130%", left: "20%" }}
                             tablet={{ top: "130%", left: "20%" }}
-                            mobile={{ top: "130%", left: "20%" }}
+                            mobile={{ top: "110%", left: "30%" }}
                         />
                     </HalfWidthLeftParagraph>
                     <SVGWrapper
@@ -91,6 +92,7 @@ export default function PreparingForComplexitySection({
                         fill="none"
                         preserveAspectRatio="none"
                         height="400px"
+                        mobileHeight="300px"
                     >
                         <path
                             d="M528.13 0.5H738.5C793.728 0.5 838.5 45.2715 838.5 100.5V156.125C838.5 211.354 793.728 256.125 738.5 256.125H100.5C45.2715 256.125 0.5 300.897 0.5 356.125V398.5C0.5 453.728 45.2715 498.5 100.5 498.5H419.5"
@@ -115,7 +117,7 @@ export default function PreparingForComplexitySection({
                             decorative
                             desktop={{ top: "150%", left: "50%" }}
                             tablet={{ top: "150%", left: "50%" }}
-                            mobile={{ top: "150%", left: "50%" }}
+                            mobile={{ display: "none" }}
                         />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
@@ -125,6 +127,7 @@ export default function PreparingForComplexitySection({
                             fill="none"
                             preserveAspectRatio="none"
                             height="200px"
+                            mobileHeight="100px"
                         >
                             <path
                                 d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"
@@ -147,7 +150,10 @@ export default function PreparingForComplexitySection({
                         </Paragraph>
                         <TopRightCircle />
                     </HalfWidthLeftParagraph>
-                    <LeftToBottomQuoteWrapper height="600px">
+                    <LeftToBottomQuoteWrapper
+                        height="600px"
+                        mobileHeight="450px"
+                    >
                         <QuoteSVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 1037 667"
@@ -188,6 +194,7 @@ export default function PreparingForComplexitySection({
                             fill="none"
                             preserveAspectRatio="none"
                             height="200px"
+                            mobileHeight="100px"
                         >
                             <path
                                 d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"

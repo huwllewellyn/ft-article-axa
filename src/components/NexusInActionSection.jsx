@@ -1,4 +1,3 @@
- 
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
@@ -56,6 +55,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                             fill="none"
                             preserveAspectRatio="none"
                             height="450px"
+                            mobileHeight="200px"
                             reverse
                         >
                             <path
@@ -97,7 +97,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                             decorative
                             desktop={{ top: "150%", left: "20%" }}
                             tablet={{ top: "150%", left: "20%" }}
-                            mobile={{ top: "150%", left: "50%" }}
+                            mobile={{ top: "120%", left: "30%" }}
                         />
                     </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
@@ -106,6 +106,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                         fill="none"
                         preserveAspectRatio="none"
                         height="400px"
+                        mobileHeight="200px"
                     >
                         <path
                             d="M355.538 0.5H745.5C800.728 0.5 845.5 45.2715 845.5 100.5V171.011C845.5 226.24 800.728 271.011 745.5 271.011H0.5V359.5"
@@ -133,6 +134,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                         viewBox="0 0 20 388"
                         fill="none"
                         preserveAspectRatio="none"
+                        mobileHeight="100px"
                     >
                         <path
                             d="M0 0 L0 388"
@@ -141,7 +143,10 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                             vectorEffect="non-scaling-stroke"
                         />
                     </SVGWrapper>
-                    <LeftToBottomQuoteWrapper height="500px">
+                    <LeftToBottomQuoteWrapper
+                        height="500px"
+                        mobileHeight="450px"
+                    >
                         <QuoteSVGWrapper
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 1037 667"
@@ -190,6 +195,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                             fill="none"
                             preserveAspectRatio="none"
                             height="200px"
+                            mobileHeight="100px"
                         >
                             <path
                                 d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"

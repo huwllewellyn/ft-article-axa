@@ -19,6 +19,7 @@ import {
     FinalQuoteContent,
     FinalLeftToBottomQuoteWrapper,
     BottomRightCircle,
+    MobileBreak,
 } from "./shared/SectionLayout";
 import OverlayImage from "./shared/OverlayImage";
 
@@ -46,6 +47,7 @@ export default function CollaborativeApproachSection({
                             fill="none"
                             preserveAspectRatio="none"
                             height="450px"
+                            mobileHeight="200px"
                             reverse
                         >
                             <path
@@ -75,7 +77,7 @@ export default function CollaborativeApproachSection({
                             decorative
                             desktop={{ top: "135%", left: "80%" }}
                             tablet={{ top: "135%", left: "80%" }}
-                            mobile={{ top: "135%", left: "80%" }}
+                            mobile={{ top: "110%", left: "30%" }}
                         />
                     </HalfWidthLeftParagraph>
                     <SVGWrapper
@@ -84,6 +86,7 @@ export default function CollaborativeApproachSection({
                         fill="none"
                         preserveAspectRatio="none"
                         height="400px"
+                        mobileHeight="300px"
                     >
                         <path
                             d="M528.13 0.5H738.5C793.728 0.5 838.5 45.2715 838.5 100.5V156.125C838.5 211.354 793.728 256.125 738.5 256.125H100.5C45.2715 256.125 0.5 300.897 0.5 356.125V398.5C0.5 453.728 45.2715 498.5 100.5 498.5H419.5"
@@ -107,7 +110,7 @@ export default function CollaborativeApproachSection({
                             decorative
                             desktop={{ top: "155%", left: "50%" }}
                             tablet={{ top: "155%", left: "50%" }}
-                            mobile={{ top: "155%", left: "50%" }}
+                            mobile={{ display: "none" }}
                         />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
@@ -117,6 +120,7 @@ export default function CollaborativeApproachSection({
                             fill="none"
                             preserveAspectRatio="none"
                             height="200px"
+                            mobileHeight="100px"
                         >
                             <path
                                 d="M392.5 0.5C442.068 0.5 483 40.6824 483 90.25C483 139.818 442.818 180 393.25 180H0"
@@ -128,7 +132,7 @@ export default function CollaborativeApproachSection({
                     </HalfWidthRightSVGContainer>
                     <HalfWidthLeftParagraph backgroundColor={backgroundColor}>
                         <TopRightCircle right="-20px" />
-                        <BottomRightCircle />
+                        <BottomRightCircle hideOnMobile />
                         <Paragraph>
                             Sharing of data and insight through closer
                             collaboration with clients, argues AXA XL’s Gunter,
@@ -137,6 +141,7 @@ export default function CollaborativeApproachSection({
                             governments, organisations and companies to assess
                             this evolving nexus of risk more accurately.
                         </Paragraph>
+                        <MobileBreak />
                     </HalfWidthLeftParagraph>
                     <FinalLeftToBottomQuoteWrapper>
                         <FinalQuoteSVGWrapper
@@ -144,6 +149,7 @@ export default function CollaborativeApproachSection({
                             viewBox="0 0 1038 558"
                             fill="none"
                             preserveAspectRatio="none"
+                            mobileHeight="400px"
                         >
                             <path
                                 d="M1037.5 243.364V457C1037.5 512.228 992.729 557 937.5 557H15.4639M0.5 384.856L0.5 226.513C0.5 171.285 45.2715 126.513 100.5 126.513L521 126.945V0"
