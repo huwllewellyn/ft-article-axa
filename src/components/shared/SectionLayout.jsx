@@ -357,7 +357,7 @@ export const FinalQuoteSVGWrapper = React.forwardRef(
 // CIRCLES
 // ============================================================================
 
-export const Circle = styled.div`
+const StyledCircle = styled.div`
     width: ${CIRCLE_SIZE}px;
     height: ${CIRCLE_SIZE}px;
     border-radius: 50%;
@@ -365,6 +365,24 @@ export const Circle = styled.div`
     flex-shrink: 0;
     margin-right: 16px;
     transform: translateX(-50%);
+    opacity: 0;
+
+    ${(props) =>
+        props.$animate &&
+        `
+        animation: circleScaleIn 0.6s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    `}
+
+    @keyframes circleScaleIn {
+        from {
+            scale: 0;
+            opacity: 0;
+        }
+        to {
+            scale: 1;
+            opacity: 1;
+        }
+    }
 
     ${(props) =>
         props.hideOnMobile &&
@@ -372,6 +390,41 @@ export const Circle = styled.div`
             display: none;
         `)}
 `;
+
+export const Circle = React.forwardRef(
+    ({ children, hideOnMobile, ...props }) => {
+        const [inView, setInView] = useState(false);
+        const circleRef = useRef(null);
+
+        useEffect(() => {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        setInView(true);
+                    }
+                },
+                { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+            );
+
+            if (circleRef.current) {
+                observer.observe(circleRef.current);
+            }
+
+            return () => observer.disconnect();
+        }, []);
+
+        return (
+            <StyledCircle
+                ref={circleRef}
+                $animate={inView}
+                hideOnMobile={hideOnMobile}
+                {...props}
+            >
+                {children}
+            </StyledCircle>
+        );
+    }
+);
 
 export const AboveTopLeftCircle = styled(Circle)`
     transform: translateX(-50%) translateY(-10px);
