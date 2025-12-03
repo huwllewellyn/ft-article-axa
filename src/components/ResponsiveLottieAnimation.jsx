@@ -6,6 +6,7 @@ import LottieAnimation from "./LottieAnimation";
 const Container = styled.div`
     width: ${(props) => props.$width || "100%"};
     height: ${(props) => props.$height || "auto"};
+    max-height: 100%;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -33,6 +34,8 @@ export default function ResponsiveLottieAnimation({
     animations,
     heights = null,
     widths = {},
+    height = null,
+    width = null,
     loop = true,
     autoplay = true,
     scrollSync = false,
@@ -68,13 +71,17 @@ export default function ResponsiveLottieAnimation({
     const animationPath = getAnimationPath(currentBreakpoint);
     const fallbackPath =
         currentBreakpoint !== "desktop" ? getAnimationPath("desktop") : undefined;
-    const height = heights
-        ? heights[currentBreakpoint] || heights.desktop
-        : undefined;
-    const width = widths[currentBreakpoint] || widths.desktop || "100%";
+    const finalHeight = height !== null
+        ? height
+        : (heights
+            ? heights[currentBreakpoint] || heights.desktop
+            : undefined);
+    const finalWidth = width !== null
+        ? width
+        : (widths[currentBreakpoint] || widths.desktop || "100%");
 
     return (
-        <Container $height={height} $width={width}>
+        <Container $height={finalHeight} $width={finalWidth}>
             <LottieAnimation
                 path={animationPath}
                 fallbackPath={fallbackPath}

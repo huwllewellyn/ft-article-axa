@@ -26,6 +26,7 @@ const StickyContainer = styled.div`
         pointer-events: auto;
         width: ${(props) => props.$width || "100%"};
         height: ${(props) => props.$height || "auto"};
+        max-height: calc(100svh - ${(props) => props.$headerHeight || "60px"});
     }
 `;
 
@@ -90,31 +91,79 @@ export default function LottieScrolljack({
         return initialFrame;
     };
 
-    // Fetch animation data to get aspect ratio
+    // Fetch animation dimensions from config
     useEffect(() => {
-        const getAspectRatio = async () => {
+        const getDimensionsFromConfig = async () => {
             try {
-                // Try to get the desktop animation first
-                const path =
-                    animations.desktop ||
-                    animations.mobile ||
-                    Object.values(animations)[0];
-                const response = await fetch(path);
-                const data = await response.json();
+                // Fetch the animation dimensions config
+                const response = await fetch("/lottie/animationDimensions.json");
+                const dimensionsConfig = await response.json();
 
-                if (data.w && data.h) {
-                    setAspectRatioDecimal(data.w / data.h);
+                // Get the animation identifier
+                // Handle both string and object formats
+                let animationName;
+
+                if (typeof animations === "string") {
+                    // If animations is a string, extract the filename without extension
+                    // e.g., "AXA_Scrolly_DP02.json" -> "AXA_Scrolly_DP02"
+                    animationName = animations
+                        .split("/")
+                        .pop()
+                        ?.replace(".json", "");
+                } else {
+                    // If animations is an object, get the animation for current breakpoint
+                    const animationPath =
+                        animations[currentBreakpoint] ||
+                        animations.desktop ||
+                        animations.mobile ||
+                        Object.values(animations)[0];
+
+                    // Extract the animation name from the path
+                    animationName = animationPath
+                        ?.split("/")
+                        .pop()
+                        ?.replace(".json", "");
+                }
+
+                console.log(
+                    `[LottieScrolljack] currentBreakpoint: ${currentBreakpoint}, extracted name: ${animationName}`
+                );
+                console.log(
+                    `[LottieScrolljack] Available animation names in config:`,
+                    Object.keys(dimensionsConfig)
+                );
+
+                if (animationName && dimensionsConfig[animationName]) {
+                    const dims = dimensionsConfig[animationName][currentBreakpoint];
+                    console.log(
+                        `[LottieScrolljack] Found config for ${animationName}:`,
+                        dimensionsConfig[animationName]
+                    );
+                    if (dims && dims.w && dims.h) {
+                        const aspectRatio = dims.w / dims.h;
+                        console.log(
+                            `[LottieScrolljack] Loaded dimensions: ${dims.w}x${dims.h} = ${aspectRatio}`
+                        );
+                        setAspectRatioDecimal(aspectRatio);
+                    } else {
+                        console.warn(
+                            `[LottieScrolljack] No dimensions found for breakpoint ${currentBreakpoint}`
+                        );
+                    }
+                } else {
+                    console.warn(
+                        `[LottieScrolljack] Animation ${animationName} not found in config`
+                    );
                 }
             } catch (err) {
-                // Keep default if fetch fails
-                console.warn("Could not fetch animation aspect ratio", err);
+                console.warn("Could not fetch animation dimensions config", err);
             }
         };
 
         if (animations) {
-            getAspectRatio();
+            getDimensionsFromConfig();
         }
-    }, [animations]);
+    }, [animations, currentBreakpoint]);
 
     // Calculate dimensions based on viewport and aspect ratio
     useEffect(() => {
@@ -126,23 +175,25 @@ export default function LottieScrolljack({
             const headerHeightPixels = parseInt(headerHeight) || 60;
             const availableHeight = viewportHeight - headerHeightPixels;
 
-            // Calculate height if width is 100vw
-            const calculatedHeight = viewportWidth / aspectRatioDecimal;
+            // Always fill the available height
+            // Calculate width to maintain aspect ratio
+            const calculatedWidth = availableHeight * aspectRatioDecimal;
 
-            // If calculated height exceeds available height, constrain to available height
-            // and calculate width based on that
-            if (calculatedHeight > availableHeight) {
-                const constrainedWidth =
-                    ((availableHeight * aspectRatioDecimal) / viewportWidth) *
-                    100;
+            // If calculated width fits in viewport, use it
+            // Otherwise, use 100% width and calculate height from that
+            if (calculatedWidth <= viewportWidth) {
+                // Width fits, fill the height and set width based on aspect ratio
+                const widthPercentage = (calculatedWidth / viewportWidth) * 100;
                 setDimensions({
-                    width: `${constrainedWidth}vw`,
+                    width: `${widthPercentage}vw`,
                     height: `calc(100svh - ${headerHeight})`,
                 });
             } else {
+                // Width exceeds viewport, use 100% width
+                const calculatedHeight = viewportWidth / aspectRatioDecimal;
                 setDimensions({
                     width: "100%",
-                    height: "auto",
+                    height: `${calculatedHeight}px`,
                 });
             }
         };
@@ -171,6 +222,8 @@ export default function LottieScrolljack({
             >
                 <ResponsiveLottieAnimation
                     animations={animations}
+                    width={dimensions.width}
+                    height={dimensions.height}
                     loop={loop}
                     autoplay={autoplay}
                     scrollProgress={scrollYProgress}

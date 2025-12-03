@@ -1,0 +1,42 @@
+{
+  "AXA_Scrolly_DP01": {
+    "mobile": { "w": 375, "h": 659 },
+    "tablet": { "w": 754, "h": 926 },
+    "desktop": { "w": 1286, "h": 682 }
+  },
+  "AXA_Scrolly_DP02": {
+    "mobile": { "w": 375, "h": 600 },
+    "tablet": { "w": 754, "h": 683 },
+    "desktop": { "w": 868, "h": 525 }
+  },
+  "AXA_Scrolly_DP03": {
+    "mobile": { "w": 375, "h": 600 },
+    "tablet": { "w": 754, "h": 710 },
+    "desktop": { "w": 957, "h": 520 }
+  },
+  "AXA_Scrolly_DP04": {
+    "mobile": { "w": 375, "h": 600 },
+    "tablet": { "w": 754, "h": 689 },
+    "desktop": { "w": 1056, "h": 558 }
+  },
+  "AXA_Scrolly_DP05": {
+    "mobile": { "w": 375, "h": 756 },
+    "tablet": { "w": 754, "h": 834 },
+    "desktop": { "w": 1066, "h": 766 }
+  },
+  "AXA_Scrolly_DP06": {
+    "mobile": { "w": 375, "h": 602 },
+    "tablet": { "w": 834, "h": 987 },
+    "desktop": { "w": 1168, "h": 888 }
+  },
+  "AXA_Scrolly_DP07": {
+    "mobile": { "w": 375, "h": 548 },
+    "tablet": { "w": 750, "h": 720 },
+    "desktop": { "w": 834, "h": 808 }
+  },
+  "AXA_TOP": {
+    "mobile": { "w": 751, "h": 1167 },
+    "tablet": { "w": 786, "h": 1167 },
+    "desktop": { "w": 1440, "h": 1167 }
+  }
+}
