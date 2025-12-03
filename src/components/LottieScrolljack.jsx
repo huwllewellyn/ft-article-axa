@@ -146,12 +146,18 @@ export default function LottieScrolljack({
     // Calculate dimensions based on viewport and aspect ratio
     useEffect(() => {
         const calculateDimensions = () => {
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
+            // Use visualViewport if available (more accurate on mobile), fallback to window dimensions
+            const viewportWidth = window.visualViewport?.width || window.innerWidth;
+            const viewportHeight = window.visualViewport?.height || window.innerHeight;
+
+            // Account for device pixel ratio for high-DPI displays
+            const dpr = window.devicePixelRatio || 1;
+            const scaledViewportWidth = viewportWidth * dpr;
+            const scaledViewportHeight = viewportHeight * dpr;
 
             // Parse header height to get pixel value
             const headerHeightPixels = parseInt(headerHeight) || 60;
-            const availableHeight = viewportHeight - headerHeightPixels;
+            const availableHeight = scaledViewportHeight - headerHeightPixels;
 
             // Always fill the available height
             // Calculate width to maintain aspect ratio
@@ -159,16 +165,16 @@ export default function LottieScrolljack({
 
             // If calculated width fits in viewport, use it
             // Otherwise, use 100% width and calculate height from that
-            if (calculatedWidth <= viewportWidth) {
+            if (calculatedWidth <= scaledViewportWidth) {
                 // Width fits, fill the height and set width based on aspect ratio
-                const widthPercentage = (calculatedWidth / viewportWidth) * 100;
+                const widthPercentage = (calculatedWidth / scaledViewportWidth) * 100;
                 setDimensions({
                     width: `${widthPercentage}vw`,
                     height: `calc(100svh - ${headerHeight})`,
                 });
             } else {
                 // Width exceeds viewport, use 100% width
-                const calculatedHeight = viewportWidth / aspectRatioDecimal;
+                const calculatedHeight = scaledViewportWidth / aspectRatioDecimal;
                 setDimensions({
                     width: "100%",
                     height: `${calculatedHeight}px`,
@@ -178,6 +184,14 @@ export default function LottieScrolljack({
 
         calculateDimensions();
         window.addEventListener("resize", calculateDimensions);
+        // Also listen to visualViewport changes for better mobile support
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener("resize", calculateDimensions);
+            return () => {
+                window.removeEventListener("resize", calculateDimensions);
+                window.visualViewport.removeEventListener("resize", calculateDimensions);
+            };
+        }
         return () => window.removeEventListener("resize", calculateDimensions);
     }, [aspectRatioDecimal, headerHeight]);
 
