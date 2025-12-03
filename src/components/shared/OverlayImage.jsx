@@ -69,6 +69,7 @@ const OverlayImageWrapper = styled(motion.img)`
     width: ${OVERLAY_IMAGE_WIDTH}px;
     height: ${OVERLAY_IMAGE_HEIGHT}px;
     object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
     /* Default centering */
     left: 50%;
@@ -101,6 +102,7 @@ const OverlayVideoWrapper = styled(motion.video)`
     width: ${OVERLAY_IMAGE_WIDTH}px;
     height: ${OVERLAY_IMAGE_HEIGHT}px;
     object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
     /* Default centering */
     left: 50%;

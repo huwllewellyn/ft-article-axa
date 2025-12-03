@@ -19,6 +19,7 @@ import {
     HalfWidthRightSVGContainer,
     TopRightCircle,
 } from "./shared/SectionLayout";
+import OverlayImage from "./shared/OverlayImage";
 
 const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -83,13 +84,20 @@ export default function RiskPerceptionsSection({
                             divide” or that people have “fewer and fewer common
                             values and aspirations”.
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s4/1.jpg"
+                            decorative
+                            desktop={{ top: "150%", left: "80%" }}
+                            tablet={{ top: "150%", left: "80%" }}
+                            mobile={{ top: "150%", left: "80%" }}
+                        />
                     </HalfWidthLeftParagraph>
                     <SVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 839 499"
                         fill="none"
                         preserveAspectRatio="none"
-                        height="400px"
+                        height="500px"
                     >
                         <path
                             d="M528.13 0.5H738.5C793.728 0.5 838.5 45.2715 838.5 100.5V156.125C838.5 211.354 793.728 256.125 738.5 256.125H100.5C45.2715 256.125 0.5 300.897 0.5 356.125V398.5C0.5 453.728 45.2715 498.5 100.5 498.5H419.5"
@@ -146,6 +154,13 @@ export default function RiskPerceptionsSection({
                             only 37 per cent of people worry about a deep social
                             divide.
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s4/2.jpg"
+                            decorative
+                            desktop={{ top: "145%", left: "20%" }}
+                            tablet={{ top: "145%", left: "20%" }}
+                            mobile={{ top: "145%", left: "20%" }}
+                        />
                     </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
@@ -168,6 +183,13 @@ export default function RiskPerceptionsSection({
                             <b>between experts and general population</b>, with
                             just six out of the 10 top risks common to both.
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s4/3.jpg"
+                            decorative
+                            desktop={{ top: "180%", left: "50%" }}
+                            tablet={{ top: "180%", left: "50%" }}
+                            mobile={{ top: "180%", left: "50%" }}
+                        />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper

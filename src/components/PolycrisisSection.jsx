@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
@@ -149,6 +148,13 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             when neither experts nor the general public ranked
                             them among their top 10 risks.
                         </Paragraph>
+                        <OverlayImage
+                            videoSrc="/images/s2/2.mp4"
+                            decorative
+                            desktop={{ top: "190%", left: "50%" }}
+                            tablet={{ top: "190%", left: "50%" }}
+                            mobile={{ top: "190%", left: "50%" }}
+                        />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper

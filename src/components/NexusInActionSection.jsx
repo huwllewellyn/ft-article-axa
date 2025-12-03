@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";
 import LottieScrolljack from "./LottieScrolljack";
+import OverlayImage from "./shared/OverlayImage";
 import {
     AboveTopLeftCircle,
     BackgroundContainer,
@@ -85,6 +85,20 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                             figure since the question first appeared in the
                             annual survey.
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s3/1.jpg"
+                            decorative
+                            desktop={{ top: "60%", left: "120%" }}
+                            tablet={{ top: "60%", left: "120%" }}
+                            mobile={{ display: "none" }}
+                        />
+                        <OverlayImage
+                            src="/images/s3/2.jpg"
+                            decorative
+                            desktop={{ top: "150%", left: "20%" }}
+                            tablet={{ top: "150%", left: "20%" }}
+                            mobile={{ top: "150%", left: "50%" }}
+                        />
                     </HalfWidthLeftParagraph>
                     <FullWidthSVGWrapper
                         xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +125,7 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                     }}
                     backgroundColor={backgroundColor}
                     loop={false}
-                    initialFrame={0.16}
+                    initialFrame={0.2}
                 />
                 <ContentWrapper>
                     <SVGWrapper
@@ -161,6 +175,13 @@ export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
                             complicates how we manage and respond to risks,"
                             says Benet.
                         </Paragraph>
+                        <OverlayImage
+                            src="/images/s3/3.jpg"
+                            decorative
+                            desktop={{ top: "165%", left: "50%" }}
+                            tablet={{ top: "165%", left: "50%" }}
+                            mobile={{ display: "none" }}
+                        />
                     </HalfWidthRightParagraph>
                     <HalfWidthRightSVGContainer>
                         <SVGWrapper
