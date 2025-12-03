@@ -285,13 +285,29 @@ export const HalfWidthLeftParagraph = styled.div`
     `)}
 `;
 
-export const QuoteSVGWrapper = styled.svg`
+const StyledQuoteSVG = styled(motion.svg)`
     width: 100%;
     height: 100%;
     display: block;
 `;
 
-export const FinalQuoteSVGWrapper = styled.svg`
+export const QuoteSVGWrapper = React.forwardRef(
+    ({ children, animationDuration = 1, reverse = false, ...props }) => {
+        const { ref: internalRef, animatePathChildren } = useDrawingAnimation(
+            animationDuration,
+            reverse
+        );
+        const animatedChildren = animatePathChildren(children);
+
+        return (
+            <StyledQuoteSVG ref={internalRef} {...props}>
+                {animatedChildren}
+            </StyledQuoteSVG>
+        );
+    }
+);
+
+const StyledFinalQuoteSVG = styled(motion.svg)`
     width: 100%;
     height: ${(props) => props.height || "100%"};
     display: block;
@@ -320,6 +336,22 @@ export const FinalQuoteSVGWrapper = styled.svg`
         }
     `}
 `;
+
+export const FinalQuoteSVGWrapper = React.forwardRef(
+    ({ children, animationDuration = 1, reverse = false, ...props }) => {
+        const { ref: internalRef, animatePathChildren } = useDrawingAnimation(
+            animationDuration,
+            reverse
+        );
+        const animatedChildren = animatePathChildren(children);
+
+        return (
+            <StyledFinalQuoteSVG ref={internalRef} {...props}>
+                {animatedChildren}
+            </StyledFinalQuoteSVG>
+        );
+    }
+);
 
 // ============================================================================
 // CIRCLES
