@@ -199,6 +199,7 @@ export default function LottieScrolljack({
                 $headerHeight={headerHeight}
             >
                 <ResponsiveLottieAnimation
+                    key={currentBreakpoint}
                     animations={animations}
                     width={dimensions.width}
                     height={dimensions.height}
