@@ -58,62 +58,47 @@ const TitleContainer = styled(motion.div)`
     z-index: 3;
 `;
 
-const TitleWord = styled(motion.h1)`
-    position: absolute;
-    font-family: freight-big-pro, Georgia, serif;
-    color: #0f0707;
-    margin: 0;
-    letter-spacing: -1.54px;
-    line-height: 0.9;
-    font-size: 154px;
-    padding: 0;
-    width: auto;
+const TitleWordWrapper = styled.div`
+    overflow: hidden;
+    display: block;
+    height: auto;
 
     &.the {
-        font-weight: 300;
-        font-style: italic;
+        position: absolute;
         left: 0;
         top: 0;
         width: 283px;
     }
 
     &.new-nexus {
-        font-weight: 600;
-        font-style: normal;
+        position: absolute;
         left: 10px;
         top: 121px;
         width: 846px;
     }
 
     &.of {
-        font-weight: 300;
-        font-style: italic;
+        position: absolute;
         left: 678px;
         top: 245px;
         width: 186px;
     }
 
     &.global {
-        font-weight: 600;
-        font-style: normal;
+        position: absolute;
         left: 678px;
         top: 367px;
         width: 578px;
     }
 
     &.risk {
-        font-weight: 600;
-        font-style: normal;
-        text-align: right;
+        position: absolute;
         left: 924px;
         top: 490px;
         width: 335px;
     }
 
     @media (max-width: 1024px) {
-        font-size: 100px;
-        letter-spacing: -1px;
-
         &.the {
             width: 230px;
         }
@@ -144,39 +129,86 @@ const TitleWord = styled(motion.h1)`
     }
 
     @media (max-width: 768px) {
-        font-size: 60px;
-        letter-spacing: -0.6px;
         position: static;
+        width: 100% !important;
         margin-bottom: 10px;
 
         &.the {
-            width: 100%;
+            width: 100% !important;
         }
 
         &.new-nexus {
-            width: 100%;
+            width: 100% !important;
             left: auto;
             top: auto;
         }
 
         &.of {
-            width: 100%;
+            width: 100% !important;
             left: auto;
             top: auto;
         }
 
         &.global {
-            width: 100%;
+            width: 100% !important;
             left: auto;
             top: auto;
         }
 
         &.risk {
-            width: 100%;
+            width: 100% !important;
             text-align: left;
             left: auto;
             top: auto;
         }
+    }
+`;
+
+const TitleWord = styled(motion.h1)`
+    position: relative;
+    font-family: freight-big-pro, Georgia, serif;
+    color: #0f0707;
+    margin: 0;
+    letter-spacing: -1.54px;
+    line-height: 0.9;
+    font-size: 154px;
+    padding: 0;
+    width: 100%;
+
+    &.the {
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    &.new-nexus {
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    &.of {
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    &.global {
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    &.risk {
+        font-weight: 600;
+        font-style: normal;
+        text-align: right;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 100px;
+        letter-spacing: -1px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 60px;
+        letter-spacing: -0.6px;
     }
 `;
 
@@ -314,42 +346,31 @@ const imageVariants = {
     },
 };
 
-const containerImageVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.15,
-            delayChildren: 0.1,
-        },
-    },
-};
-
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.15,
-            delayChildren: 0.1,
+            staggerChildren: 0.25,
+            delayChildren: 0.2,
         },
     },
 };
 
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+const titleWordVariants = {
+    hidden: { y: 100, opacity: 0 },
     visible: {
-        opacity: 1,
         y: 0,
+        opacity: 1,
         transition: { duration: 0.8, ease: "easeOut" },
     },
 };
 
 const subtitleVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
-        opacity: 1,
         y: 0,
+        opacity: 1,
         transition: { duration: 0.8, ease: "easeOut" },
     },
 };
@@ -407,34 +428,56 @@ export default function IntroSection() {
                             visible: {
                                 opacity: 1,
                                 transition: {
-                                    staggerChildren: 0.08,
+                                    staggerChildren: 0.15,
                                     delayChildren: 0.2,
                                 },
                             },
                         }}
                     >
-                        <TitleWord className="the" variants={itemVariants}>
-                            THE
-                        </TitleWord>
+                        <TitleWordWrapper className="the">
+                            <TitleWord
+                                className="the"
+                                variants={titleWordVariants}
+                            >
+                                THE
+                            </TitleWord>
+                        </TitleWordWrapper>
 
-                        <TitleWord
-                            className="new-nexus"
-                            variants={itemVariants}
-                        >
-                            NEW NEXUS
-                        </TitleWord>
+                        <TitleWordWrapper className="new-nexus">
+                            <TitleWord
+                                className="new-nexus"
+                                variants={titleWordVariants}
+                            >
+                                NEW NEXUS
+                            </TitleWord>
+                        </TitleWordWrapper>
 
-                        <TitleWord className="of" variants={itemVariants}>
-                            OF
-                        </TitleWord>
+                        <TitleWordWrapper className="of">
+                            <TitleWord
+                                className="of"
+                                variants={titleWordVariants}
+                            >
+                                OF
+                            </TitleWord>
+                        </TitleWordWrapper>
 
-                        <TitleWord className="global" variants={itemVariants}>
-                            GLOBAL
-                        </TitleWord>
+                        <TitleWordWrapper className="global">
+                            <TitleWord
+                                className="global"
+                                variants={titleWordVariants}
+                            >
+                                GLOBAL
+                            </TitleWord>
+                        </TitleWordWrapper>
 
-                        <TitleWord className="risk" variants={itemVariants}>
-                            RISK
-                        </TitleWord>
+                        <TitleWordWrapper className="risk">
+                            <TitleWord
+                                className="risk"
+                                variants={titleWordVariants}
+                            >
+                                RISK
+                            </TitleWord>
+                        </TitleWordWrapper>
                     </TitleContainer>
                     <Subtitle variants={subtitleVariants}>
                         The biggest threats to global stability are no longer
