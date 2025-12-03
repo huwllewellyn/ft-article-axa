@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { getCurrentBreakpoint, breakpoints } from "../utils/breakpoints";
+import { getCurrentBreakpoint } from "../utils/breakpoints";
 import LottieAnimation from "./LottieAnimation";
 
 const Container = styled.div`
@@ -37,15 +37,11 @@ export default function ResponsiveLottieAnimation({
     scrollProgress = null,
     initialFrame = 0,
 }) {
-    const [currentBreakpoint, setCurrentBreakpoint] = useState("desktop");
-    const [isClient, setIsClient] = useState(false);
+    const [currentBreakpoint, setCurrentBreakpoint] = useState(
+        () => getCurrentBreakpoint()
+    );
 
     useEffect(() => {
-        setIsClient(true);
-
-        // Set initial breakpoint
-        setCurrentBreakpoint(getCurrentBreakpoint());
-
         // Handle window resize
         const handleResize = () => {
             setCurrentBreakpoint(getCurrentBreakpoint());
@@ -54,11 +50,6 @@ export default function ResponsiveLottieAnimation({
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-
-    // Don't render until client-side to avoid hydration mismatch
-    if (!isClient) {
-        return null;
-    }
 
     const animationPath = animations[currentBreakpoint] || animations.desktop;
     const height = heights

@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+ 
 import SectionTitleGroup from "./shared/SectionTitleGroup";
 import Quote from "./shared/Quote";
 import HeaderAnimationWrapper from "./HeaderAnimationWrapper";

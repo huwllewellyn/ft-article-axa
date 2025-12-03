@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+ 
 import { motion } from "framer-motion";
 import LottieScrolljack from "./LottieScrolljack";
 import SectionTitleGroup from "./shared/SectionTitleGroup";

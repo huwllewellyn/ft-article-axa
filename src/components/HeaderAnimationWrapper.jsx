@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useMotionValue } from "framer-motion";
+import { useMotionValue } from "framer-motion";
 import styled from "styled-components";
 import LottieAnimation from "./LottieAnimation";
 

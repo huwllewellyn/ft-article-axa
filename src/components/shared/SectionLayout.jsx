@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import React, { useState, useEffect, useRef } from "react";
@@ -145,7 +146,7 @@ const StyledSVGWrapper = styled(motion.svg)`
 `;
 
 export const SVGWrapper = React.forwardRef(
-    ({ children, animationDuration = 1, reverse = false, ...props }, ref) => {
+    ({ children, animationDuration = 1, reverse = false, ...props }) => {
         const { ref: internalRef, animatePathChildren } = useDrawingAnimation(
             animationDuration,
             reverse
@@ -361,7 +362,7 @@ const StyledParagraph = styled(motion.p)`
 `;
 
 export const Paragraph = React.forwardRef(
-    ({ children, animationDuration = 0.6, ...props }, ref) => {
+    ({ children, animationDuration = 0.6, ...props }) => {
         const {
             ref: animationRef,
             variants,
