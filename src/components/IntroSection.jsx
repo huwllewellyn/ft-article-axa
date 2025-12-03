@@ -505,7 +505,7 @@ export default function IntroSection() {
                         >
                             <img
                                 src={getAssetPath(
-                                    "/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
+                                    "/images/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
                                 )}
                                 alt="Climate activism"
                             />
@@ -516,7 +516,7 @@ export default function IntroSection() {
                         >
                             <img
                                 src={getAssetPath(
-                                    "/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
+                                    "/images/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
                                 )}
                                 alt="Infrastructure landscape"
                             />
@@ -527,7 +527,7 @@ export default function IntroSection() {
                         >
                             <img
                                 src={getAssetPath(
-                                    "/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
+                                    "/images/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
                                 )}
                                 alt="Supporting image"
                             />
@@ -538,7 +538,7 @@ export default function IntroSection() {
                         >
                             <img
                                 src={getAssetPath(
-                                    "/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
+                                    "/images/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
                                 )}
                                 alt="Supporting image"
                             />
