@@ -144,7 +144,7 @@ export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
                             videoSrc="/images/s2/2.mp4"
                             decorative
                             desktop={{ top: "190%", left: "50%" }}
-                            tablet={{ top: "190%", left: "50%" }}
+                            tablet={{ top: "190%", left: "60%" }}
                             mobile={{ top: "110%", left: "52%" }}
                         />
                     </HalfWidthRightParagraph>

@@ -515,7 +515,6 @@ export const NotQuiteBottomRightCircle = styled(Circle)`
 // ============================================================================
 
 const StyledParagraph = styled(motion.p)`
-    font-size: 19px;
     line-height: 1.2;
     color: #000000;
     margin: 0;
@@ -524,7 +523,13 @@ const StyledParagraph = styled(motion.p)`
         "Segoe UI", sans-serif;
     text-align: left;
 
+    font-size: 19px;
     font-weight: 400;
+
+    ${media.tablet(`
+        font-weight: 400;
+        font-size: 19px;
+    `)}
 
     ${media.mobile(`
         font-weight: 300;

@@ -25,6 +25,8 @@ const Container = styled.div`
  * @param {Object} heights - Object mapping breakpoints to heights (optional, defaults to auto)
  *   Example: { mobile: "300px", tablet: "400px", desktop: "600px" }
  * @param {Object} widths - Object mapping breakpoints to widths (optional, defaults to 100%)
+ * @param {string} height - Direct height value (overrides heights object if provided)
+ * @param {string} width - Direct width value (overrides widths object if provided)
  * @param {boolean} loop - Whether animation should loop (default: true)
  * @param {boolean} autoplay - Whether animation should autoplay (default: true)
  * @param {boolean} scrollSync - Whether animation should sync with scroll (default: false)

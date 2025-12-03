@@ -33,10 +33,11 @@ const StickyContainer = styled.div`
 /**
  * LottieScrolljack
  * A reusable component that creates a full-width sticky animation that scrubs through based on scroll position.
- * The animation width is always 100%, and height is responsive based on the animation's aspect ratio.
+ * The animation's width and height are calculated based on its aspect ratio from animationDimensions.json.
  *
- * @param {Object} animations - Object mapping breakpoints to animation paths (required)
- *   Example: { mobile: "/lottie/mobile/anim.json", tablet: "/lottie/tablet/anim.json", desktop: "/lottie/desktop/anim.json" }
+ * @param {string|Object} animations - Animation identifier (required)
+ *   String: "AXA_Scrolly_DP02.json" - uses the same animation for all breakpoints
+ *   Object: { mobile: "/lottie/mobile/anim.json", tablet: "/lottie/tablet/anim.json", desktop: "/lottie/desktop/anim.json" }
  * @param {string} trackHeight - Height of the scrollable track area (optional, default: "4000px")
  * @param {string} headerHeight - Height of the page header to avoid overlap (optional, default: "60px")
  * @param {boolean} loop - Whether animation should loop (default: false for scrolljack)
@@ -125,35 +126,12 @@ export default function LottieScrolljack({
                         ?.replace(".json", "");
                 }
 
-                console.log(
-                    `[LottieScrolljack] currentBreakpoint: ${currentBreakpoint}, extracted name: ${animationName}`
-                );
-                console.log(
-                    `[LottieScrolljack] Available animation names in config:`,
-                    Object.keys(dimensionsConfig)
-                );
-
                 if (animationName && dimensionsConfig[animationName]) {
                     const dims = dimensionsConfig[animationName][currentBreakpoint];
-                    console.log(
-                        `[LottieScrolljack] Found config for ${animationName}:`,
-                        dimensionsConfig[animationName]
-                    );
                     if (dims && dims.w && dims.h) {
                         const aspectRatio = dims.w / dims.h;
-                        console.log(
-                            `[LottieScrolljack] Loaded dimensions: ${dims.w}x${dims.h} = ${aspectRatio}`
-                        );
                         setAspectRatioDecimal(aspectRatio);
-                    } else {
-                        console.warn(
-                            `[LottieScrolljack] No dimensions found for breakpoint ${currentBreakpoint}`
-                        );
                     }
-                } else {
-                    console.warn(
-                        `[LottieScrolljack] Animation ${animationName} not found in config`
-                    );
                 }
             } catch (err) {
                 console.warn("Could not fetch animation dimensions config", err);
