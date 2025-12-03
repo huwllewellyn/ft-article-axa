@@ -111,8 +111,8 @@ export default function RisksSection({ backgroundColor = "#f2f0ea" }) {
                             src="/images/s1/1.jpg"
                             decorative
                             desktop={{ top: "0", left: "120%" }}
-                            tablet={{ top: "0", left: "120%" }}
-                            mobile={{ top: "0", left: "120%" }}
+                            tablet={{ top: "100%", left: "120%" }}
+                            mobile={{ top: "130%", left: "25%" }}
                         />
                         <OverlayImage
                             src="/images/s1/2.jpg"

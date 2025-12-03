@@ -203,7 +203,7 @@ export const HalfWidthRightParagraph = styled.div`
     outline: 2px solid ${(props) => props.backgroundColor || "transparent"};
 
     @media (max-width: 1024px) {
-        width: 60%;
+        width: 80%;
     }
 `;
 
@@ -217,7 +217,7 @@ export const HalfWidthLeftParagraph = styled.div`
     z-index: 1;
 
     @media (max-width: 1024px) {
-        width: 60%;
+        width: 90%;
     }
 `;
 
@@ -381,28 +381,6 @@ export const Paragraph = React.forwardRef(
         );
     }
 );
-
-export const TextBlock = styled.p`
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 1.2;
-    color: #000000;
-    margin-bottom: 40px;
-    letter-spacing: 0;
-
-    a {
-        color: #000000;
-        text-decoration: underline;
-    }
-
-    strong {
-        font-weight: 700;
-    }
-
-    &:last-of-type {
-        margin-bottom: 80px;
-    }
-`;
 
 export const ParagraphFourText = styled.span`
     flex: 1;
