@@ -240,28 +240,28 @@ const ImageWrapper = styled(motion.div)`
     }
 
     &.image-1 {
-        top: 219px;
-        right: 184px;
-        width: 121px;
-        height: 182px;
-    }
-
-    &.image-2 {
         top: 35px;
         right: 670px;
         width: 121px;
         height: 182px;
     }
 
+    &.image-2 {
+        top: 219px;
+        right: 184px;
+        width: 121px;
+        height: 182px;
+    }
+
     &.image-3 {
-        bottom: 80px;
+        bottom: 180px;
         left: 40px;
         width: 121px;
         height: 182px;
     }
 
     &.image-4 {
-        bottom: 10px;
+        bottom: 90px;
         left: 400px;
         width: 121px;
         height: 182px;
@@ -271,15 +271,15 @@ const ImageWrapper = styled(motion.div)`
         &.image-1 {
             width: 100px;
             height: 150px;
-            right: 150px;
-            top: 200px;
+            right: 550px;
+            top: 50px;
         }
 
         &.image-2 {
             width: 100px;
             height: 150px;
-            right: 550px;
-            top: 50px;
+            right: 150px;
+            top: 200px;
         }
 
         &.image-3 {
@@ -442,82 +442,65 @@ export default function IntroSection() {
                         risk landscape reveals
                     </Subtitle>
                     {/* Images - positioned absolutely over content */}
-                    <ImageWrapper
-                        className="image-1"
-                        variants={imageVariants}
+                    <motion.div
                         initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{
-                            duration: 0.6,
-                            ease: "easeOut",
-                            delay: 0,
+                        animate="visible"
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                                opacity: 1,
+                                transition: {
+                                    staggerChildren: 0.6,
+                                    delayChildren: 0.2,
+                                },
+                            },
                         }}
                     >
-                        <img
-                            src={getAssetPath(
-                                "/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
-                            )}
-                            alt="Climate activism"
-                        />
-                    </ImageWrapper>
-                    <ImageWrapper
-                        className="image-2"
-                        variants={imageVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{
-                            duration: 0.6,
-                            ease: "easeOut",
-                            delay: 0.15,
-                        }}
-                    >
-                        <img
-                            src={getAssetPath(
-                                "/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
-                            )}
-                            alt="Infrastructure landscape"
-                        />
-                    </ImageWrapper>
-                    <ImageWrapper
-                        className="image-3"
-                        variants={imageVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{
-                            duration: 0.6,
-                            ease: "easeOut",
-                            delay: 0.3,
-                        }}
-                    >
-                        <img
-                            src={getAssetPath(
-                                "/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
-                            )}
-                            alt="Supporting image"
-                        />
-                    </ImageWrapper>
-                    <ImageWrapper
-                        className="image-4"
-                        variants={imageVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{
-                            duration: 0.6,
-                            ease: "easeOut",
-                            delay: 0.45,
-                        }}
-                    >
-                        <img
-                            src={getAssetPath(
-                                "/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
-                            )}
-                            alt="Supporting image"
-                        />
-                    </ImageWrapper>
+                        <ImageWrapper
+                            className="image-1"
+                            variants={imageVariants}
+                        >
+                            <img
+                                src={getAssetPath(
+                                    "/intro/33826e4e78dae38a1d28a7819c4065f5bb46fb42.jpg"
+                                )}
+                                alt="Climate activism"
+                            />
+                        </ImageWrapper>
+                        <ImageWrapper
+                            className="image-2"
+                            variants={imageVariants}
+                        >
+                            <img
+                                src={getAssetPath(
+                                    "/intro/e59b14d8dde0f0f5dd99111d4463af7435d86470.jpg"
+                                )}
+                                alt="Infrastructure landscape"
+                            />
+                        </ImageWrapper>
+                        <ImageWrapper
+                            className="image-3"
+                            variants={imageVariants}
+                        >
+                            <img
+                                src={getAssetPath(
+                                    "/intro/5dbe58bd6bd15101ac8c2ceca6dc43380c7b1b17.jpg"
+                                )}
+                                alt="Supporting image"
+                            />
+                        </ImageWrapper>
+                        <ImageWrapper
+                            className="image-4"
+                            variants={imageVariants}
+                        >
+                            <img
+                                src={getAssetPath(
+                                    "/intro/e739ec907ac7bb647895a44f468ff46cc5d464a9.jpg"
+                                )}
+                                alt="Supporting image"
+                            />
+                        </ImageWrapper>
+                    </motion.div>
                 </ContentWrapper>
             </TextOverlay>
         </Container>
