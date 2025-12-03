@@ -3,6 +3,7 @@ import { useScroll } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import ResponsiveLottieAnimation from "./ResponsiveLottieAnimation";
 import { getCurrentBreakpoint } from "../utils/breakpoints";
+import { getAssetPath } from "../utils/assetPath";
 
 const AnimationTrack = styled.div`
     position: relative;
@@ -97,7 +98,7 @@ export default function LottieScrolljack({
         const getDimensionsFromConfig = async () => {
             try {
                 // Fetch the animation dimensions config
-                const response = await fetch("/lottie/animationDimensions.json");
+                const response = await fetch(getAssetPath("/lottie/animationDimensions.json"));
                 const dimensionsConfig = await response.json();
 
                 // Get the animation identifier

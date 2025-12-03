@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
+import { getAssetPath } from "../../utils/assetPath";
 
 export const OVERLAY_IMAGE_WIDTH = 177;
 export const OVERLAY_IMAGE_HEIGHT = 245;
@@ -182,14 +183,14 @@ export default function OverlayImage({
                 playsInline
                 aria-hidden={decorative}
             >
-                <source src={videoSrc} type="video/mp4" />
+                <source src={getAssetPath(videoSrc)} type="video/mp4" />
             </OverlayVideoWrapper>
         );
     }
 
     return (
         <OverlayImageWrapper
-            src={src}
+            src={getAssetPath(src)}
             alt={decorative ? "" : alt}
             aria-hidden={decorative}
             {...commonProps}
