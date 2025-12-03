@@ -49,7 +49,8 @@ export const OVERLAY_IMAGE_HEIGHT = 245;
 const getStylesForBreakpoint = (breakpointStyles) => {
     if (!breakpointStyles) return "";
 
-    const { top, left, bottom, right, width, height, display } = breakpointStyles;
+    const { top, left, bottom, right, width, height, display } =
+        breakpointStyles;
     let css = "";
 
     if (top !== undefined) css += `top: ${top};`;
@@ -59,11 +60,6 @@ const getStylesForBreakpoint = (breakpointStyles) => {
     if (width !== undefined) css += `width: ${width};`;
     if (height !== undefined) css += `height: ${height};`;
     if (display !== undefined) css += `display: ${display};`;
-
-    // Reset transform when positioning is provided
-    if (top !== undefined || left !== undefined || bottom !== undefined || right !== undefined) {
-        css += `transform: none !important;`;
-    }
 
     return css;
 };
@@ -80,16 +76,24 @@ const OverlayImageWrapper = styled(motion.img)`
     transform: translate(-50%, -50%);
 
     /* Apply mobile styles */
-    ${(props) => props.$mobileStyles && media.mobile(getStylesForBreakpoint(props.$mobileStyles))}
+    ${(props) =>
+        props.$mobileStyles &&
+        media.mobile(getStylesForBreakpoint(props.$mobileStyles))}
 
     /* Apply tablet styles */
-    ${(props) => props.$tabletStyles && media.tablet(getStylesForBreakpoint(props.$tabletStyles))}
+    ${(props) =>
+        props.$tabletStyles &&
+        media.tablet(getStylesForBreakpoint(props.$tabletStyles))}
 
     /* Apply desktop styles */
-    ${(props) => props.$desktopStyles && media.desktop(getStylesForBreakpoint(props.$desktopStyles))}
+    ${(props) =>
+        props.$desktopStyles &&
+        media.desktop(getStylesForBreakpoint(props.$desktopStyles))}
 
     /* Apply wide styles */
-    ${(props) => props.$wideStyles && media.wide(getStylesForBreakpoint(props.$wideStyles))}
+    ${(props) =>
+        props.$wideStyles &&
+        media.wide(getStylesForBreakpoint(props.$wideStyles))}
 `;
 
 const OverlayVideoWrapper = styled(motion.video)`
@@ -104,23 +108,31 @@ const OverlayVideoWrapper = styled(motion.video)`
     transform: translate(-50%, -50%);
 
     /* Apply mobile styles */
-    ${(props) => props.$mobileStyles && media.mobile(getStylesForBreakpoint(props.$mobileStyles))}
+    ${(props) =>
+        props.$mobileStyles &&
+        media.mobile(getStylesForBreakpoint(props.$mobileStyles))}
 
     /* Apply tablet styles */
-    ${(props) => props.$tabletStyles && media.tablet(getStylesForBreakpoint(props.$tabletStyles))}
+    ${(props) =>
+        props.$tabletStyles &&
+        media.tablet(getStylesForBreakpoint(props.$tabletStyles))}
 
     /* Apply desktop styles */
-    ${(props) => props.$desktopStyles && media.desktop(getStylesForBreakpoint(props.$desktopStyles))}
+    ${(props) =>
+        props.$desktopStyles &&
+        media.desktop(getStylesForBreakpoint(props.$desktopStyles))}
 
     /* Apply wide styles */
-    ${(props) => props.$wideStyles && media.wide(getStylesForBreakpoint(props.$wideStyles))}
+    ${(props) =>
+        props.$wideStyles &&
+        media.wide(getStylesForBreakpoint(props.$wideStyles))}
 `;
 
 // Animation variants for scale-in effect
 const overlayImageVariants = {
     hidden: {
         opacity: 0,
-        scale: 0.8,
+        scale: 0.7,
     },
     visible: {
         opacity: 1,
