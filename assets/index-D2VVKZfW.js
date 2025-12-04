@@ -417,6 +417,12 @@ Error generating stack: `+l.message+`
     ${media.mobile(`
         margin-top: 10%;
     `)}
+    @media (min-width: 1600px) {
+        left: 50%;
+        max-width: 1500px;
+        transform: translateX(-50%);
+        margin-top: 10%;
+    }
 `,TitleWordWrapper=dt.div`
     overflow: hidden;
     display: block;
