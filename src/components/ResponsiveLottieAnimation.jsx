@@ -17,6 +17,7 @@ const Container = styled.div`
 /**
  * ResponsiveLottieAnimation
  * Automatically selects the correct Lottie file based on screen size
+ * Note: Wide screens (>= 1440px) use desktop animations as no separate wide assets exist
  *
  * @param {string|Object} animations - Either a filename/path string (paths constructed automatically)
  *   or an object mapping breakpoints to animation paths
@@ -60,27 +61,36 @@ export default function ResponsiveLottieAnimation({
 
     // Helper function to construct animation path
     const getAnimationPath = (breakpoint) => {
+        // Normalize 'wide' to 'desktop' since we don't have separate wide animations
+        const normalizedBreakpoint = breakpoint === "wide" ? "desktop" : breakpoint;
+
         // If animations is a string, construct the path with the breakpoint directory
         if (typeof animations === "string") {
             // Remove leading /lottie/ if present, and any directory structure
             const filename = animations.split("/").pop();
-            return `/lottie/${breakpoint}/${filename}`;
+            return `/lottie/${normalizedBreakpoint}/${filename}`;
         }
         // If animations is an object, use the breakpoint key
-        return animations[breakpoint] || animations.desktop;
+        return animations[normalizedBreakpoint] || animations.desktop;
     };
 
     const animationPath = getAnimationPath(currentBreakpoint);
     const fallbackPath =
-        currentBreakpoint !== "desktop" ? getAnimationPath("desktop") : undefined;
+        currentBreakpoint !== "desktop" && currentBreakpoint !== "wide"
+            ? getAnimationPath("desktop")
+            : undefined;
+
+    // Normalize breakpoint for sizing (wide screens use desktop dimensions)
+    const breakpointForSizing = currentBreakpoint === "wide" ? "desktop" : currentBreakpoint;
+
     const finalHeight = height !== null
         ? height
         : (heights
-            ? heights[currentBreakpoint] || heights.desktop
+            ? heights[breakpointForSizing] || heights.desktop
             : undefined);
     const finalWidth = width !== null
         ? width
-        : (widths[currentBreakpoint] || widths.desktop || "100%");
+        : (widths[breakpointForSizing] || widths.desktop || "100%");
 
     return (
         <Container $height={finalHeight} $width={finalWidth}>
