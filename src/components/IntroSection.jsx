@@ -51,6 +51,12 @@ const TitleContainer = styled(motion.div)`
     ${media.mobile(`
         margin-top: 10%;
     `)}
+    @media (min-width: 1600px) {
+        left: 50%;
+        max-width: 1500px;
+        transform: translateX(-50%);
+        margin-top: 10%;
+    }
 `;
 
 const TitleWordWrapper = styled.div`
