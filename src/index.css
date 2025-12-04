@@ -13,3 +13,17 @@ body {
 .pc-cta {
   background-color: #222222 !important;
 }
+
+/* Make pc__client anchor inherit styling */
+.pc__client a {
+  color: inherit;
+  text-decoration: inherit;
+  display: block;
+}
+
+.pc__client a:hover,
+.pc__client a:visited,
+.pc__client a:focus {
+  color: inherit;
+  text-decoration: inherit;
+}
