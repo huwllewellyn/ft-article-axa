@@ -2,11 +2,14 @@ import styled from "styled-components";
 
 import { motion } from "framer-motion";
 import { getAssetPath } from "../utils/assetPath";
-import { TopCenterCircle, SVGWrapper } from "./shared/SectionLayout";
+import { SVGWrapper } from "./shared/SectionLayout";
+import { media } from "../utils/breakpoints";
+
+const MARGIN = 40;
 
 const Container = styled.section`
     width: 100%;
-    height: 100vh;
+    height: 100svh;
     padding: 0;
     background: #f2f0ea;
     font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
@@ -21,32 +24,10 @@ const ContentWrapper = styled(motion.div)`
     height: 100%;
     position: absolute;
     z-index: 2;
-    padding: 0 40px;
-`;
-
-const Subtitle = styled(motion.p)`
-    position: absolute;
-    bottom: 130px;
-    right: 20px;
-    font-size: 19px;
-    font-weight: 500;
-    line-height: 1.2;
-    transform: none;
-    color: #0f0707;
-    margin: 0;
-    max-width: 433px;
-    letter-spacing: 0;
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    z-index: 4;
-    text-align: left;
-
-    @media (max-width: 768px) {
-        font-size: 16px;
-        left: 50%;
-        bottom: 100px;
-        max-width: 280px;
-    }
+    padding: 0 ${MARGIN}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const TitleContainer = styled(motion.div)`
@@ -54,8 +35,9 @@ const TitleContainer = styled(motion.div)`
     top: 108px;
     left: 58px;
     width: 100%;
-    max-width: 1100px;
-    z-index: 3;
+    height: 100%;
+    max-width: calc(100% - ${MARGIN * 4}px);
+    z-index: 10;
 `;
 
 const TitleWordWrapper = styled.div`
@@ -64,104 +46,65 @@ const TitleWordWrapper = styled.div`
     height: auto;
 
     &.the {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 283px;
+        z-index: 11;
     }
 
     &.new-nexus {
-        position: absolute;
-        left: 10px;
-        top: 121px;
-        width: 846px;
+        z-index: 12;
     }
 
     &.of {
-        position: absolute;
-        left: 678px;
-        top: 245px;
-        width: 186px;
+        z-index: 13;
+        width: 100%;
+        text-align: center;
     }
 
     &.global {
-        position: absolute;
-        left: 678px;
-        top: 367px;
-        width: 578px;
+        z-index: 14;
+        text-align: right;
     }
 
     &.risk {
-        position: absolute;
-        left: 924px;
-        top: 490px;
-        width: 335px;
+        z-index: 15;
+        text-align: right;
     }
-
-    @media (max-width: 1024px) {
+    ${media.tablet(`
         &.the {
-            width: 230px;
+            left: 0;
         }
 
         &.new-nexus {
-            width: 700px;
             left: 10px;
-            top: 100px;
         }
 
         &.of {
             left: 550px;
-            top: 200px;
-            width: 150px;
         }
 
         &.global {
             left: 550px;
-            top: 300px;
-            width: 470px;
         }
 
         &.risk {
             left: 750px;
-            top: 400px;
-            width: 280px;
         }
-    }
-
-    @media (max-width: 768px) {
-        position: static;
-        width: 100% !important;
-        margin-bottom: 10px;
-
+    `)}
+    ${media.mobile(`
         &.the {
-            width: 100% !important;
         }
 
         &.new-nexus {
-            width: 100% !important;
-            left: auto;
-            top: auto;
         }
 
         &.of {
-            width: 100% !important;
-            left: auto;
-            top: auto;
         }
 
         &.global {
-            width: 100% !important;
-            left: auto;
-            top: auto;
         }
 
         &.risk {
-            width: 100% !important;
-            text-align: left;
-            left: auto;
-            top: auto;
         }
-    }
+    `)}
 `;
 
 const TitleWord = styled(motion.h1)`
@@ -170,10 +113,8 @@ const TitleWord = styled(motion.h1)`
     color: #0f0707;
     margin: 0;
     letter-spacing: -1.54px;
-    line-height: 0.9;
+    line-height: 0.8;
     font-size: 154px;
-    padding: 0;
-    width: 100%;
 
     &.the {
         font-weight: 300;
@@ -198,18 +139,46 @@ const TitleWord = styled(motion.h1)`
     &.risk {
         font-weight: 600;
         font-style: normal;
-        text-align: right;
     }
 
-    @media (max-width: 1024px) {
+    ${media.tablet(`
         font-size: 100px;
         letter-spacing: -1px;
-    }
-
-    @media (max-width: 768px) {
+    `)}
+    ${media.mobile(`
         font-size: 60px;
         letter-spacing: -0.6px;
-    }
+    `)}
+`;
+
+const AlignRight = styled.div`
+    position: absolute;
+    right: 0;
+    max-width: calc(100% - ${MARGIN}px);
+`;
+
+const Subtitle = styled(motion.p)`
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.2;
+    transform: none;
+    color: #0f0707;
+    margin: 0;
+    opacity: 1;
+    letter-spacing: 0;
+    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    z-index: 4;
+    text-align: left;
+    background: #f2f0ea;
+    width: 400px;
+
+    ${media.tablet(`
+    `)}
+    ${media.mobile(`
+        font-size: 16px;
+        width: 300px;
+    `)}
 `;
 
 const SVGContainer = styled.div`
@@ -255,7 +224,6 @@ const TextOverlay = styled(motion.div)`
     width: 100%;
     height: 100%;
     z-index: 2;
-    pointer-events: none;
 `;
 
 const ImageWrapper = styled(motion.div)`
@@ -264,73 +232,66 @@ const ImageWrapper = styled(motion.div)`
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // pointer-events: none;
 
     img {
-        width: 100%;
-        height: 100%;
         object-fit: cover;
+        width: 121px;
+        height: 182px;
     }
 
     &.image-1 {
-        top: 35px;
-        right: 670px;
-        width: 121px;
-        height: 182px;
+        top: 5%;
+        right: 35%;
     }
 
     &.image-2 {
-        top: 219px;
-        right: 184px;
-        width: 121px;
-        height: 182px;
+        top: 15%;
+        right: 10%;
     }
 
     &.image-3 {
-        bottom: 180px;
-        left: 40px;
-        width: 121px;
-        height: 182px;
+        bottom: 25%;
+        left: 5%;
     }
 
     &.image-4 {
-        bottom: 90px;
-        left: 400px;
-        width: 121px;
-        height: 182px;
+        bottom: 10%;
+        left: 25%;
     }
 
     @media (max-width: 1024px) {
-        &.image-1 {
+        img {
             width: 100px;
             height: 150px;
-            right: 550px;
-            top: 50px;
+        }
+        &.image-1 {
+            top: 5%;
+            right: 35%;
         }
 
         &.image-2 {
-            width: 100px;
-            height: 150px;
-            right: 150px;
-            top: 200px;
+            top: 15%;
+            right: 10%;
         }
 
         &.image-3 {
-            width: 100px;
-            height: 150px;
-            left: 30px;
-            bottom: 60px;
+            bottom: 25%;
+            left: 5%;
         }
 
         &.image-4 {
-            width: 100px;
-            height: 150px;
-            left: 200px;
-            top: 40px;
+            bottom: 10%;
+            left: 25%;
         }
     }
 
     @media (max-width: 768px) {
-        display: none;
+        width: 74px;
+        height: 107px;
     }
 `;
 
@@ -448,7 +409,7 @@ export default function IntroSection() {
                                 className="new-nexus"
                                 variants={titleWordVariants}
                             >
-                                NEW NEXUS
+                                NEW&nbsp;NEXUS
                             </TitleWord>
                         </TitleWordWrapper>
 
@@ -478,12 +439,15 @@ export default function IntroSection() {
                                 RISK
                             </TitleWord>
                         </TitleWordWrapper>
+                        <br />
+                        <AlignRight>
+                            <Subtitle variants={subtitleVariants}>
+                                The biggest threats to global stability are no
+                                longer emerging, they're converging – here's
+                                what the future risk landscape reveals
+                            </Subtitle>
+                        </AlignRight>
                     </TitleContainer>
-                    <Subtitle variants={subtitleVariants}>
-                        The biggest threats to global stability are no longer
-                        emerging, they're converging – here's what the future
-                        risk landscape reveals
-                    </Subtitle>
                     {/* Images - positioned absolutely over content */}
                     <motion.div
                         initial="hidden"
