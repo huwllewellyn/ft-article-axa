@@ -7,12 +7,14 @@ import NexusInActionSection from "./components/NexusInActionSection";
 import RiskPerceptionsSection from "./components/RiskPerceptionsSection";
 import PreparingForComplexitySection from "./components/PreparingForComplexitySection";
 import CollaborativeApproachSection from "./components/CollaborativeApproachSection";
+import SectionMenu from "./components/SectionMenu";
 
 const AppContainer = styled.div``;
 
 function App() {
     return (
         <AppContainer>
+            <SectionMenu />
             <IntroSection />
             <RisksSection backgroundColor="#f2f0ea" />
             <PolycrisisSection backgroundColor="#b6c1d3" />

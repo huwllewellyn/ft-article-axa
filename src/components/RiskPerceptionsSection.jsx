@@ -32,7 +32,7 @@ export default function RiskPerceptionsSection({
     backgroundColor = "#ed5027",
 }) {
     return (
-        <BackgroundContainer backgroundColor={backgroundColor}>
+        <BackgroundContainer backgroundColor={backgroundColor} id="risk-perceptions">
             <Container>
                 <ContentWrapper>
                     <SectionTitleGroup

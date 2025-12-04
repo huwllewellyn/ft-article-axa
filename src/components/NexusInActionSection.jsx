@@ -34,7 +34,7 @@ const itemVariants = {
 
 export default function NexusInActionSection({ backgroundColor = "#fde432" }) {
     return (
-        <BackgroundContainer backgroundColor={backgroundColor}>
+        <BackgroundContainer backgroundColor={backgroundColor} id="nexus-in-action">
             <Container>
                 <ContentWrapper>
                     <SectionTitleGroup

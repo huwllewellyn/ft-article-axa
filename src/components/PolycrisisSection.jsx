@@ -26,7 +26,7 @@ import OverlayImage from "./shared/OverlayImage";
 
 export default function PolycrisisSection({ backgroundColor = "#b6c1d3" }) {
     return (
-        <BackgroundContainer backgroundColor={backgroundColor}>
+        <BackgroundContainer backgroundColor={backgroundColor} id="polycrisis">
             <Container>
                 <ContentWrapper>
                     <SectionTitleGroup

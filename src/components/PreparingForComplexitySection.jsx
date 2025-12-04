@@ -27,7 +27,7 @@ export default function PreparingForComplexitySection({
     backgroundColor = "#d7d7d7",
 }) {
     return (
-        <BackgroundContainer backgroundColor={backgroundColor}>
+        <BackgroundContainer backgroundColor={backgroundColor} id="preparing-for-complexity">
             <Container>
                 <ContentWrapper>
                     <SectionTitleGroup

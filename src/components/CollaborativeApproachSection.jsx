@@ -27,7 +27,7 @@ export default function CollaborativeApproachSection({
     backgroundColor = "#f0eedf",
 }) {
     return (
-        <BackgroundContainer backgroundColor={backgroundColor}>
+        <BackgroundContainer backgroundColor={backgroundColor} id="collaborative-approach">
             <Container>
                 <ContentWrapper>
                     <SectionTitleGroup
