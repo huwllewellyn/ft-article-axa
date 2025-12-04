@@ -17,6 +17,13 @@ const Container = styled.section`
     position: relative;
     overflow: hidden;
     padding-bottom: 0;
+    min-height: 900px;
+    ${media.tablet(`
+        min-height: 700px;
+    `)}
+    ${media.mobile(`
+        min-height: 500px;
+    `)}
 `;
 
 const ContentWrapper = styled(motion.div)`
@@ -38,6 +45,12 @@ const TitleContainer = styled(motion.div)`
     height: 100%;
     max-width: calc(100% - ${MARGIN * 4}px);
     z-index: 10;
+    ${media.tablet(`
+        margin-top: 5%;
+    `)}
+    ${media.mobile(`
+        margin-top: 10%;
+    `)}
 `;
 
 const TitleWordWrapper = styled.div`
@@ -51,11 +64,11 @@ const TitleWordWrapper = styled.div`
 
     &.new-nexus {
         z-index: 12;
+        display: flex;
     }
 
     &.of {
         z-index: 13;
-        width: 100%;
         text-align: center;
     }
 
@@ -70,23 +83,18 @@ const TitleWordWrapper = styled.div`
     }
     ${media.tablet(`
         &.the {
-            left: 0;
         }
 
         &.new-nexus {
-            left: 10px;
         }
 
         &.of {
-            left: 550px;
         }
 
         &.global {
-            left: 550px;
         }
 
         &.risk {
-            left: 750px;
         }
     `)}
     ${media.mobile(`
@@ -124,6 +132,7 @@ const TitleWord = styled(motion.h1)`
     &.new-nexus {
         font-weight: 600;
         font-style: normal;
+        background: #f2f0ea;
     }
 
     &.of {
@@ -172,8 +181,10 @@ const Subtitle = styled(motion.p)`
     text-align: left;
     background: #f2f0ea;
     width: 400px;
+    display: flex;
 
     ${media.tablet(`
+
     `)}
     ${media.mobile(`
         font-size: 16px;
