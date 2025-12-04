@@ -4,13 +4,15 @@ import { media } from "../utils/breakpoints";
 
 const MenuContainer = styled.div`
     position: fixed;
-    top: ${(props) =>
-        props.$isScrolled
-            ? "50px"
-            : "105px"}; /* 60px header + 20px spacing, or + 55px top header */
+    top: ${(props) => (props.$isScrolled ? "50px" : "105px")};
     right: 20px;
     z-index: 1000;
     transition: top 0.3s ease;
+
+    @media (max-width: 768px) {
+        top: ${(props) => (props.$isScrolled ? "80px" : "135px")};
+        right: 10px;
+    }
 `;
 
 const MenuButton = styled.button`
