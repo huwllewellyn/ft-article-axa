@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { media } from "../utils/breakpoints";
 
 const MenuContainer = styled.div`
     position: fixed;
-    top: 20px;
+    top: ${(props) =>
+        props.$isScrolled
+            ? "50px"
+            : "105px"}; /* 60px header + 20px spacing, or + 55px top header */
     right: 20px;
     z-index: 1000;
+    transition: top 0.3s ease;
 `;
 
 const MenuButton = styled.button`
@@ -93,6 +97,17 @@ const sections = [
 
 export default function SectionMenu() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Consider scrolled if user has scrolled more than 50px
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -110,7 +125,7 @@ export default function SectionMenu() {
     };
 
     return (
-        <MenuContainer>
+        <MenuContainer $isScrolled={isScrolled}>
             <MenuButton onClick={toggleMenu} aria-label="Section menu" />
             <MenuDropdown $isOpen={isOpen}>
                 {sections.map((section) => (
