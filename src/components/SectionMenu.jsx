@@ -5,14 +5,14 @@ import { media } from "../utils/breakpoints";
 const MenuContainer = styled.div`
     position: fixed;
     top: ${(props) => (props.$isScrolled ? "50px" : "105px")};
+    opacity: ${(props) => (props.$pastIntro ? 1 : 0)};
     right: 20px;
-    z-index: 1001;
+    z-index: 5;
     transition: top 0.3s ease, opacity 0.3s ease;
 
     @media (max-width: 768px) {
         top: ${(props) => (props.$isScrolled ? "80px" : "135px")};
         right: 10px;
-        opacity: ${(props) => (props.$pastIntro ? 1 : 0)};
         pointer-events: ${(props) => (props.$pastIntro ? "auto" : "none")};
     }
 `;
@@ -72,7 +72,7 @@ const MenuDropdown = styled.div`
     z-index: 1000;
 
     @media (max-width: 767px) {
-        top: 70px;
+        top: 65px;
     }
 `;
 
