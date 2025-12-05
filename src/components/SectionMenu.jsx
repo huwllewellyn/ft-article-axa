@@ -177,6 +177,21 @@ export default function SectionMenu() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Prevent scrolling when menu is open
+    useEffect(() => {
+        if (isOpen) {
+            const preventDefault = (e) => e.preventDefault();
+
+            window.addEventListener("wheel", preventDefault, { passive: false });
+            window.addEventListener("touchmove", preventDefault, { passive: false });
+
+            return () => {
+                window.removeEventListener("wheel", preventDefault);
+                window.removeEventListener("touchmove", preventDefault);
+            };
+        }
+    }, [isOpen]);
+
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
